@@ -18,6 +18,12 @@
                             '0%': { transform: 'translateX(0%)' },
                             '100%': { transform: 'translateX(-50%)' }
                         },
+                        jellyBounceIn: {
+                            '0%': { opacity: '0', transform: 'translateY(-200px) scale(0.8)' },
+                            '60%': { opacity: '1', transform: 'translateY(25px) scale(1.05)' },
+                            '80%': { transform: 'translateY(-10px) scale(0.98)' },
+                            '100%': { opacity: '1', transform: 'translateY(0) scale(1)' }
+                        },
                         trainSlideOut: {
                             '0%': { transform: 'translateX(0) scale(1)', opacity: '1' },
                             '40%': { transform: 'scaleX(1.4) scaleY(0.4) skewX(-20deg)', opacity: '0.9' },
@@ -26,6 +32,7 @@
                     },
                     animation: {
                         marquee: 'marquee 35s linear infinite',
+                        'jelly-in': 'jellyBounceIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
                         'train-fly': 'trainSlideOut 0.5s cubic-bezier(0.77, 0, 0.175, 1) forwards',
                     }
                 }
@@ -159,41 +166,41 @@
                 <h2 class="font-heading text-3xl sm:text-4xl font-semibold text-[#1d1d1f] mt-1">Dlaczego nasze community?</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-[#f5f5f7] rounded-xl p-6 border border-slate-200 flex flex-col justify-between">
+                <div class="bg-[#f5f5f7] rounded-2xl p-7 border border-slate-200/80 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
                     <div>
-                        <div class="h-36 rounded-lg bg-slate-200/70 mb-4 flex items-center justify-center text-slate-700">
-                            <svg class="w-12 h-12 text-[#0071e3]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                        <div class="h-36 rounded-xl bg-gradient-to-br from-blue-50 to-indigo-50/50 border border-blue-100/50 mb-6 flex items-center justify-center text-[#0071e3] group-hover:scale-105 transition-transform duration-500 shadow-inner">
+                            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
                         </div>
-                        <h3 class="font-heading font-bold text-lg text-[#1d1d1f] mb-1">Pasjonaci z całej Polski</h3>
-                        <p class="text-xs text-[#515154] mb-4 leading-relaxed">Zrzeszamy miłośników komunikacji miejskiej, motorniczych oraz fotografów transportowych z każdego zakątka kraju.</p>
+                        <h3 class="font-heading font-bold text-lg text-[#1d1d1f] mb-2">Pasjonaci z całej Polski</h3>
+                        <p class="text-xs text-[#515154] mb-6 leading-relaxed">Zrzeszamy miłośników komunikacji miejskiej, motorniczych oraz fotografów transportowych z każdego zakątka kraju.</p>
                     </div>
-                    <button onclick="openModal('Pasjonaci z całej Polski', 'Tworzymy zgraną społeczność ludzi, dla których transport szynowy to coś więcej niż tylko środek przemieszczania się.')" class="w-full border border-[#0071e3] text-[#0071e3] hover:bg-[#0071e3] hover:text-white font-heading text-xs py-2 rounded-lg transition-all cursor-pointer">
+                    <button onclick="openModal('Pasjonaci z całej Polski', 'Tworzymy zgraną społeczność ludzi, dla których transport publiczny to coś więcej niż tylko środek przemieszczania się.')" class="w-full bg-white hover:bg-[#0071e3] text-[#0071e3] hover:text-white font-heading text-xs font-semibold py-2.5 rounded-xl border border-slate-200 shadow-sm transition-all cursor-pointer">
                         Dowiedz się więcej
                     </button>
                 </div>
 
-                <div class="bg-[#f5f5f7] rounded-xl p-6 border border-slate-200 flex flex-col justify-between">
+                <div class="bg-[#f5f5f7] rounded-2xl p-7 border border-slate-200/80 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
                     <div>
-                        <div class="h-36 rounded-lg bg-slate-200/70 mb-4 flex items-center justify-center text-slate-700">
-                            <svg class="w-12 h-12 text-[#0071e3]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg>
+                        <div class="h-36 rounded-xl bg-gradient-to-br from-blue-50 to-indigo-50/50 border border-blue-100/50 mb-6 flex items-center justify-center text-[#0071e3] group-hover:scale-105 transition-transform duration-500 shadow-inner">
+                            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg>
                         </div>
-                        <h3 class="font-heading font-bold text-lg text-[#1d1d1f] mb-1">Ekskluzywne materiały</h3>
-                        <p class="text-xs text-[#515154] mb-4 leading-relaxed">Uzyskaj dostęp do unikalnych relacji z dostaw nowego taboru, zaplecza zajezdni oraz archiwów historycznych.</p>
+                        <h3 class="font-heading font-bold text-lg text-[#1d1d1f] mb-2">Ekskluzywne materiały</h3>
+                        <p class="text-xs text-[#515154] mb-6 leading-relaxed">Uzyskaj dostęp do unikalnych relacji z dostaw nowego taboru, zaplecza zajezdni oraz archiwów historycznych.</p>
                     </div>
-                    <button onclick="openModal('Ekskluzywne materiały', 'Dzielimy się materiałami, których nie znajdziesz w tradycyjnych mediach ani na innych portalach.')" class="w-full border border-[#0071e3] text-[#0071e3] hover:bg-[#0071e3] hover:text-white font-heading text-xs py-2 rounded-lg transition-all cursor-pointer">
+                    <button onclick="openModal('Ekskluzywne materiały', 'Dzielimy się materiałami, których nie znajdziesz w tradycyjnych mediach ani na innych portalach.')" class="w-full bg-white hover:bg-[#0071e3] text-[#0071e3] hover:text-white font-heading text-xs font-semibold py-2.5 rounded-xl border border-slate-200 shadow-sm transition-all cursor-pointer">
                         Dowiedz się więcej
                     </button>
                 </div>
 
-                <div class="bg-[#f5f5f7] rounded-xl p-6 border border-slate-200 flex flex-col justify-between">
+                <div class="bg-[#f5f5f7] rounded-2xl p-7 border border-slate-200/80 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
                     <div>
-                        <div class="h-36 rounded-lg bg-slate-200/70 mb-4 flex items-center justify-center text-slate-700">
-                            <svg class="w-12 h-12 text-[#0071e3]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                        <div class="h-36 rounded-xl bg-gradient-to-br from-blue-50 to-indigo-50/50 border border-blue-100/50 mb-6 flex items-center justify-center text-[#0071e3] group-hover:scale-105 transition-transform duration-500 shadow-inner">
+                            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
                         </div>
-                        <h3 class="font-heading font-bold text-lg text-[#1d1d1f] mb-1">Aktywne dyskusje</h3>
-                        <p class="text-xs text-[#515154] mb-4 leading-relaxed">Bierz udział w debatach na temat rozwoju sieci tramwajowych, inwestycji miejskich oraz rozkładów jazdy.</p>
+                        <h3 class="font-heading font-bold text-lg text-[#1d1d1f] mb-2">Aktywne dyskusje</h3>
+                        <p class="text-xs text-[#515154] mb-6 leading-relaxed">Bierz udział w rozmowach na temat rozwoju sieci tramwajowych, inwestycji miejskich oraz rozkładów jazdy.</p>
                     </div>
-                    <button onclick="openModal('Aktywne dyskusje', 'Nasze kanały i wydarzenia to idealne miejsce na merytoryczną wymianę zdań i poglądów o transporcie.')" class="w-full border border-[#0071e3] text-[#0071e3] hover:bg-[#0071e3] hover:text-white font-heading text-xs py-2 rounded-lg transition-all cursor-pointer">
+                    <button onclick="openModal('Aktywne dyskusje', 'Nasze kanały i wydarzenia to idealne miejsce na merytoryczną wymianę zdań i poglądów o transporcie.')" class="w-full bg-white hover:bg-[#0071e3] text-[#0071e3] hover:text-white font-heading text-xs font-semibold py-2.5 rounded-xl border border-slate-200 shadow-sm transition-all cursor-pointer">
                         Dowiedz się więcej
                     </button>
                 </div>
@@ -205,7 +212,6 @@
         <div class="max-w-5xl mx-auto px-4">
             
             <div class="text-center max-w-2xl mx-auto mb-10">
-                <span class="text-xs uppercase tracking-widest text-[#0071e3] font-heading font-semibold">Kadr dnia</span>
                 <h2 class="font-heading text-3xl sm:text-4xl font-semibold text-[#1d1d1f] mt-1">Galeria zdjęć społeczności</h2>
             </div>
 
@@ -214,21 +220,20 @@
                 <div class="flex items-center justify-between mb-4">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 rounded-full bg-[#0071e3] text-white flex items-center justify-center font-bold text-sm">
-                            T
+                            U
                         </div>
                         <div class="text-left">
-                            <h4 class="font-heading font-semibold text-sm text-[#1d1d1f]">@TRAMsport</h4>
-                            <p class="text-[11px] text-neutral-400">Oficjalna podstrona galerii</p>
+                            <h4 class="font-heading font-semibold text-sm text-[#1d1d1f]">@Użytkownik_67</h4>
                         </div>
                     </div>
-                    <span class="text-[10px] bg-blue-50 text-[#0071e3] font-medium px-2.5 py-1 rounded-full">Podstrona</span>
+                    <span class="text-[10px] bg-blue-50 text-[#0071e3] font-medium px-2.5 py-1 rounded-full">Dzisiaj, o 06:07</span>
                 </div>
 
                 <div class="h-64 sm:h-72 w-full rounded-xl bg-slate-200 overflow-hidden relative mb-5 shadow-inner">
-                    <img src="https://placehold.co/600x400/94a3b8/475569?text=Podgl%C4%85d+Galerii+Zdj%C4%99%C4%87" alt="Podgląd galerii" class="w-full h-full object-cover filter blur-sm scale-105 pointer-events-none">
+                    <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/Hyundai-Rotem-na-warszawskich-torach_01_fot.-Tramwaje-Warszawskie.jpg" alt="Podgląd galerii" class="w-full h-full object-cover filter blur-sm scale-105 pointer-events-none">
                     <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/30 text-white p-4 text-center">
                         <svg class="w-10 h-10 mb-2 opacity-90" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                        <p class="text-xs sm:text-sm font-medium">Zobacz pełną kolekcję fotografii szynowych na osobnej podstronie</p>
+                        <p class="text-xs sm:text-sm font-medium">Zobacz pełną kolekcję fotografii w galerii zdjęć</p>
                     </div>
                 </div>
 
@@ -249,9 +254,9 @@
                         <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.011c3.927 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
                         Oficjalny serwer Discord
                     </div>
-                    <h2 class="font-heading text-3xl font-semibold text-[#1d1d1f]">Dołącz do największej społeczności szynowej w Polsce</h2>
+                    <h2 class="font-heading text-3xl font-semibold text-[#1d1d1f]">Dołącz do największej społeczności komunikacyjnej w Polsce</h2>
                     <p class="text-sm text-[#515154] leading-relaxed">
-                        Rozmawiaj na żywo o nowościach taborowych, dziel się zdjęciami w najwyższej rozdzielczości i uczestnicz w ekskluzywnych wydarzeniach online.
+                        Rozmawiaj na żywo o nowościach taborowych, dziel się zdjęciami i uczestnicz w ekskluzywnych wydarzeniach online.
                     </p>
                     <div class="pt-2 flex flex-wrap items-center gap-3">
                         <a href="https://discord.com/invite/seks6zaKWs" target="_blank" rel="noopener noreferrer" class="nav-link inline-flex items-center gap-2 bg-[#5865F2] hover:bg-[#4752C4] text-white font-heading font-medium text-xs px-6 py-3 rounded-full shadow transition-all cursor-pointer">
@@ -272,79 +277,12 @@
         </div>
 
         <div class="w-full overflow-hidden mask-marquee py-4">
-            <div class="flex w-max animate-marquee gap-4 items-center">
-                <div class="flex items-center gap-4 shrink-0">
-                    <div class="bg-[#f5f5f7] px-4 py-3 rounded-2xl border border-slate-200 flex items-center gap-3 w-60 shadow-sm">
-                        <div class="w-10 h-10 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">M</div>
-                        <div>
-                            <h4 class="font-heading font-semibold text-xs text-[#1d1d1f]">Maciej_Tram</h4>
-                            <span class="text-[10px] text-emerald-600 font-medium">Dołączył przed chwilą</span>
-                        </div>
-                    </div>
-                    <div class="bg-[#f5f5f7] px-4 py-3 rounded-2xl border border-slate-200 flex items-center gap-3 w-60 shadow-sm">
-                        <div class="w-10 h-10 rounded-full bg-purple-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">K</div>
-                        <div>
-                            <h4 class="font-heading font-semibold text-xs text-[#1d1d1f]">KasiaSzyny</h4>
-                            <span class="text-[10px] text-emerald-600 font-medium">Dołączyła 5 min temu</span>
-                        </div>
-                    </div>
-                    <div class="bg-[#f5f5f7] px-4 py-3 rounded-2xl border border-slate-200 flex items-center gap-3 w-60 shadow-sm">
-                        <div class="w-10 h-10 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">T</div>
-                        <div>
-                            <h4 class="font-heading font-semibold text-xs text-[#1d1d1f]">Tomek_105Na</h4>
-                            <span class="text-[10px] text-emerald-600 font-medium">Dołączył 12 min temu</span>
-                        </div>
-                    </div>
-                    <div class="bg-[#f5f5f7] px-4 py-3 rounded-2xl border border-slate-200 flex items-center gap-3 w-60 shadow-sm">
-                        <div class="w-10 h-10 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">A</div>
-                        <div>
-                            <h4 class="font-heading font-semibold text-xs text-[#1d1d1f]">Ania_Swing</h4>
-                            <span class="text-[10px] text-emerald-600 font-medium">Dołączyła 25 min temu</span>
-                        </div>
-                    </div>
-                    <div class="bg-[#f5f5f7] px-4 py-3 rounded-2xl border border-slate-200 flex items-center gap-3 w-60 shadow-sm">
-                        <div class="w-10 h-10 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">P</div>
-                        <div>
-                            <h4 class="font-heading font-semibold text-xs text-[#1d1d1f]">Piotr_Kraków</h4>
-                            <span class="text-[10px] text-emerald-600 font-medium">Dołączył 40 min temu</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex items-center gap-4 shrink-0">
-                    <div class="bg-[#f5f5f7] px-4 py-3 rounded-2xl border border-slate-200 flex items-center gap-3 w-60 shadow-sm">
-                        <div class="w-10 h-10 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">M</div>
-                        <div>
-                            <h4 class="font-heading font-semibold text-xs text-[#1d1d1f]">Maciej_Tram</h4>
-                            <span class="text-[10px] text-emerald-600 font-medium">Dołączył przed chwilą</span>
-                        </div>
-                    </div>
-                    <div class="bg-[#f5f5f7] px-4 py-3 rounded-2xl border border-slate-200 flex items-center gap-3 w-60 shadow-sm">
-                        <div class="w-10 h-10 rounded-full bg-purple-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">K</div>
-                        <div>
-                            <h4 class="font-heading font-semibold text-xs text-[#1d1d1f]">KasiaSzyny</h4>
-                            <span class="text-[10px] text-emerald-600 font-medium">Dołączyła 5 min temu</span>
-                        </div>
-                    </div>
-                    <div class="bg-[#f5f5f7] px-4 py-3 rounded-2xl border border-slate-200 flex items-center gap-3 w-60 shadow-sm">
-                        <div class="w-10 h-10 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">T</div>
-                        <div>
-                            <h4 class="font-heading font-semibold text-xs text-[#1d1d1f]">Tomek_105Na</h4>
-                            <span class="text-[10px] text-emerald-600 font-medium">Dołączył 12 min temu</span>
-                        </div>
-                    </div>
-                    <div class="bg-[#f5f5f7] px-4 py-3 rounded-2xl border border-slate-200 flex items-center gap-3 w-60 shadow-sm">
-                        <div class="w-10 h-10 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">A</div>
-                        <div>
-                            <h4 class="font-heading font-semibold text-xs text-[#1d1d1f]">Ania_Swing</h4>
-                            <span class="text-[10px] text-emerald-600 font-medium">Dołączyła 25 min temu</span>
-                        </div>
-                    </div>
-                    <div class="bg-[#f5f5f7] px-4 py-3 rounded-2xl border border-slate-200 flex items-center gap-3 w-60 shadow-sm">
-                        <div class="w-10 h-10 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">P</div>
-                        <div>
-                            <h4 class="font-heading font-semibold text-xs text-[#1d1d1f]">Piotr_Kraków</h4>
-                            <span class="text-[10px] text-emerald-600 font-medium">Dołączył 40 min temu</span>
-                        </div>
+            <div id="membersMarquee" class="flex w-max animate-marquee gap-4 items-center">
+                <div class="bg-[#f5f5f7] px-4 py-3 rounded-2xl border border-slate-200 flex items-center gap-3 w-60 shadow-sm shrink-0">
+                    <div class="w-10 h-10 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">T</div>
+                    <div>
+                        <h4 class="font-heading font-semibold text-xs text-[#1d1d1f]">Trwa ładowanie...</h4>
+                        <span class="text-[10px] text-emerald-600 font-medium">Z serwera Discord</span>
                     </div>
                 </div>
             </div>
@@ -366,13 +304,18 @@
     </footer>
 
     <div id="customModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/50 backdrop-blur-[2px] transition-opacity">
-        <div id="modalBox" class="bg-white max-w-md w-full rounded-3xl p-8 shadow-2xl border-2 border-slate-300 text-[#1d1d1f] opacity-0 scale-95 transform transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]">
-            <h3 id="modalTitle" class="font-heading text-2xl font-black mb-3 tracking-tight drop-shadow-sm text-[#1d1d1f]">Tytuł</h3>
-            <p id="modalDescription" class="text-sm text-[#515154] mb-8 leading-relaxed">Treść...</p>
-            <div class="flex justify-end">
-                <button onclick="closeModal()" class="bg-[#0071e3] hover:bg-[#0077ed] text-white font-heading text-xs font-bold px-6 py-2.5 rounded-full transition-all cursor-pointer shadow-md">
-                    OK
-                </button>
+        <div id="modalBox" class="bg-white max-w-md w-full rounded-3xl shadow-2xl border-2 border-slate-300 text-[#1d1d1f] opacity-0 transform transition-all duration-300 overflow-hidden">
+            <div class="w-full bg-[#1c1c1e] py-4 px-6 flex justify-center border-b border-white/5">
+                <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg" alt="TRAMsport Logo" class="h-10 w-auto pointer-events-none">
+            </div>
+            <div class="p-8">
+                <h3 id="modalTitle" class="font-heading text-2xl font-black mb-3 tracking-tight text-center text-[#1d1d1f]">Tytuł</h3>
+                <p id="modalDescription" class="text-sm text-[#515154] mb-8 text-center leading-relaxed">Treść...</p>
+                <div class="flex justify-end">
+                    <button onclick="closeModal()" class="bg-[#0071e3] hover:bg-[#0077ed] text-white font-heading text-xs font-bold px-8 py-3 rounded-full transition-all cursor-pointer shadow-md">
+                        OK
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -473,6 +416,57 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
+        async function fetchDiscordMembers() {
+            try {
+                const response = await fetch('members.json');
+                if (!response.ok) throw new Error('Błąd ładowania danych');
+                const members = await response.json();
+                
+                if (members && members.length > 0) {
+                    const container = document.getElementById('membersMarquee');
+                    const colors = ['bg-blue-600', 'bg-purple-600', 'bg-amber-600', 'bg-emerald-600', 'bg-indigo-600', 'bg-rose-600'];
+                    
+                    const createCardsHTML = (items) => {
+                        return items.map((m, index) => {
+                            const initial = (m.name || 'U').charAt(0).toUpperCase();
+                            const colorClass = colors[index % colors.length];
+                            
+                            let timeAgo = 'Przed chwilą';
+                            if (m.joinedAt) {
+                                const diffMins = Math.floor((new Date() - new Date(m.joinedAt)) / (1000 * 60));
+                                if (diffMins < 1) timeAgo = 'Dołączył przed chwilą';
+                                else if (diffMins < 60) timeAgo = `Dołączył ${diffMins} min temu`;
+                                else {
+                                    const diffHours = Math.floor(diffMins / 60);
+                                    timeAgo = `Dołączył ${diffHours} godz. temu`;
+                                }
+                            }
+
+                            return `
+                                <div class="bg-[#f5f5f7] px-4 py-3 rounded-2xl border border-slate-200 flex items-center gap-3 w-60 shadow-sm shrink-0">
+                                    <div class="w-10 h-10 rounded-full ${colorClass} text-white font-bold flex items-center justify-center text-sm shadow-sm">${initial}</div>
+                                    <div>
+                                        <h4 class="font-heading font-semibold text-xs text-[#1d1d1f] truncate w-36">${m.name}</h4>
+                                        <span class="text-[10px] text-emerald-600 font-medium">${timeAgo}</span>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('');
+                    };
+
+                    const cardsHTML = createCardsHTML(members);
+                    // Duplicate for infinite smooth scrolling marquee effect
+                    container.innerHTML = `
+                        <div class="flex items-center gap-4 shrink-0">${cardsHTML}</div>
+                        <div class="flex items-center gap-4 shrink-0">${cardsHTML}</div>
+                    `;
+                }
+            } catch (err) {
+                console.error("Nie udało się pobrać listy członków z members.json:", err);
+            }
+        }
+        fetchDiscordMembers();
+
         function downloadICS() {
             const icsContent = 
 `BEGIN:VCALENDAR
@@ -506,27 +500,26 @@ END:VCALENDAR`;
             const box = document.getElementById('modalBox');
             
             box.classList.remove('animate-train-fly');
+            box.classList.remove('animate-jelly-in');
             
             modal.classList.remove('hidden');
             modal.classList.add('flex');
             
-            setTimeout(() => {
-                box.classList.remove('opacity-0', 'scale-95');
-                box.classList.add('opacity-100', 'scale-100');
-            }, 10);
+            void box.offsetWidth; 
+            box.classList.add('animate-jelly-in');
         }
 
         function closeModal() {
             const modal = document.getElementById('customModal');
             const box = document.getElementById('modalBox');
             
+            box.classList.remove('animate-jelly-in');
             box.classList.add('animate-train-fly');
             
             setTimeout(() => {
                 modal.classList.remove('flex');
                 modal.classList.add('hidden');
-                box.classList.remove('opacity-100', 'scale-100', 'animate-train-fly');
-                box.classList.add('opacity-0', 'scale-95');
+                box.classList.remove('animate-train-fly');
             }, 500);
         }
 
