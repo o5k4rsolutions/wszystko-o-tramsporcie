@@ -80,16 +80,6 @@
                 </p>
             </div>
 
-            <div class="bg-white/5 backdrop-blur-xl rounded-2xl p-4 border border-white/15 shadow-xl max-w-md mx-auto space-y-3">
-                <label for="customUrlInput" class="block text-xs text-slate-300 text-left font-medium">Wpisz adres docelowy lub ścieżkę:</label>
-                <div class="flex gap-2">
-                    <input type="text" id="customUrlInput" placeholder="np. /galeria.html lub https://..." class="flex-1 bg-black/40 border border-white/20 rounded-xl px-4 py-2.5 text-xs text-white placeholder-white/30 focus:outline-none focus:border-blue-500 transition-colors">
-                    <button onclick="navigateToInput()" class="bg-blue-600 hover:bg-blue-500 text-white font-heading font-medium text-xs px-5 py-2.5 rounded-xl shadow transition-all cursor-pointer">
-                        Przejdź
-                    </button>
-                </div>
-            </div>
-
             <div class="pt-2 flex flex-wrap items-center justify-center gap-3">
                 <a href="https://wszystko-o-tramsporcie.vercel.app/strona-glowna.html" class="inline-flex items-center gap-2 bg-white text-[#1d1d1f] hover:bg-slate-100 font-heading font-medium text-xs px-6 py-3 rounded-full shadow transition-all cursor-pointer">
                     Strona główna
@@ -104,17 +94,6 @@
     <script>
         document.addEventListener('contextmenu', function(e) {
             if (e.target.tagName === 'IMG') { e.preventDefault(); }
-        });
-
-        function navigateToInput() {
-            const inputVal = document.getElementById('customUrlInput').value;
-            window.location.href = inputVal;
-        }
-
-        document.getElementById('customUrlInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                navigateToInput();
-            }
         });
     </script>
 </body>
