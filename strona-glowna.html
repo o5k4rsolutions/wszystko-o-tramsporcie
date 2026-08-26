@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wszystko o TRAMsporcie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+                        'heading': ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' }
+                        },
+                        trainSlideOut: {
+                            '0%': { transform: 'translateX(0) scale(1)', opacity: '1' },
+                            '40%': { transform: 'scaleX(1.4) scaleY(0.4) skewX(-20deg)', opacity: '0.9' },
+                            '100%': { transform: 'translateX(150vw) scaleX(1.2) scaleY(0.2) skewX(-40deg)', opacity: '0' }
+                        }
+                    },
+                    animation: {
+                        marquee: 'marquee 35s linear infinite',
+                        'train-fly': 'trainSlideOut 0.5s cubic-bezier(0.77, 0, 0.175, 1) forwards',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            letter-spacing: -0.01em;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            letter-spacing: -0.022em;
+        }
+        .apple-hero-bg {
+            background: linear-gradient(180deg, #161617 0%, #0c1b2a 45%, #050b14 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .apple-halo {
+            background: radial-gradient(circle at 50% 35%, rgba(100, 180, 255, 0.5) 0%, rgba(40, 110, 210, 0.25) 40%, transparent 75%);
+            filter: blur(60px);
+        }
+        .mask-marquee {
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+        img {
+            -webkit-user-drag: none;
+            user-drag: none;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-[#f5f5f7] text-[#1d1d1f] antialiased selection:bg-blue-500 selection:text-white">
+
+    <div id="pageLoader" class="fixed inset-0 z-[100] bg-[#161617] flex flex-col items-center justify-center transition-opacity duration-700 ease-out">
+        <div class="flex flex-col items-center space-y-6">
+            <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg" alt="TRAMsport Logo" class="h-16 w-auto animate-pulse pointer-events-none">
+            
+            <div class="relative w-20 h-20 flex items-center justify-center">
+                <div class="absolute inset-0 border-4 border-white/10 rounded-full"></div>
+                <div class="absolute inset-0 border-4 border-transparent border-t-blue-500 rounded-full animate-spin"></div>
+            </div>
+
+            <div class="text-center space-y-2">
+                <p id="loaderText" class="text-white/80 text-xs tracking-widest font-heading uppercase">Trwa ładowanie...</p>
+            </div>
+        </div>
+    </div>
+
+    <header class="sticky top-0 z-50 bg-[#161617]/85 backdrop-blur-md text-[#f5f5f7] text-xs">
+        <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+            
+            <a href="#home" class="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
+                <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg" alt="TRAMsport Logo" class="h-12 w-auto pointer-events-none">
+            </a>
+
+            <nav class="hidden md:flex items-center gap-6 text-[#f5f5f7]/80 text-[11px] font-normal tracking-wide">
+                <a href="#nowosc" class="nav-link hover:text-white transition-colors">Nowości</a>
+                <a href="#community" class="nav-link hover:text-white transition-colors">Community</a>
+                <a href="#galeria" class="nav-link hover:text-white transition-colors">Galeria</a>
+                <a href="#spolecznosc" class="nav-link hover:text-white transition-colors">Społeczność</a>
+                <a href="https://discord.com/invite/seks6zaKWs" target="_blank" rel="noopener noreferrer" class="nav-link text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-1 font-semibold">
+                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.011c3.927 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+                    Discord
+                </a>
+            </nav>
+
+            <div class="w-6 md:hidden"></div>
+            <div class="hidden md:block w-6"></div>
+
+        </div>
+    </header>
+
+    <section id="home" class="relative overflow-hidden apple-hero-bg text-white py-28 text-center min-h-[81vh] flex flex-col items-center justify-center">
+        <div class="absolute inset-0 apple-halo pointer-events-none w-[700px] h-[700px] rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 relative z-10 space-y-4">
+            <div class="w-40 h-40 mx-auto mb-6 flex items-center justify-center rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl p-4">
+                <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/discord.jpg_preview_rev_2.png" alt="TRAMsport Logo" class="w-full h-full object-contain pointer-events-none">
+            </div>
+
+            <h1 class="font-heading text-4xl sm:text-6xl font-semibold tracking-tight leading-tight">
+                Wielkie otwarcie serwera Discord.
+            </h1>
+            <p class="text-lg sm:text-xl text-slate-300 font-normal">
+                Dołącz do oficjalnego wydarzenia społeczności.<br>
+                1 września o 18:30.
+            </p>
+
+            <div id="countdown" class="flex items-center justify-center gap-4 py-4 max-w-sm mx-auto">
+                <div class="bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/15 min-w-[70px]">
+                    <div id="days" class="text-2xl font-bold font-heading">00</div>
+                    <div class="text-[10px] text-slate-300 uppercase tracking-wider">Dni</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/15 min-w-[70px]">
+                    <div id="hours" class="text-2xl font-bold font-heading">00</div>
+                    <div class="text-[10px] text-slate-300 uppercase tracking-wider">Godzin</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/15 min-w-[70px]">
+                    <div id="minutes" class="text-2xl font-bold font-heading">00</div>
+                    <div class="text-[10px] text-slate-300 uppercase tracking-wider">Minut</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/15 min-w-[70px]">
+                    <div id="seconds" class="text-2xl font-bold font-heading">00</div>
+                    <div class="text-[10px] text-slate-300 uppercase tracking-wider">Sekund</div>
+                </div>
+            </div>
+
+            <div class="pt-2 flex flex-wrap items-center justify-center gap-3">
+                <button onclick="downloadICS()" title="Dodaj do kalendarza" class="inline-flex items-center justify-center bg-white text-[#1d1d1f] w-10 h-10 rounded-full shadow hover:bg-slate-100 transition-all cursor-pointer">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                </button>
+                <a href="https://discord.com/invite/seks6zaKWs" target="_blank" rel="noopener noreferrer" class="nav-link inline-flex items-center gap-2 bg-[#5865F2] hover:bg-[#4752C4] text-white font-heading font-medium text-xs px-5 py-2.5 rounded-full shadow transition-all cursor-pointer">
+                    Dołącz na Discord
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="community" class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs uppercase tracking-widest text-[#0071e3] font-heading font-semibold">Wartości i pasja</span>
+                <h2 class="font-heading text-3xl sm:text-4xl font-semibold text-[#1d1d1f] mt-1">Dlaczego nasze community?</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-[#f5f5f7] rounded-xl p-6 border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="h-36 rounded-lg bg-slate-200/70 mb-4 flex items-center justify-center text-slate-700">
+                            <svg class="w-12 h-12 text-[#0071e3]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                        </div>
+                        <h3 class="font-heading font-bold text-lg text-[#1d1d1f] mb-1">Pasjonaci z całej Polski</h3>
+                        <p class="text-xs text-[#515154] mb-4 leading-relaxed">Zrzeszamy miłośników komunikacji miejskiej, motorniczych oraz fotografów transportowych z każdego zakątka kraju.</p>
+                    </div>
+                    <button onclick="openModal('Pasjonaci z całej Polski', 'Tworzymy zgraną społeczność ludzi, dla których transport szynowy to coś więcej niż tylko środek przemieszczania się.')" class="w-full border border-[#0071e3] text-[#0071e3] hover:bg-[#0071e3] hover:text-white font-heading text-xs py-2 rounded-lg transition-all cursor-pointer">
+                        Dowiedz się więcej
+                    </button>
+                </div>
+
+                <div class="bg-[#f5f5f7] rounded-xl p-6 border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="h-36 rounded-lg bg-slate-200/70 mb-4 flex items-center justify-center text-slate-700">
+                            <svg class="w-12 h-12 text-[#0071e3]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg>
+                        </div>
+                        <h3 class="font-heading font-bold text-lg text-[#1d1d1f] mb-1">Ekskluzywne materiały</h3>
+                        <p class="text-xs text-[#515154] mb-4 leading-relaxed">Uzyskaj dostęp do unikalnych relacji z dostaw nowego taboru, zaplecza zajezdni oraz archiwów historycznych.</p>
+                    </div>
+                    <button onclick="openModal('Ekskluzywne materiały', 'Dzielimy się materiałami, których nie znajdziesz w tradycyjnych mediach ani na innych portalach.')" class="w-full border border-[#0071e3] text-[#0071e3] hover:bg-[#0071e3] hover:text-white font-heading text-xs py-2 rounded-lg transition-all cursor-pointer">
+                        Dowiedz się więcej
+                    </button>
+                </div>
+
+                <div class="bg-[#f5f5f7] rounded-xl p-6 border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="h-36 rounded-lg bg-slate-200/70 mb-4 flex items-center justify-center text-slate-700">
+                            <svg class="w-12 h-12 text-[#0071e3]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                        </div>
+                        <h3 class="font-heading font-bold text-lg text-[#1d1d1f] mb-1">Aktywne dyskusje</h3>
+                        <p class="text-xs text-[#515154] mb-4 leading-relaxed">Bierz udział w debatach na temat rozwoju sieci tramwajowych, inwestycji miejskich oraz rozkładów jazdy.</p>
+                    </div>
+                    <button onclick="openModal('Aktywne dyskusje', 'Nasze kanały i wydarzenia to idealne miejsce na merytoryczną wymianę zdań i poglądów o transporcie.')" class="w-full border border-[#0071e3] text-[#0071e3] hover:bg-[#0071e3] hover:text-white font-heading text-xs py-2 rounded-lg transition-all cursor-pointer">
+                        Dowiedz się więcej
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria" class="py-20 bg-[#f5f5f7] border-t border-slate-200">
+        <div class="max-w-5xl mx-auto px-4">
+            
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-xs uppercase tracking-widest text-[#0071e3] font-heading font-semibold">Kadr dnia</span>
+                <h2 class="font-heading text-3xl sm:text-4xl font-semibold text-[#1d1d1f] mt-1">Galeria zdjęć społeczności</h2>
+            </div>
+
+            <div class="max-w-xl mx-auto bg-white rounded-2xl p-6 border border-slate-200 shadow-sm relative overflow-hidden text-center">
+                
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-[#0071e3] text-white flex items-center justify-center font-bold text-sm">
+                            T
+                        </div>
+                        <div class="text-left">
+                            <h4 class="font-heading font-semibold text-sm text-[#1d1d1f]">@TRAMsport</h4>
+                            <p class="text-[11px] text-neutral-400">Oficjalna podstrona galerii</p>
+                        </div>
+                    </div>
+                    <span class="text-[10px] bg-blue-50 text-[#0071e3] font-medium px-2.5 py-1 rounded-full">Podstrona</span>
+                </div>
+
+                <div class="h-64 sm:h-72 w-full rounded-xl bg-slate-200 overflow-hidden relative mb-5 shadow-inner">
+                    <img src="https://placehold.co/600x400/94a3b8/475569?text=Podgl%C4%85d+Galerii+Zdj%C4%99%C4%87" alt="Podgląd galerii" class="w-full h-full object-cover filter blur-sm scale-105 pointer-events-none">
+                    <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/30 text-white p-4 text-center">
+                        <svg class="w-10 h-10 mb-2 opacity-90" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        <p class="text-xs sm:text-sm font-medium">Zobacz pełną kolekcję fotografii szynowych na osobnej podstronie</p>
+                    </div>
+                </div>
+
+                <a href="galeria.html" class="inline-flex items-center justify-center gap-2 w-full bg-[#0071e3] hover:bg-[#0077ed] text-white font-heading font-medium text-xs sm:text-sm py-3 px-6 rounded-xl shadow transition-all cursor-pointer">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                    Przejdź do galerii zdjęć
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="spotl" class="py-20 bg-white border-t border-slate-200 overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4 mb-12">
+            <div class="bg-gradient-to-r from-[#5865F2]/10 via-blue-50 to-indigo-50 border border-[#5865F2]/20 rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-sm">
+                <div class="space-y-4 max-w-lg text-left">
+                    <div class="inline-flex items-center gap-2 bg-[#5865F2] text-white text-[11px] font-semibold px-3 py-1 rounded-full shadow-sm">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.011c3.927 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+                        Oficjalny serwer Discord
+                    </div>
+                    <h2 class="font-heading text-3xl font-semibold text-[#1d1d1f]">Dołącz do największej społeczności szynowej w Polsce</h2>
+                    <p class="text-sm text-[#515154] leading-relaxed">
+                        Rozmawiaj na żywo o nowościach taborowych, dziel się zdjęciami w najwyższej rozdzielczości i uczestnicz w ekskluzywnych wydarzeniach online.
+                    </p>
+                    <div class="pt-2 flex flex-wrap items-center gap-3">
+                        <a href="https://discord.com/invite/seks6zaKWs" target="_blank" rel="noopener noreferrer" class="nav-link inline-flex items-center gap-2 bg-[#5865F2] hover:bg-[#4752C4] text-white font-heading font-medium text-xs px-6 py-3 rounded-full shadow transition-all cursor-pointer">
+                            Dołącz na serwer Discord
+                        </a>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center p-4 relative group">
+                    <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/tramsport-log-2.png" 
+                         alt="Tramwaj PESA 3D" 
+                         class="w-56 h-auto object-contain drop-shadow-[0_25px_25px_rgba(0,0,0,0.3)] group-hover:scale-105 transition-transform duration-500 pointer-events-none">
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 text-center mb-6">
+            <h3 class="font-heading text-xl font-semibold text-[#1d1d1f] mt-1">Ostatnio dołączyli do nas:</h3>
+        </div>
+
+        <div class="w-full overflow-hidden mask-marquee py-4">
+            <div class="flex w-max animate-marquee gap-4 items-center">
+                <div class="flex items-center gap-4 shrink-0">
+                    <div class="bg-[#f5f5f7] px-4 py-3 rounded-2xl border border-slate-200 flex items-center gap-3 w-60 shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">M</div>
+                        <div>
+                            <h4 class="font-heading font-semibold text-xs text-[#1d1d1f]">Maciej_Tram</h4>
+                            <span class="text-[10px] text-emerald-600 font-medium">Dołączył przed chwilą</span>
+                        </div>
+                    </div>
+                    <div class="bg-[#f5f5f7] px-4 py-3 rounded-2xl border border-slate-200 flex items-center gap-3 w-60 shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-purple-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">K</div>
+                        <div>
+                            <h4 class="font-heading font-semibold text-xs text-[#1d1d1f]">KasiaSzyny</h4>
+                            <span class="text-[10px] text-emerald-600 font-medium">Dołączyła 5 min temu</span>
+                        </div>
+                    </div>
+                    <div class="bg-[#f5f5f7] px-4 py-3 rounded-2xl border border-slate-200 flex items-center gap-3 w-60 shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">T</div>
+                        <div>
+                            <h4 class="font-heading font-semibold text-xs text-[#1d1d1f]">Tomek_105Na</h4>
+                            <span class="text-[10px] text-emerald-600 font-medium">Dołączył 12 min temu</span>
+                        </div>
+                    </div>
+                    <div class="bg-[#f5f5f7] px-4 py-3 rounded-2xl border border-slate-200 flex items-center gap-3 w-60 shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">A</div>
+                        <div>
+                            <h4 class="font-heading font-semibold text-xs text-[#1d1d1f]">Ania_Swing</h4>
+                            <span class="text-[10px] text-emerald-600 font-medium">Dołączyła 25 min temu</span>
+                        </div>
+                    </div>
+                    <div class="bg-[#f5f5f7] px-4 py-3 rounded-2xl border border-slate-200 flex items-center gap-3 w-60 shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">P</div>
+                        <div>
+                            <h4 class="font-heading font-semibold text-xs text-[#1d1d1f]">Piotr_Kraków</h4>
+                            <span class="text-[10px] text-emerald-600 font-medium">Dołączył 40 min temu</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 shrink-0">
+                    <div class="bg-[#f5f5f7] px-4 py-3 rounded-2xl border border-slate-200 flex items-center gap-3 w-60 shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">M</div>
+                        <div>
+                            <h4 class="font-heading font-semibold text-xs text-[#1d1d1f]">Maciej_Tram</h4>
+                            <span class="text-[10px] text-emerald-600 font-medium">Dołączył przed chwilą</span>
+                        </div>
+                    </div>
+                    <div class="bg-[#f5f5f7] px-4 py-3 rounded-2xl border border-slate-200 flex items-center gap-3 w-60 shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-purple-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">K</div>
+                        <div>
+                            <h4 class="font-heading font-semibold text-xs text-[#1d1d1f]">KasiaSzyny</h4>
+                            <span class="text-[10px] text-emerald-600 font-medium">Dołączyła 5 min temu</span>
+                        </div>
+                    </div>
+                    <div class="bg-[#f5f5f7] px-4 py-3 rounded-2xl border border-slate-200 flex items-center gap-3 w-60 shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">T</div>
+                        <div>
+                            <h4 class="font-heading font-semibold text-xs text-[#1d1d1f]">Tomek_105Na</h4>
+                            <span class="text-[10px] text-emerald-600 font-medium">Dołączył 12 min temu</span>
+                        </div>
+                    </div>
+                    <div class="bg-[#f5f5f7] px-4 py-3 rounded-2xl border border-slate-200 flex items-center gap-3 w-60 shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">A</div>
+                        <div>
+                            <h4 class="font-heading font-semibold text-xs text-[#1d1d1f]">Ania_Swing</h4>
+                            <span class="text-[10px] text-emerald-600 font-medium">Dołączyła 25 min temu</span>
+                        </div>
+                    </div>
+                    <div class="bg-[#f5f5f7] px-4 py-3 rounded-2xl border border-slate-200 flex items-center gap-3 w-60 shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">P</div>
+                        <div>
+                            <h4 class="font-heading font-semibold text-xs text-[#1d1d1f]">Piotr_Kraków</h4>
+                            <span class="text-[10px] text-emerald-600 font-medium">Dołączył 40 min temu</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#f5f5f7] border-t border-slate-300 py-10 text-xs text-[#515154]">
+        <div class="max-w-5xl mx-auto px-4 space-y-4">
+            <p></p>
+            <div class="border-t border-slate-300 pt-4 flex flex-col sm:flex-row items-center justify-between">
+                <p>Copyright &copy; 2026 Wszystko o TRAMsporcie Inc. Wszelkie prawa zastrzeżone.</p>
+                <div class="flex gap-4 mt-2 sm:mt-0">
+                    <a href="https://discord.com/invite/seks6zaKWs" target="_blank" rel="noopener noreferrer" class="nav-link hover:underline text-blue-600 font-medium">Discord</a>
+                    <a href="polityka" class="nav-link hover:underline">Polityka prywatności</a>
+                    <a href="regula" class="nav-link hover:underline">Regulamin społeczności</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="customModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/50 backdrop-blur-[2px] transition-opacity">
+        <div id="modalBox" class="bg-white max-w-md w-full rounded-3xl p-8 shadow-2xl border-2 border-slate-300 text-[#1d1d1f] opacity-0 scale-95 transform transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]">
+            <h3 id="modalTitle" class="font-heading text-2xl font-black mb-3 tracking-tight drop-shadow-sm text-[#1d1d1f]">Tytuł</h3>
+            <p id="modalDescription" class="text-sm text-[#515154] mb-8 leading-relaxed">Treść...</p>
+            <div class="flex justify-end">
+                <button onclick="closeModal()" class="bg-[#0071e3] hover:bg-[#0077ed] text-white font-heading text-xs font-bold px-6 py-2.5 rounded-full transition-all cursor-pointer shadow-md">
+                    OK
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+
+        document.addEventListener('dragstart', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (
+                e.key === 'F12' || 
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) ||
+                (e.ctrlKey && (e.key === 'U' || e.key === 'u'))
+            ) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        window.addEventListener('pageshow', function(event) {
+            const loader = document.getElementById('pageLoader');
+            if (loader) {
+                loader.style.opacity = '0';
+                loader.style.display = 'none';
+            }
+        });
+
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('pageLoader');
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 300);
+            }
+        });
+
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                const target = this.getAttribute('target');
+                
+                if (href && !href.startsWith('#')) {
+                    e.preventDefault();
+                    const loader = document.getElementById('pageLoader');
+                    const loaderText = document.getElementById('loaderText');
+                    
+                    if (loaderText) loaderText.innerText = 'Trwa przekierowanie...';
+                    
+                    if (loader) {
+                        loader.style.display = 'flex';
+                        loader.style.opacity = '1';
+                    }
+
+                    setTimeout(() => {
+                        if (target === '_blank') {
+                            window.open(href, '_blank');
+                            if (loader) {
+                                loader.style.opacity = '0';
+                                setTimeout(() => loader.style.display = 'none', 300);
+                            }
+                        } else {
+                            window.location.href = href;
+                        }
+                    }, 50);
+                }
+            });
+        });
+
+        function updateCountdown() {
+            const targetDate = new Date('2026-09-01T18:30:00').getTime();
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = String(days).padStart(2, '0');
+                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+            } else {
+                document.getElementById('countdown').innerHTML = '<div class="text-xl font-bold text-emerald-400">Wydarzenie trwa! Serwer Discord jest otwarty!</div>';
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        function downloadICS() {
+            const icsContent = 
+`BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Wszystko o TRAMsporcie//Otwarcie Discorda//PL
+BEGIN:VEVENT
+SUMMARY:Otwarcie serwera Discord - Wszystko o TRAMsporcie
+DESCRIPTION:Wielkie otwarcie oficjalnego serwera Discord społeczności TRAMsport!
+DTSTART:20260901T163000Z
+DTEND:20260901T193000Z
+LOCATION:https://discord.com/invite/seks6zaKWs
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR`;
+
+            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.setAttribute('download', 'otwarcie_discord_tramsport.ics');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            openModal('Pobrano kalendarz', 'Plik wydarzenia został pomyślnie pobrany i możesz go zaimportować do swojego kalendarza.');
+        }
+
+        function openModal(title, description) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDescription').innerText = description;
+            const modal = document.getElementById('customModal');
+            const box = document.getElementById('modalBox');
+            
+            box.classList.remove('animate-train-fly');
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            setTimeout(() => {
+                box.classList.remove('opacity-0', 'scale-95');
+                box.classList.add('opacity-100', 'scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('customModal');
+            const box = document.getElementById('modalBox');
+            
+            box.classList.add('animate-train-fly');
+            
+            setTimeout(() => {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+                box.classList.remove('opacity-100', 'scale-100', 'animate-train-fly');
+                box.classList.add('opacity-0', 'scale-95');
+            }, 500);
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('customModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+
+</body>
+</html>
