@@ -1,59 +1,67 @@
 name: Aktualizuj członków Discord
 
 on:
-  schedule:
-    - cron: '*/15 * * * *' # Uruchamiaj co 15 minut
-  workflow_dispatch:
+schedule:
+- cron: '*/15 * * * *' # Uruchamiaj co 15 minut
+workflow_dispatch:
 
 jobs:
-  update:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Pobierz kod repozytorium
-        uses: actions/checkout@v3
+update:
+runs-on: ubuntu-latest
+permissions:
+contents: write
+steps:
+- name: Pobierz kod repozytorium
+uses: actions/checkout@v3
 
-      - name: Konfiguracja Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
+  - name: Konfiguracja Node.js
+    uses: actions/setup-node@v3
+    with:
+      node-version: '18'
 
-      - name: Pobierz dane z Discord API
-        env:
-          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
-          GUILD_ID: ${{ secrets.GUILD_ID }}
-        run: |
-          node -e '
-            const https = require("https");
-            const fs = require("fs");
-            
-            const options = {
-              hostname: "discord.com",
-              path: `/api/v10/guilds/${process.env.GUILD_ID}/members?limit=5`,
-              headers: { "Authorization": `Bot ${process.env.DISCORD_BOT_TOKEN}` }
-            };
+  - name: Pobierz dane z Discord API
+    env:
+      DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+      GUILD_ID: ${{ secrets.GUILD_ID }}
+    run: |
+      node -e '
+        const https = require("https");
+        const fs = require("fs");
+        
+        const options = {
+          hostname: "discord.com",
+          path: `/api/v10/guilds/${process.env.GUILD_ID}/members?limit=5`,
+          headers: { "Authorization": `Bot ${process.env.DISCORD_BOT_TOKEN}` }
+        };
 
-            https.get(options, (res) => {
-              let data = "";
-              res.on("data", (chunk) => data += chunk);
-              res.on("end", () => {
-                try {
-                  const members = JSON.parse(data);
-                  const formatted = members.map(m => ({
-                    name: m.user.username,
-                    joinedAt: m.joined_at
-                  }));
-                  fs.writeFileSync("members.json", JSON.stringify(formatted, null, 2));
-                } catch(e) {
-                  console.error(e);
-                }
-              });
-            });
-          '
+        https.get(options, (res) => {
+          let data = "";
+          res.on("data", (chunk) => data += chunk);
+          res.on("end", () => {
+            try {
+              const members = JSON.parse(data);
+              if (Array.isArray(members)) {
+                const formatted = members.map(m => ({
+                  name: m.user.username,
+                  joinedAt: m.joined_at
+                }));
+                fs.writeFileSync("members.json", JSON.stringify(formatted, null, 2));
+              } else {
+                console.error("API Error:", data);
+              }
+            } catch(e) {
+              console.error(e);
+            }
+          });
+        });
+      '
 
-      - name: Commit i Push zmian do repozytorium
-        run: |
-          git config --global user.name "GitHub Action"
-          git config --global user.email "action@github.com"
-          git add members.json
-          git commit -m "Automatyczna aktualizacje listy członków" || exit 0
-          git push
+  - name: Commit i Push zmian do repozytorium
+    run: |
+      git config --global user.name "GitHub Action"
+      git config --global user.email "action@github.com"
+      git config pull.rebase false
+      git pull origin main || git pull origin master || true
+      git add members.json
+      git commit -m "Automatyczna aktualizacja listy członków" || exit 0
+      git push
