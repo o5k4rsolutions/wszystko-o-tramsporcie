@@ -1,48 +1,88 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Przekierowanie...</title>
+    <title>Przekierowanie – Wszystko o TRAMsporcie</title>
     <meta http-equiv="refresh" content="2;url=https://wszystko-o-tramsporcie.vercel.app/strona-glowna.html">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+                        'heading': ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f4f4f9;
-            color: #333;
-            text-align: center;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            letter-spacing: -0.01em;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
-        .container {
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            letter-spacing: -0.022em;
         }
-        a {
-            color: #0066cc;
-            text-decoration: none;
+        .apple-hero-bg {
+            background: linear-gradient(180deg, #161617 0%, #0c1b2a 45%, #050b14 100%);
+            position: relative;
+            overflow: hidden;
         }
-        a:hover {
-            text-decoration: underline;
+        .apple-halo {
+            background: radial-gradient(circle at 50% 35%, rgba(100, 180, 255, 0.5) 0%, rgba(40, 110, 210, 0.25) 40%, transparent 75%);
+            filter: blur(60px);
+        }
+        img {
+            -webkit-user-drag: none;
+            user-drag: none;
+            pointer-events: none;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h2>Trwa przekierowanie...</h2>
-        <p>Za chwilę zostaniesz przeniesiony na stronę główną.</p>
-        <p>Jeśli nic się nie dzieje, <a href="https://wszystko-o-tramsporcie.vercel.app/strona-glowna.html">kliknij tutaj</a>.</p>
+<body class="bg-[#161617] text-white antialiased selection:bg-blue-500 selection:text-white">
+
+    <div id="pageLoader" class="fixed inset-0 z-[100] bg-[#161617] flex flex-col items-center justify-center transition-opacity duration-700 ease-out">
+        <div class="absolute inset-0 apple-halo pointer-events-none w-[700px] h-[700px] rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+        
+        <div class="relative z-10 flex flex-col items-center space-y-6 max-w-md mx-auto px-4 text-center">
+            
+            <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg" alt="TRAMsport Logo" class="h-16 w-auto pointer-events-none">
+            
+            <div class="relative w-20 h-20 flex items-center justify-center">
+                <div class="absolute inset-0 border-4 border-white/10 rounded-full"></div>
+                <div class="absolute inset-0 border-4 border-transparent border-t-blue-500 rounded-full animate-spin"></div>
+            </div>
+
+            <div class="space-y-2">
+                <h1 class="font-heading text-2xl font-semibold tracking-tight">Trwa przekierowanie...</h1>
+                <p id="loaderText" class="text-white/60 text-xs tracking-widest font-heading uppercase">Przenosimy na stronę główną</p>
+            </div>
+
+            <div class="pt-2">
+                <p class="text-xs text-white/40">
+                    Jeśli przekierowanie nie nastąpi automatycznie, <br>
+                    <a href="https://wszystko-o-tramsporcie.vercel.app/strona-glowna.html" class="text-blue-400 hover:text-blue-300 underline font-medium transition-colors">kliknij tutaj</a>.
+                </p>
+            </div>
+        </div>
     </div>
 
     <script>
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG') { e.preventDefault(); }
+        });
+
         setTimeout(function() {
             window.location.href = "https://wszystko-o-tramsporcie.vercel.app/strona-glowna.html";
-        }, 2000); 
+        }, 2000);
     </script>
 </body>
 </html>
