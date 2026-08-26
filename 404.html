@@ -108,11 +108,7 @@
 
         function navigateToInput() {
             const inputVal = document.getElementById('customUrlInput').value;
-            if (inputVal) {
-                window.location.href = inputVal;
-            } else {
-                alert('Proszę wpisać link.');
-            }
+            window.location.href = inputVal;
         }
 
         document.getElementById('customUrlInput').addEventListener('keypress', function(e) {
