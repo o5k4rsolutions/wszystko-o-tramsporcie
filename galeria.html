@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria Zdjęć - Wszystko o TRAMsporcie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+                        'heading': ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+                    },
+                    keyframes: {
+                        macModalIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.85) translateY(20px)' },
+                            '70%': { opacity: '1', transform: 'scale(1.01) translateY(-2px)' },
+                            '100%': { opacity: '1', transform: 'scale(1) translateY(0)' }
+                        },
+                        tramDriveOut: {
+                            '0%': { opacity: '1', transform: 'translateX(0) scale(1) rotate(0deg)' },
+                            '25%': { opacity: '1', transform: 'translateX(-20px) scale(0.95) rotate(-1deg)' },
+                            '60%': { opacity: '1', transform: 'translateX(150px) scale(0.7) skewX(-15deg)' },
+                            '100%': { opacity: '0', transform: 'translateX(1200px) scale(0.3) skewX(-25deg)' }
+                        },
+                        liquidWobble: {
+                            '0%': { transform: 'scale(1, 1)' },
+                            '30%': { transform: 'scale(1.15, 0.88)' },
+                            '55%': { transform: 'scale(0.94, 1.06)' },
+                            '80%': { transform: 'scale(1.02, 0.98)' },
+                            '100%': { transform: 'scale(1, 1)' }
+                        }
+                    },
+                    animation: {
+                        'mac-in': 'macModalIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'tram-out': 'tramDriveOut 0.65s cubic-bezier(0.55, 0.05, 0.67, 0.19) forwards',
+                        'liquid': 'liquidWobble 0.45s cubic-bezier(0.25, 1, 0.5, 1)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            letter-spacing: -0.01em;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            letter-spacing: -0.022em;
+        }
+        img {
+            -webkit-user-drag: none;
+            user-drag: none;
+            pointer-events: none;
+        }
+        #pillSlider {
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+    </style>
+</head>
+<body class="bg-[#f5f5f7] text-[#1d1d1f] antialiased selection:bg-blue-500 selection:text-white">
+
+    <div id="pageLoader" class="fixed inset-0 z-[100] bg-[#161617] flex flex-col items-center justify-center transition-opacity duration-700 ease-out">
+        <div class="flex flex-col items-center space-y-6">
+            <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg" alt="TRAMsport Logo" class="h-16 w-auto animate-pulse pointer-events-none">
+            <div class="relative w-20 h-20 flex items-center justify-center">
+                <div class="absolute inset-0 border-4 border-white/10 rounded-full"></div>
+                <div class="absolute inset-0 border-4 border-transparent border-t-blue-500 rounded-full animate-spin"></div>
+            </div>
+            <div class="text-center space-y-2">
+                <p id="loaderText" class="text-white/80 text-xs tracking-widest font-heading uppercase">Trwa ładowanie galerii...</p>
+            </div>
+        </div>
+    </div>
+
+    <header class="sticky top-0 z-50 bg-[#161617]/85 backdrop-blur-md text-[#f5f5f7] text-xs border-b border-white/5">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="https://wszystko-o-tramsporcie.vercel.app/index.html" class="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
+                <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg" alt="TRAMsport Logo" class="h-12 w-auto pointer-events-none">
+            </a>
+            
+            <nav class="flex items-center gap-6">
+                <a href="Thttps://wszystko-o-tramsporcie.vercel.app/kontakt.html" class="nav-link text-white/80 hover:text-white transition-colors flex items-center gap-1.5 font-medium">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    Kontakt
+                </a>
+                <a href="https://wszystko-o-tramsporcie.vercel.app" class="nav-link text-white/80 hover:text-white transition-colors flex items-center gap-1.5 font-medium">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                    Powrót do strony głównej
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="py-16 bg-white border-b border-slate-200/60 shadow-sm">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h1 class="font-heading text-4xl sm:text-5xl font-bold text-[#1d1d1f] mt-2 mb-3 tracking-tight">Galeria Zdjęć Społeczności</h1>
+            <p class="text-sm text-[#515154] max-w-2xl mx-auto leading-relaxed mb-8">
+                Kliknij na dowolne zdjęcie, aby otworzyć je w pełnym rozmiarze.
+            </p>
+
+            <div id="layoutSwitcherWrapper" class="relative inline-flex items-center bg-[#e5e5ea] p-1.5 rounded-2xl shadow-inner">
+                <div id="pillSlider" class="absolute top-1.5 bottom-1.5 left-1.5 w-[110px] bg-white rounded-xl shadow-sm z-0"></div>
+                
+                <button onclick="setGalleryLayout('grid-3', 0)" id="btn-grid-3" class="relative z-10 w-[110px] py-2 text-xs font-heading font-semibold transition-colors duration-300 text-[#1d1d1f]">
+                    3 Kolumny
+                </button>
+                <button onclick="setGalleryLayout('grid-2', 1)" id="btn-grid-2" class="relative z-10 w-[110px] py-2 text-xs font-heading font-semibold transition-colors duration-300 text-[#515154] hover:text-[#1d1d1f]">
+                    2 Kolumny
+                </button>
+                <button onclick="setGalleryLayout('masonry', 2)" id="btn-masonry" class="relative z-10 w-[110px] py-2 text-xs font-heading font-semibold transition-colors duration-300 text-[#515154] hover:text-[#1d1d1f]">
+                    Duże Kafle
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <main class="py-14">
+        <div class="max-w-6xl mx-auto px-6">
+            <div id="galleryContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 ease-in-out">
+                
+                <div class="bg-white rounded-[24px] overflow-hidden border border-slate-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_24px_48px_rgba(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-500 flex flex-col group card-data cursor-pointer"
+                   style="--img-url: url('data/content/ryba_zdjecie.jpg'); --title: 'Pociągi na stacji Zakopane'; --author: 'Rybulec';"
+                   onclick="openPhotoModal(getComputedStyle(this).getPropertyValue('--img-url').slice(5, -2) + '?w=1200&auto=format&fit=crop&q=80', getComputedStyle(this).getPropertyValue('--title').trim().slice(1, -1), getComputedStyle(this).getPropertyValue('--author').trim().slice(1, -1))">
+                    <div class="relative overflow-hidden aspect-[16/10] bg-slate-100">
+                        <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-700 ease-out" style="background-image: var(--img-url);"></div>
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300"></div>
+                        <div class="absolute top-3 right-3 bg-black/40 backdrop-blur-md text-white p-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+                        </div>
+                    </div>
+                    <div class="p-5 flex flex-col justify-between flex-1 bg-white">
+                        <h3 class="text-[15px] font-heading font-semibold text-[#1d1d1f] tracking-tight after:content-[var(--title)]"></h3>
+                        <div class="flex items-center justify-between mt-4 pt-3 border-t border-slate-100 text-xs text-[#86868b]">
+                            <span>Autor:</span>
+                            <span class="font-heading font-medium text-[#1d1d1f] after:content-[var(--author)]"></span>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-[#f5f5f7] border-t border-slate-300 py-10 text-xs text-[#515154]">
+        <div class="max-w-5xl mx-auto px-4 space-y-4">
+            <p></p>
+            <div class="border-t border-slate-300 pt-4 flex flex-col sm:flex-row items-center justify-between">
+                <p>Copyright &copy; 2026 Wszystko o TRAMsporcie. Wszelkie prawa zastrzeżone.</p>
+                <div class="flex gap-4 mt-2 sm:mt-0">
+                    <a href="https://discord.com/invite/seks6zaKWs" target="_blank" rel="noopener noreferrer" class="nav-link hover:underline text-blue-600 font-medium">Discord</a>
+                    <a href="https://wszystko-o-tramsporcie.vercel.app/polityka.html" class="nav-link hover:underline">Polityka prywatności</a>
+                    <a href="https://wszystko-o-tramsporcie.vercel.app/regulamin.html" class="nav-link hover:underline">Regulamin społeczności</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="photoModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/60 backdrop-blur-md transition-opacity">
+        <div id="photoModalBox" class="relative max-w-4xl w-full rounded-[24px] overflow-hidden shadow-2xl border border-slate-300/40 bg-white opacity-0 transform transition-all duration-300 flex flex-col max-h-[92vh]">
+            
+            <div class="py-3 px-6 flex items-center justify-between bg-[#161617] text-white">
+                <div class="flex items-center gap-3">
+                    <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg" alt="TRAMsport Logo" class="h-7 w-auto pointer-events-none">
+                    <span class="text-xs font-heading font-medium tracking-wide text-white/90" id="modalPhotoTitle">Podgląd Zdjęcia</span>
+                </div>
+                <button onclick="closePhotoModal()" class="text-white/70 hover:text-white p-1 rounded-full hover:bg-white/10 transition-colors cursor-pointer">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+
+            <div class="p-6 sm:p-10 flex-1 overflow-y-auto flex flex-col items-center justify-center bg-[#fbfbfd]">
+                <img id="modalFullImg" src="" alt="Powiększone zdjęcie" class="max-w-full max-h-[58vh] object-contain rounded-xl shadow-lg border border-slate-200/60 bg-white">
+            </div>
+
+            <div class="py-4 px-6 bg-[#f5f5f7] border-t border-slate-200/85 flex flex-col sm:flex-row justify-between items-center text-[#1d1d1f] gap-2">
+                <span class="text-xs text-[#86868b] font-heading">Zdjęcie zostało zaimportowane z naszego serwera Discord.</span>
+                <div class="text-xs font-heading font-medium text-[#1d1d1f] flex items-center gap-1.5">
+                    <span class="text-[#86868b]">Autor:</span>
+                    <span id="modalAuthor" class="font-semibold"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG') e.preventDefault();
+        });
+
+        document.addEventListener('dragstart', function(e) {
+            if (e.target.tagName === 'IMG') e.preventDefault();
+        });
+
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('pageLoader');
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 300);
+            }
+        });
+
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href && !href.startsWith('#') && !href.startsWith('http') && href !== 'TU_WKLEJ_LINK_DO_KONTAKTU') {
+                    e.preventDefault();
+                    const loader = document.getElementById('pageLoader');
+                    const loaderText = document.getElementById('loaderText');
+                    if (loaderText) loaderText.innerText = 'Trwa powrót do strony głównej...';
+                    if (loader) {
+                        loader.style.display = 'flex';
+                        loader.style.opacity = '1';
+                    }
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 100);
+                }
+            });
+        });
+
+        function setGalleryLayout(layout, index) {
+            const container = document.getElementById('galleryContainer');
+            const pill = document.getElementById('pillSlider');
+            const btn3 = document.getElementById('btn-grid-3');
+            const btn2 = document.getElementById('btn-grid-2');
+            const btnMasonry = document.getElementById('btn-masonry');
+
+            pill.style.transform = `translateX(${index * 110}px)`;
+
+            pill.classList.remove('animate-liquid');
+            void pill.offsetWidth;
+            pill.classList.add('animate-liquid');
+
+            [btn3, btn2, btnMasonry].forEach((b, i) => {
+                if (i === index) {
+                    b.className = 'relative z-10 w-[110px] py-2 text-xs font-heading font-semibold transition-colors duration-300 text-[#1d1d1f]';
+                } else {
+                    b.className = 'relative z-10 w-[110px] py-2 text-xs font-heading font-semibold transition-colors duration-300 text-[#515154] hover:text-[#1d1d1f]';
+                }
+            });
+
+            container.style.opacity = '0';
+            container.style.transform = 'scale(0.98)';
+
+            setTimeout(() => {
+                if (layout === 'grid-3') {
+                    container.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 ease-in-out';
+                } else if (layout === 'grid-2') {
+                    container.className = 'grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto transition-all duration-500 ease-in-out';
+                } else if (layout === 'masonry') {
+                    container.className = 'grid grid-cols-1 gap-10 max-w-3xl mx-auto transition-all duration-500 ease-in-out';
+                }
+                container.style.opacity = '1';
+                container.style.transform = 'scale(1)';
+            }, 250);
+        }
+
+        function openPhotoModal(imgUrl, title, author) {
+            document.getElementById('modalPhotoTitle').innerText = title;
+            document.getElementById('modalFullImg').src = imgUrl;
+            document.getElementById('modalAuthor').innerText = author;
+
+            const modal = document.getElementById('photoModal');
+            const box = document.getElementById('photoModalBox');
+
+            box.classList.remove('animate-tram-out');
+            box.classList.remove('animate-mac-in');
+            box.style.borderRadius = '24px';
+            box.style.background = '#ffffff';
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+
+            void box.offsetWidth;
+            box.classList.add('animate-mac-in');
+        }
+
+        function closePhotoModal() {
+            const modal = document.getElementById('photoModal');
+            const box = document.getElementById('photoModalBox');
+
+            box.classList.remove('animate-mac-in');
+            
+            box.style.borderRadius = '12px 36px 12px 12px';
+            box.style.background = 'linear-gradient(135deg, #0066cc 0%, #1d1d1f 100%)';
+            box.classList.add('animate-tram-out');
+
+            setTimeout(() => {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+                box.classList.remove('animate-tram-out');
+                box.style.borderRadius = '24px';
+                box.style.background = '#ffffff';
+            }, 650);
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('photoModal');
+            if (event.target === modal) closePhotoModal();
+        }
+    </script>
+
+</body>
+</html>
