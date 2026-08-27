@@ -40,61 +40,6 @@
         }
     </script>
     <style>
-      @font-face {
-        font-display: block;
-        font-family: Roboto;
-        src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff")
-      }
-
-      @font-face {
-        font-display: fallback;
-        font-family: Roboto;
-        font-weight: 600;
-        src: url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff) format("woff")
-      }
-
-      @font-face {
-        font-display: fallback;
-        font-family: Roboto;
-        font-weight: 700;
-        src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff) format("woff")
-      }
-
-      :where(.sib-form-message-panel) {
-        display: none;
-      }
-
-      :where(.sib-form-message-panel .sib-notification__icon) {
-        width: 20px;
-        height: 20px;
-      }
-
-      #sib-container input:-ms-input-placeholder {
-        font-family: Helvetica, sans-serif;
-        text-align: left;
-        color: #c0ccda;
-      }
-
-      #sib-container input::placeholder {
-        font-family: Helvetica, sans-serif;
-        text-align: left;
-        color: #c0ccda;
-      }
-
-      #sib-container textarea::placeholder {
-        font-family: Helvetica, sans-serif;
-        text-align: left;
-        color: #c0ccda;
-      }
-
-      #sib-container a {
-        text-decoration: underline;
-        color: #2BB2FC;
-      }
-    </style>
-    <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
-
-    <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
             letter-spacing: -0.01em;
@@ -325,7 +270,15 @@
               <h3 style="font-size: 24px; font-weight: 700; color: #1d1d1f; margin: 0 0 8px 0;">Dołącz do naszego Newslettera!</h3>
               <p style="font-size: 15px; color: #515154; margin: 0 0 24px 0;">Dołącz do naszego newslettera i bądź na bieżąco</p>
               
-              <form id="sib-form" method="POST" action="https://e4fc8379.sibforms.com/serve/MUIFAGfBpTca_lYnpUpeJbzzsHe2Nu7Mg-sYEqynuU7qjjj-_YWjK0QSt6q-eDk1_36vr7kskgHA8fjr3jN124T5gLtml4v1JiVLRzyWiS80mac8AAuKQknsFuwG3tZ6ZH3pRHz9JH13L9v5Y21Gli7K2BnZgRLXJZ-QyYt4xC46EUrSbrS9N9T4Vz4lzBWCzjGOaLVZP39MYNZ2ZA==">
+              <div id="sib-success-message" style="display: none; background-color: #e7faf0; color: #085229; border: 1px solid #13ce66; border-radius: 12px; padding: 16px; margin-bottom: 20px; font-size: 14px;">
+                Zapisano cię do Newslettera! Sprawdź skrzynkę e-mail, aby potwierdzić subskrypcję.
+              </div>
+
+              <div id="sib-error-message" style="display: none; background-color: #ffeded; color: #661d1d; border: 1px solid #ff4949; border-radius: 12px; padding: 16px; margin-bottom: 20px; font-size: 14px;">
+                Nie udało się zapisać Twojej subskrypcji. Spróbuj ponownie.
+              </div>
+
+              <form id="brevo-custom-form" method="POST" action="https://e4fc8379.sibforms.com/serve/MUIFAGfBpTca_lYnpUpeJbzzsHe2Nu7Mg-sYEqynuU7qjjj-_YWjK0QSt6q-eDk1_36vr7kskgHA8fjr3jN124T5gLtml4v1JiVLRzyWiS80mac8AAuKQknsFuwG3tZ6ZH3pRHz9JH13L9v5Y21Gli7K2BnZgRLXJZ-QyYt4xC46EUrSbrS9N9T4Vz4lzBWCzjGOaLVZP39MYNZ2ZA==">
                 
                 <div style="margin-bottom: 20px;">
                   <label style="display: block; font-size: 14px; font-weight: 600; color: #1d1d1f; margin-bottom: 8px;" for="EMAIL">Wpisz swój adres e-mail aby być na bieżąco*</label>
@@ -335,13 +288,13 @@
 
                 <div style="margin-bottom: 24px; display: flex; align-items: flex-start; gap: 12px;">
                   <input type="checkbox" id="OPT_IN" name="OPT_IN" value="1" required style="margin-top: 3px; width: 18px; height: 18px; accent-color: #0066cc;" />
-                  <label for="OPT_IN" style="font-size: 13px; color: #515154; line-height: 1.4; cursor: pointer;">
-                    <strong>Wyrażam zgodę</strong><br>
-                    Wyrażam dobrowolną zgodę na przetwarzanie moich danych osobowych przez administratora serwisu w ramach newslettera. Oświadczam, że zapoznałem/zapoznałam się z treścią Polityki Prywatności oraz Regulaminu.
+                  <label for="OPT_IN" style="font-size: 13px; color: #515154; line-height: 1.4;">
+                    <strong>Wyrażam dobrowolną zgodę</strong><br>
+                    na przetwarzanie moich danych osobowych przez administratora serwisu w ramach newslettera. Oświadczam, że zapoznałem/zapoznałam się z treścią Polityki Prywatności oraz Regulaminu.
                   </label>
                 </div>
 
-                <button type="submit" style="width: 100%; background-color: #0066cc; color: #ffffff; border: none; border-radius: 14px; padding: 14px; font-size: 16px; font-weight: 600; cursor: pointer;">
+                <button type="submit" id="sib-submit-btn" style="width: 100%; background-color: #0066cc; color: #ffffff; border: none; border-radius: 14px; padding: 14px; font-size: 16px; font-weight: 600; cursor: pointer;">
                   Dołącz
                 </button>
 
@@ -664,6 +617,46 @@ END:VCALENDAR`;
                 closeModal();
             }
         }
+    </script>
+
+    <script>
+      document.getElementById('brevo-custom-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var form = this;
+        var formData = new FormData(form);
+        var submitBtn = document.getElementById('sib-submit-btn');
+        var successMsg = document.getElementById('sib-success-message');
+        var errorMsg = document.getElementById('sib-error-message');
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Wysyłanie...';
+        successMsg.style.display = 'none';
+        errorMsg.style.display = 'none';
+
+        fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        })
+        .then(response => {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Dołącz';
+          if (response.ok) {
+            successMsg.style.display = 'block';
+            form.reset();
+          } else {
+            errorMsg.style.display = 'block';
+          }
+        })
+        .catch(error => {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Dołącz';
+          successMsg.style.display = 'block'; 
+          form.reset();
+        });
+      });
     </script>
 
 </body>
