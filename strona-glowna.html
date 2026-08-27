@@ -462,54 +462,55 @@
         updateCountdown();
 
         async function fetchDiscordMembers() {
-            try {
-                const response = await fetch('members.json');
-                if (!response.ok) throw new Error('Błąd ładowania danych');
-                const members = await response.json();
-                
-                if (members && members.length > 0) {
-                    const container = document.getElementById('membersMarquee');
-                    const colors = ['bg-blue-600', 'bg-purple-600', 'bg-amber-600', 'bg-emerald-600', 'bg-indigo-600', 'bg-rose-600'];
-                    
-                    const createCardsHTML = (items) => {
-                        return items.map((m, index) => {
-                            const initial = (m.name || 'U').charAt(0).toUpperCase();
-                            const colorClass = colors[index % colors.length];
-                            
-                            let timeAgo = 'Przed chwilą';
-                            if (m.joinedAt) {
-                                const diffMins = Math.floor((new Date() - new Date(m.joinedAt)) / (1000 * 60));
-                                if (diffMins < 1) timeAgo = 'Dołączył przed chwilą';
-                                else if (diffMins < 60) timeAgo = `Dołączył ${diffMins} min temu`;
-                                else {
-                                    const diffHours = Math.floor(diffMins / 60);
-                                    timeAgo = `Dołączył ${diffHours} godz. temu`;
-                                }
-                            }
+    try {
+        const response = await fetch('members.json');
+        if (!response.ok) throw new Error('Błąd ładowania danych');
+        const members = await response.json();
+        
+        if (members && members.length > 0) {
+            const container = document.getElementById('membersMarquee');
+            
+            const createCardsHTML = (items) => {
+                return items.map((m) => {
+                    let timeAgo = 'Przed chwilą';
+                    if (m.joinedAt) {
+                        const diffMins = Math.floor((new Date() - new Date(m.joinedAt)) / (1000 * 60));
+                        if (diffMins < 1) timeAgo = 'Dołączył przed chwilą';
+                        else if (diffMins < 60) timeAgo = `Dołączył ${diffMins} min temu`;
+                        else {
+                            const diffHours = Math.floor(diffMins / 60);
+                            timeAgo = `Dołączył ${diffHours} godz. temu`;
+                        }
+                    }
 
-                            return `
-                                <div class="bg-[#f5f5f7] px-4 py-3 rounded-2xl border border-slate-200 flex items-center gap-3 w-60 shadow-sm shrink-0">
-                                    <div class="w-10 h-10 rounded-full ${colorClass} text-white font-bold flex items-center justify-center text-sm shadow-sm">${initial}</div>
-                                    <div>
-                                        <h4 class="font-heading font-semibold text-xs text-[#1d1d1f] truncate w-36">${m.name}</h4>
-                                        <span class="text-[10px] text-emerald-600 font-medium">${timeAgo}</span>
-                                    </div>
-                                </div>
-                            `;
-                        }).join('');
-                    };
+                    // Użycie obrazka awataru zamiast inicjału z kolorowym tłem
+                    const avatarContent = m.avatar 
+                        ? `<img src="${m.avatar}" alt="${m.name}" class="w-10 h-10 rounded-full object-cover shadow-sm">`
+                        : `<div class="w-10 h-10 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">${(m.name || 'U').charAt(0).toUpperCase()}</div>`;
 
-                    const cardsHTML = createCardsHTML(members);
-                    container.innerHTML = `
-                        <div class="flex items-center gap-4 shrink-0">${cardsHTML}</div>
-                        <div class="flex items-center gap-4 shrink-0">${cardsHTML}</div>
+                    return `
+                        <div class="bg-[#f5f5f7] px-4 py-3 rounded-2xl border border-slate-200 flex items-center gap-3 w-60 shadow-sm shrink-0">
+                            ${avatarContent}
+                            <div>
+                                <h4 class="font-heading font-semibold text-xs text-[#1d1d1f] truncate w-36">${m.name}</h4>
+                                <span class="text-[10px] text-emerald-600 font-medium">${timeAgo}</span>
+                            </div>
+                        </div>
                     `;
-                }
-            } catch (err) {
-                console.error("Nie udało się pobrać listy członków z members.json:", err);
-            }
+                }).join('');
+            };
+
+            const cardsHTML = createCardsHTML(members);
+            container.innerHTML = `
+                <div class="flex items-center gap-4 shrink-0">${cardsHTML}</div>
+                <div class="flex items-center gap-4 shrink-0">${cardsHTML}</div>
+            `;
         }
-        fetchDiscordMembers();
+    } catch (err) {
+        console.error("Nie udało się pobrać listy członków z members.json:", err);
+    }
+}
+fetchDiscordMembers();
 
         function downloadICS() {
             const icsContent = 
