@@ -65,7 +65,7 @@
         }
     </style>
 </head>
-<body class="bg-[#f5f5f7] text-[#1d1d1f] antialiased selection:bg-blue-500 selection:text-white">
+<body class="bg-[#f5f5f7] text-[#1d1d1f] antialiased selection:bg-blue-500 selection:text-white min-h-screen flex flex-col justify-between">
 
     <div id="pageLoader" class="fixed inset-0 z-[100] bg-[#161617] flex flex-col items-center justify-center transition-opacity duration-700 ease-out">
         <div class="flex flex-col items-center space-y-6">
@@ -86,7 +86,7 @@
                 <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg" alt="TRAMsport Logo" class="h-12 w-auto pointer-events-none">
             </a>
             
-            <nav class="flex items-center gap-6">
+            <nav class="hidden md:flex items-center gap-6 text-[#f5f5f7]/80 text-[11px] font-normal tracking-wide">
                 <a href="https://wszystko-o-tramsporcie.vercel.app/kontakt.html" class="nav-link text-white/80 hover:text-white transition-colors flex items-center gap-1.5 font-medium">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                     Kontakt
@@ -96,59 +96,88 @@
                     Powrót do strony głównej
                 </a>
             </nav>
+
+            <button id="mobileMenuBtn" class="md:hidden p-2 text-white/90 hover:text-white focus:outline-none cursor-pointer" aria-label="Menu">
+                <svg id="menuIconOpen" class="w-6 h-6 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+                <svg id="menuIconClose" class="w-6 h-6 hidden transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+
+        <div id="mobileMenu" class="md:hidden max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-[#161617]/95 border-b border-white/10 backdrop-blur-xl">
+            <div class="px-6 py-5 flex flex-col space-y-4 text-sm font-normal">
+                <a href="https://wszystko-o-tramsporcie.vercel.app/kontakt.html" class="mobile-nav-item nav-link text-white/90 hover:text-white transition-colors flex items-center gap-2 font-medium py-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    Kontakt
+                </a>
+                <a href="https://wszystko-o-tramsporcie.vercel.app" class="mobile-nav-item nav-link text-white/90 hover:text-white transition-colors flex items-center gap-2 font-medium py-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                    Powrót do strony głównej
+                </a>
+            </div>
         </div>
     </header>
 
-    <section class="py-16 bg-white border-b border-slate-200/60 shadow-sm">
-        <div class="max-w-6xl mx-auto px-6 text-center">
-            <h1 class="font-heading text-4xl sm:text-5xl font-bold text-[#1d1d1f] mt-2 mb-3 tracking-tight">Galeria Zdjęć Społeczności</h1>
-            <p class="text-sm text-[#515154] max-w-2xl mx-auto leading-relaxed mb-8">
-                Kliknij na dowolne zdjęcie, aby otworzyć je w pełnym rozmiarze.
-            </p>
+    <div>
+        <section class="py-16 bg-white border-b border-slate-200/60 shadow-sm">
+            <div class="max-w-6xl mx-auto px-6 text-center">
+                <h1 class="font-heading text-4xl sm:text-5xl font-bold text-[#1d1d1f] mt-2 mb-3 tracking-tight">Galeria Zdjęć Społeczności</h1>
+                <p class="text-sm text-[#515154] max-w-2xl mx-auto leading-relaxed mb-8">
+                    Kliknij na dowolne zdjęcie, aby otworzyć je w pełnym rozmiarze.
+                </p>
 
-            <div id="layoutSwitcherWrapper" class="relative inline-flex items-center bg-[#e5e5ea] p-1.5 rounded-2xl shadow-inner">
-                <div id="pillSlider" class="absolute top-1.5 bottom-1.5 left-1.5 w-[110px] bg-white rounded-xl shadow-sm z-0"></div>
-                
-                <button onclick="setGalleryLayout('grid-3', 0)" id="btn-grid-3" class="relative z-10 w-[110px] py-2 text-xs font-heading font-semibold transition-colors duration-300 text-[#1d1d1f]">
-                    3 Kolumny
-                </button>
-                <button onclick="setGalleryLayout('grid-2', 1)" id="btn-grid-2" class="relative z-10 w-[110px] py-2 text-xs font-heading font-semibold transition-colors duration-300 text-[#515154] hover:text-[#1d1d1f]">
-                    2 Kolumny
-                </button>
-                <button onclick="setGalleryLayout('masonry', 2)" id="btn-masonry" class="relative z-10 w-[110px] py-2 text-xs font-heading font-semibold transition-colors duration-300 text-[#515154] hover:text-[#1d1d1f]">
-                    Duże Kafle
-                </button>
+                <div id="layoutSwitcherWrapper" class="relative inline-flex items-center bg-[#e5e5ea] p-1.5 rounded-2xl shadow-inner">
+                    <div id="pillSlider" class="absolute top-1.5 bottom-1.5 left-1.5 w-[110px] bg-white rounded-xl shadow-sm z-0"></div>
+                    
+                    <button onclick="setGalleryLayout('grid-3', 0)" id="btn-grid-3" class="relative z-10 w-[110px] py-2 text-xs font-heading font-semibold transition-colors duration-300 text-[#1d1d1f]">
+                        3 Kolumny
+                    </button>
+                    <button onclick="setGalleryLayout('grid-2', 1)" id="btn-grid-2" class="relative z-10 w-[110px] py-2 text-xs font-heading font-semibold transition-colors duration-300 text-[#515154] hover:text-[#1d1d1f]">
+                        2 Kolumny
+                    </button>
+                    <button onclick="setGalleryLayout('masonry', 2)" id="btn-masonry" class="relative z-10 w-[110px] py-2 text-xs font-heading font-semibold transition-colors duration-300 text-[#515154] hover:text-[#1d1d1f]">
+                        Duże Kafle
+                    </button>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <main class="py-14">
-        <div class="max-w-6xl mx-auto px-6">
-            <div id="galleryContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 ease-in-out">
-                
-                <div class="bg-white rounded-[24px] overflow-hidden border border-slate-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_24px_48px_rgba(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-500 flex flex-col group card-data cursor-pointer"
-                   style="--img-url: url('data/content/ryba_zdjecie.jpg'); --title: 'Pociągi na stacji Zakopane'; --author: 'Rybulec';"
-                   onclick="openPhotoModal(getComputedStyle(this).getPropertyValue('--img-url').slice(5, -2) + '?w=1200&auto=format&fit=crop&q=80', getComputedStyle(this).getPropertyValue('--title').trim().slice(1, -1), getComputedStyle(this).getPropertyValue('--author').trim().slice(1, -1))">
-                    <div class="relative overflow-hidden aspect-[16/10] bg-slate-100">
-                        <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-700 ease-out" style="background-image: var(--img-url);"></div>
-                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300"></div>
-                        <div class="absolute top-3 right-3 bg-black/40 backdrop-blur-md text-white p-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+        <main class="py-14 flex-grow">
+            <div class="max-w-6xl mx-auto px-6">
+                <div id="galleryContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 ease-in-out">
+                    
+                    <div class="bg-white rounded-[24px] overflow-hidden border border-slate-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_24px_48px_rgba(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-500 flex flex-col group card-data cursor-pointer"
+                       style="--img-url: url('data/content/ryba_zdjecie.jpg'); --title: 'Pociągi na stacji Zakopane'; --author: 'Rybulec';"
+                       onclick="openPhotoModal(getComputedStyle(this).getPropertyValue('--img-url').slice(5, -2) + '?w=1200&auto=format&fit=crop&q=80', getComputedStyle(this).getPropertyValue('--title').trim().slice(1, -1), getComputedStyle(this).getPropertyValue('--author').trim().slice(1, -1))">
+                        <div class="relative overflow-hidden aspect-[16/10] bg-slate-100">
+                            <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-700 ease-out" style="background-image: var(--img-url);"></div>
+                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300"></div>
+                            <div class="absolute top-3 right-3 bg-black/40 backdrop-blur-md text-white p-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+                            </div>
+                        </div>
+                        <div class="p-5 flex flex-col justify-between flex-1 bg-white">
+                            <h3 class="text-[15px] font-heading font-semibold text-[#1d1d1f] tracking-tight after:content-[var(--title)]"></h3>
+                            <div class="flex items-center justify-between mt-4 pt-3 border-t border-slate-100 text-xs text-[#86868b]">
+                                <span>Autor:</span>
+                                <span class="font-heading font-medium text-[#1d1d1f] after:content-[var(--author)]"></span>
+                            </div>
                         </div>
                     </div>
-                    <div class="p-5 flex flex-col justify-between flex-1 bg-white">
-                        <h3 class="text-[15px] font-heading font-semibold text-[#1d1d1f] tracking-tight after:content-[var(--title)]"></h3>
-                        <div class="flex items-center justify-between mt-4 pt-3 border-t border-slate-100 text-xs text-[#86868b]">
-                            <span>Autor:</span>
-                            <span class="font-heading font-medium text-[#1d1d1f] after:content-[var(--author)]"></span>
-                        </div>
-                    </div>
+
                 </div>
 
-
+                <div class="mt-16 text-center">
+                    <p class="text-xs sm:text-sm font-heading text-[#515154]">
+                        Chcesz aby twoje zdjęcie się pojawiło? <a href="https://wszystko-o-tramsporcie.vercel.app/kontakt.html" class="text-blue-600 font-semibold hover:underline">Skontaktuj się z nami!</a>
+                    </p>
+                </div>
             </div>
-        </div>
-    </main>
+        </main>
+    </div>
 
     <footer class="bg-[#f5f5f7] border-t border-slate-300 py-10 text-xs text-[#515154]">
         <div class="max-w-5xl mx-auto px-4 space-y-4">
@@ -199,6 +228,36 @@
         document.addEventListener('dragstart', function(e) {
             if (e.target.tagName === 'IMG') e.preventDefault();
         });
+
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIconOpen = document.getElementById('menuIconOpen');
+        const menuIconClose = document.getElementById('menuIconClose');
+
+        function toggleMobileMenu() {
+            const isOpen = mobileMenu.style.maxHeight && mobileMenu.style.maxHeight !== '0px';
+            if (isOpen) {
+                mobileMenu.style.maxHeight = '0px';
+                menuIconOpen.classList.remove('hidden');
+                menuIconClose.classList.add('hidden');
+            } else {
+                mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+                menuIconOpen.classList.add('hidden');
+                menuIconClose.classList.remove('hidden');
+            }
+        }
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.style.maxHeight = '0px';
+                    menuIconOpen.classList.remove('hidden');
+                    menuIconClose.classList.add('hidden');
+                });
+            });
+        }
 
         window.addEventListener('load', function() {
             const loader = document.getElementById('pageLoader');
