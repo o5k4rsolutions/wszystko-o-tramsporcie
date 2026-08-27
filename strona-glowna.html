@@ -518,14 +518,13 @@ VERSION:2.0
 PRODID:-//Wszystko o TRAMsporcie//Otwarcie Discorda//PL
 BEGIN:VEVENT
 SUMMARY:Otwarcie serwera Discord - Wszystko o TRAMsporcie
-DESCRIPTION:Wielkie otwarcie oficjalnego serwera Discord społeczności TRAMsport!
-DTSTART:20260901T163000Z
-DTEND:20260901T193000Z
+DESCRIPTION:Wielkie otwarcie oficjalnego serwera Discord społeczności Wszystko o TRAMsporcie!
+DTSTART:20260912T163000Z
+DTEND:20260912T193000Z
 LOCATION:https://discord.com/invite/seks6zaKWs
 STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR`;
-
             const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
             const link = document.createElement('a');
             link.href = window.URL.createObjectURL(blob);
