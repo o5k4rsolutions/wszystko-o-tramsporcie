@@ -2,14 +2,14 @@ name: Aktualizuj członków Discord
 
 on:
   schedule:
-    - cron: '*/15 * * * *' # Uruchamiaj co 15 minut
+    - cron: '*/15 * * * *'
   workflow_dispatch:
 
 jobs:
   update:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Kluczowe uprawnienie do zapisywania zmian w repozytorium przez git push
+      contents: write
     steps:
       - name: Pobierz kod repozytorium
         uses: actions/checkout@v4
@@ -41,10 +41,22 @@ jobs:
                 try {
                   const members = JSON.parse(data);
                   if (Array.isArray(members)) {
-                    const formatted = members.map(m => ({
-                      name: m.user.username,
-                      joinedAt: m.joined_at
-                    }));
+                    const formatted = members.map(m => {
+                      let avatarUrl = null;
+                      if (m.user.avatar) {
+                        avatarUrl = `https://cdn.discordapp.com/avatars/${m.user.id}/${m.user.avatar}.png`;
+                      } else {
+                        // Domyślny awatar Discorda, jeśli użytkownik nie ustawił własnego
+                        const defaultIndex = Number(m.user.discriminator || 0) % 5;
+                        avatarUrl = `https://cdn.discordapp.com/embed/avatars/${defaultIndex}.png`;
+                      }
+
+                      return {
+                        name: m.user.username,
+                        joinedAt: m.joined_at,
+                        avatar: avatarUrl
+                      };
+                    });
                     fs.writeFileSync("members.json", JSON.stringify(formatted, null, 2));
                   } else {
                     console.error("API Error:", data);
@@ -68,5 +80,5 @@ jobs:
           git config pull.rebase false
           git pull origin main || git pull origin master || true
           git add members.json
-          git commit -m "Automatyczna aktualizacja listy członków" || exit 0
+          git commit -m "Automatyczna aktualizacja listy członków i awatarów" || exit 0
           git push
