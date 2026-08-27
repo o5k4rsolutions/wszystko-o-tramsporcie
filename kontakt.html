@@ -114,40 +114,8 @@
         <div class="max-w-5xl mx-auto px-4">
             <div class="text-center max-w-2xl mx-auto mb-12">
                 <h1 class="font-heading text-3xl sm:text-4xl font-semibold text-[#1d1d1f] mt-1">Skontaktuj się z nami</h1>
-                <p class="text-xs text-[#515154] mt-2">Wybierz dogodną formę pomocy lub wyślij zgłoszenie bezpośrednio do naszego zespołu.</p>
+                <p class="text-xs text-[#515154] mt-2">Wyślij zgłoszenie bezpośrednio do naszego zespołu.</p>
             </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="space-y-6">
-                    <div class="bg-white rounded-3xl p-7 border border-slate-200 shadow-sm flex flex-col justify-between">
-                        <div>
-                            <div class="w-12 h-12 rounded-2xl bg-blue-50 text-[#0071e3] flex items-center justify-center mb-4">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-                            </div>
-                            <h2 class="font-heading font-bold text-lg text-[#1d1d1f] mb-1">Czat z konsultantem</h2>
-                            <p class="text-xs text-[#515154] mb-6 leading-relaxed">Porozmawiaj na żywo z naszym zespołem.</p>
-                        </div>
-                        <a href="https://discord.com/invite/seks6zaKWs" target="_blank" rel="noopener noreferrer" class="w-full bg-[#0071e3] hover:bg-[#0077ed] text-white font-heading text-xs font-semibold py-3 rounded-xl text-center shadow transition-all cursor-pointer block">
-                            Rozpocznij czat
-                        </a>
-                    </div>
-
-                    <div class="bg-white rounded-3xl p-7 border border-slate-200 shadow-sm space-y-4 text-xs">
-                        <div class="flex items-center gap-3">
-                            <div class="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center text-slate-700 shrink-0">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-[#1d1d1f]">Godziny pracy zespołu</h3>
-                                <p class="text-[#515154]">Pon. – Pt.: <span class="font-semibold text-[#1d1d1f]">15:00 – 22:00</span></p>
-                                <p class="text-[#515154]">Sob. – Nd.: <span class="font-semibold text-[#1d1d1f]">10:00 – 21:00</span></p>
-                            </div>
-                        </div>
-                        <div class="border-t border-slate-100 pt-3 text-[11px] text-slate-500">
-                            Szacunkowy czas odpowiedzi oraz unikalny numer zgłoszenia otrzymasz natychmiast na podany adres e-mail w potwierdzeniu.
-                        </div>
-                    </div>
-                </div>
 
                 <div class="lg:col-span-2 bg-white rounded-3xl p-8 border border-slate-200 shadow-sm">
                     <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-5">
@@ -194,6 +162,22 @@
                 </div>
             </div>
         </div>
+        <div class="bg-white rounded-3xl p-7 border border-slate-200 shadow-sm space-y-4 text-xs">
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center text-slate-700 shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-[#1d1d1f]">Godziny pracy zespołu</h3>
+                                <p class="text-[#515154]">Pon. – Pt.: <span class="font-semibold text-[#1d1d1f]">15:00 – 22:00</span></p>
+                                <p class="text-[#515154]">Sob. – Nd.: <span class="font-semibold text-[#1d1d1f]">10:00 – 21:00</span></p>
+                            </div>
+                        </div>
+                        <div class="border-t border-slate-100 pt-3 text-[11px] text-slate-500">
+                            Szacunkowy czas odpowiedzi oraz numer zgłoszenia otrzymasz natychmiast na podany adres e-mail w potwierdzeniu.
+                        </div>
+                    </div>
+                </div>
     </main>
 
     <footer class="bg-[#f5f5f7] border-t border-slate-300 py-10 text-xs text-[#515154]">
@@ -345,7 +329,7 @@
             const config = window.APP_CONFIG;
 
             if (!config || !config.BREVO_API_KEY) {
-                openModal('Błąd konfiguracji', 'Nie udało się wczytać pliku config.js na hostingu.');
+                openModal('Błąd konfiguracji', 'Nie udało się wczytać XXXXX.');
                 submitBtn.disabled = false;
                 submitBtn.innerText = 'Wyślij zgłoszenie';
                 return;
@@ -417,7 +401,7 @@
 
                 await Promise.allSettled([userEmailPromise, adminEmailPromise, discordPromise]);
 
-                openModal('Zgłoszenie wysłane!', `Twoje zgłoszenie zostało pomyślnie zarejestrowane pod numerem ${ticketNumber}. Wysłaliśmy do Ciebie potwierdzenie e-mail z szacunkowym czasem odpowiedzi.`);
+                openModal('Zgłoszenie wysłane!', `Twoje zgłoszenie zostało pomyślnie zarejestrowane pod numerem ${ticketNumber}. Wysłaliśmy do Ciebie potwierdzenie e-mail.`);
                 document.getElementById('contactForm').reset();
                 const selectedText = document.getElementById('selectedText');
                 selectedText.innerText = 'Wybierz temat...';
