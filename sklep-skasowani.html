@@ -505,7 +505,7 @@
 
                         const actionButton = product.stripeLink && product.stripeLink !== '#'
                             ? `<a href="${product.stripeLink}" target="_blank" rel="noopener noreferrer" class="w-full bg-[#0071e3] hover:bg-[#0077ed] text-white font-heading text-xs font-semibold py-3 rounded-xl text-center shadow transition-all cursor-pointer block hover:scale-[1.01] active:scale-[0.99]">Kup teraz (${product.price})</a>`
-                            : `<button onclick="openModal('Produkt wkrótce dostępny', 'Ten produkt jest obecnie w przygotowaniu. Zapraszamy wkrótce!')" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-heading text-xs font-semibold py-3 rounded-xl text-center transition-all cursor-pointer block">Sprawdź wkrótce</button>`;
+                            : `<button onclick="openModal('Produkt niedostępny', 'Ten produkt jest niedostępny. Zapraszamy wkrótce!')" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-heading text-xs font-semibold py-3 rounded-xl text-center transition-all cursor-pointer block">Sprawdź wkrótce</button>`;
 
                         return `
                             <div class="group bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:border-blue-200">
@@ -540,7 +540,7 @@
 
                         const actionButton = product.stripeLink && product.stripeLink !== '#'
                             ? `<a href="${product.stripeLink}" target="_blank" rel="noopener noreferrer" class="bg-[#0071e3] hover:bg-[#0077ed] text-white font-heading text-xs font-semibold px-6 py-2.5 rounded-xl text-center shadow transition-all cursor-pointer block">Kup teraz (${product.price})</a>`
-                            : `<button onclick="openModal('Produkt niedostępny', 'Ten produkt jest niedostępny Zapraszamy wkrótce!')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-heading text-xs font-semibold px-6 py-2.5 rounded-xl text-center transition-all cursor-pointer block">Sprawdź wkrótce</button>`;
+                            : `<button onclick="openModal('Produkt niedostępny', 'Ten produkt jest niedostępny. Zapraszamy wkrótce!')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-heading text-xs font-semibold px-6 py-2.5 rounded-xl text-center transition-all cursor-pointer block">Sprawdź wkrótce</button>`;
 
                         return `
                             <div class="group bg-white rounded-3xl p-5 border border-slate-200/80 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6 transition-all duration-300 hover:shadow-xl hover:border-blue-200">
