@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wszystko o TRAMsporcie - Regulamin Sklepu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+                        'heading': ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            letter-spacing: -0.01em;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            letter-spacing: -0.022em;
+        }
+        img {
+            -webkit-user-drag: none;
+            user-drag: none;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-[#f5f5f7] text-[#1d1d1f] antialiased selection:bg-blue-500 selection:text-white min-h-screen flex flex-col justify-between">
+
+    <div id="pageLoader" class="fixed inset-0 z-[100] bg-[#161617] flex flex-col items-center justify-center transition-opacity duration-700 ease-out">
+        <div class="flex flex-col items-center space-y-6">
+            <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg" alt="Logo TRAMsport" class="h-16 w-auto animate-pulse pointer-events-none">
+            <div class="relative w-20 h-20 flex items-center justify-center">
+                <div class="absolute inset-0 border-4 border-white/10 rounded-full"></div>
+                <div class="absolute inset-0 border-4 border-transparent border-t-blue-500 rounded-full animate-spin"></div>
+            </div>
+            <div class="text-center space-y-2">
+                <p id="loaderText" class="text-white/80 text-xs tracking-widest font-heading uppercase">Trwa ładowanie...</p>
+            </div>
+        </div>
+    </div>
+
+    <header class="sticky top-0 z-50 bg-[#161617]/85 backdrop-blur-md text-[#f5f5f7] text-xs border-b border-white/5">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="https://wszystko-o-tramsporcie.vercel.app/index.html" class="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
+                <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg" alt="TRAMsport Logo" class="h-12 w-auto pointer-events-none">
+            </a>
+
+            <nav class="hidden md:flex items-center gap-6 text-[#f5f5f7]/80 text-[11px] font-normal tracking-wide">
+                <a href="https://discord.com/invite/seks6zaKWs" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors flex items-center gap-1 font-semibold text-blue-400">
+                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.011c3.927 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+                    Discord
+                </a>
+                <a href="https://wszystko-o-tramsporcie.vercel.app" class="nav-link text-white/80 hover:text-white transition-colors flex items-center gap-1.5 font-medium">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                    Powrót do strony głównej
+                </a>
+            </nav>
+
+            <button id="mobileMenuBtn" class="md:hidden p-2 text-white/90 hover:text-white focus:outline-none cursor-pointer" aria-label="Menu">
+                <svg id="menuIconOpen" class="w-6 h-6 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+                <svg id="menuIconClose" class="w-6 h-6 hidden transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+
+        <div id="mobileMenu" class="md:hidden max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-[#161617]/95 border-b border-white/10 backdrop-blur-xl">
+            <div class="px-6 py-5 flex flex-col space-y-4 text-sm font-normal">
+                <a href="https://discord.com/invite/seks6zaKWs" target="_blank" rel="noopener noreferrer" class="mobile-nav-item nav-link text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-2 font-semibold py-1">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.011c3.927 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+                    Discord
+                </a>
+                <a href="https://wszystko-o-tramsporcie.vercel.app" class="mobile-nav-item nav-link text-white/90 hover:text-white transition-colors flex items-center gap-2 font-medium py-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                    Powrót do strony głównej
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="py-16 bg-[#f5f5f7] flex-grow">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h1 class="font-heading text-3xl sm:text-4xl font-semibold text-[#1d1d1f] mt-1">Regulamin Sklepu</h1>
+                <p class="text-xs text-[#515154] mt-2">Oficjalny regulamin sklepu internetowego zarządzanego przez <strong class="text-[#1d1d1f]">Wszystko o TRAMsporcie</strong>.</p>
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-sm space-y-8 text-xs sm:text-sm text-[#515154] leading-relaxed">
+                
+                <section class="space-y-3">
+                    <h2 class="font-heading text-lg font-bold text-[#1d1d1f]">1. Postanowienia ogólne</h2>
+                    <p>
+                        1. Sklep zarządzany jest przez projekt <strong class="text-[#1d1d1f]">Wszystko o TRAMsporcie</strong>.
+                    </p>
+                    <p>
+                        2. Kontakt ze sklepem oraz zapytania ogólne można kierować na adres e-mail: <a href="mailto:sklep.wszystko-o-tramsporcie@outlook.com" class="text-blue-600 hover:underline font-medium">sklep.wszystko-o-tramsporcie@outlook.com</a>.
+                    </p>
+                    <p>
+                        3. Sprawy reklamacyjne prosimy kierować na dedykowany adres e-mail: <a href="mailto:reklamacje.wszystko-o-tramsporcie@outlook.com" class="text-blue-600 hover:underline font-medium">reklamacje.wszystko-o-tramsporcie@outlook.com</a>.
+                    </p>
+                </section>
+
+                <div class="border-t border-slate-100"></div>
+
+                <section class="space-y-3">
+                    <h2 class="font-heading text-lg font-bold text-[#1d1d1f]">2. Zamówienia i wysyłka</h2>
+                    <p>
+                        1. Towar wysyłany jest najszybciej jak to możliwe. Szczegółowe informacje o zamówieniu wysyłane są na adres e-mail podany w zamówieniu.
+                    </p>
+                    <p>
+                        2. <strong class="text-[#1d1d1f]">Nie wysyłamy towaru za pobraniem</strong> ze względu na możliwe nieodbieranie paczek przez konsumentów.
+                    </p>
+                </section>
+
+                <div class="border-t border-slate-100"></div>
+
+                <section class="space-y-3">
+                    <h2 class="font-heading text-lg font-bold text-[#1d1d1f]">3. Zwroty towaru</h2>
+                    <p>
+                        1. <strong class="text-[#1d1d1f]">Zwroty nie są przyjmowane.</strong> Prosimy o przemyślane zakupy.
+                    </p>
+                </section>
+
+                <div class="border-t border-slate-100"></div>
+
+                <section class="space-y-3">
+                    <h2 class="font-heading text-lg font-bold text-[#1d1d1f]">4. Reklamacje</h2>
+                    <p>
+                        1. <strong class="text-[#1d1d1f]">Reklamacje na e-produkty:</strong> Obowiązują tylko i wyłącznie wtedy, gdy nie dostano oczekiwanego produktu.
+                    </p>
+                    <p>
+                        2. <strong class="text-[#1d1d1f]">Reklamacje na produkty fizyczne:</strong> Można zgłaszać do 14 dni od wysłania paczki.
+                    </p>
+                    <p>
+                        3. Reklamacje rozpatrywane są w terminie do 14 dni od wysłania do nas pisemnej reklamacji.
+                    </p>
+                    <p>
+                        4. Towar w ramach reklamacji kupujący wysyła na swój koszt. Jeżeli reklamacja zostanie uznana, sklep zwraca koszt towaru wraz z kosztem wysyłki. Jeżeli reklamacja nie zostanie uznana, kupujący pokrywa również koszt odesłania produktu.
+                    </p>
+                </section>
+
+                <div class="border-t border-slate-100"></div>
+
+                <section class="space-y-3">
+                    <h2 class="font-heading text-lg font-bold text-[#1d1d1f]">5. Postanowienia końcowe</h2>
+                    <p>
+                        1. Administracja sklepu zastrzega sobie prawo do wprowadzania zmian w niniejszym regulaminie.
+                    </p>
+                    <p>
+                        2. W sprawach nieuregulowanych niniejszym regulaminem zastosowanie mają odpowiednie przepisy prawa polskiego.
+                    </p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-[#f5f5f7] border-t border-slate-300 py-10 text-xs text-[#515154]">
+        <div class="max-w-5xl mx-auto px-4 space-y-4">
+            <div class="border-t border-slate-300 pt-4 flex flex-col sm:flex-row items-center justify-between">
+                <p>Copyright &copy; 2026 Wszystko o TRAMsporcie. Wszelkie prawa zastrzeżone.</p>
+                <div class="flex gap-4 mt-2 sm:mt-0">
+                    <a href="https://discord.com/invite/seks6zaKWs" target="_blank" rel="noopener noreferrer" class="nav-link hover:underline text-blue-600 font-medium">Discord</a>
+                    <a href="polityka.html" class="nav-link hover:underline">Polityka prywatności</a>
+                    <a href="regulamin-sklepu.html" class="nav-link hover:underline font-bold text-[#1d1d1f]">Regulamin sklepu</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG') e.preventDefault();
+        });
+        document.addEventListener('dragstart', function(e) {
+            if (e.target.tagName === 'IMG') e.preventDefault();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['I','i','J','j','C','c'].includes(e.key)) || (e.ctrlKey && ['U','u'].includes(e.key))) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIconOpen = document.getElementById('menuIconOpen');
+        const menuIconClose = document.getElementById('menuIconClose');
+
+        function toggleMobileMenu() {
+            const isOpen = mobileMenu.style.maxHeight && mobileMenu.style.maxHeight !== '0px';
+            if (isOpen) {
+                mobileMenu.style.maxHeight = '0px';
+                menuIconOpen.classList.remove('hidden');
+                menuIconClose.classList.add('hidden');
+            } else {
+                mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+                menuIconOpen.classList.add('hidden');
+                menuIconClose.classList.remove('hidden');
+            }
+        }
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.style.maxHeight = '0px';
+                    menuIconOpen.classList.remove('hidden');
+                    menuIconClose.classList.add('hidden');
+                });
+            });
+        }
+
+        window.addEventListener('pageshow', function() {
+            const loader = document.getElementById('pageLoader');
+            if (loader) { loader.style.opacity = '0'; loader.style.display = 'none'; }
+        });
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('pageLoader');
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 300);
+            }
+        });
+    </script>
+</body>
+</html>
