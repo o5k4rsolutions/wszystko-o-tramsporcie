@@ -345,7 +345,7 @@
                 price: 'Brak ceny',
                 badge: 'produkt fizyczny',
                 shippingNote: 'Koszt transportu przy finalizacji zakupu',
-                image: 'https://wszystko-o-tramsporcie.vercel.app/data/content/czolko.png', 
+                image: 'https://wszystko-o-tramsporcie.vercel.app/data/content/czolko_logonasklep.png', 
                 description: 'Czółko – Jakim pociągiem jesteś? to dynamiczna gra towarzyska, w której zadaniem graczy jest odgadnięcie nazwy kolejowego składu umieszczonej na ich czole. Korzystaj z podpowiedzi znajomych, naśladuj stukot kół, zadawaj pytania i zgaduj, zanim minie czas!',
                 stripeLink: '#' 
             }
@@ -540,7 +540,7 @@
 
                         const actionButton = product.stripeLink && product.stripeLink !== '#'
                             ? `<a href="${product.stripeLink}" target="_blank" rel="noopener noreferrer" class="bg-[#0071e3] hover:bg-[#0077ed] text-white font-heading text-xs font-semibold px-6 py-2.5 rounded-xl text-center shadow transition-all cursor-pointer block">Kup teraz (${product.price})</a>`
-                            : `<button onclick="openModal('Produkt wkrótce dostępny', 'Ten produkt jest obecnie w przygotowaniu. Zapraszamy wkrótce!')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-heading text-xs font-semibold px-6 py-2.5 rounded-xl text-center transition-all cursor-pointer block">Sprawdź wkrótce</button>`;
+                            : `<button onclick="openModal('Produkt niedostępny', 'Ten produkt jest niedostępny Zapraszamy wkrótce!')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-heading text-xs font-semibold px-6 py-2.5 rounded-xl text-center transition-all cursor-pointer block">Sprawdź wkrótce</button>`;
 
                         return `
                             <div class="group bg-white rounded-3xl p-5 border border-slate-200/80 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6 transition-all duration-300 hover:shadow-xl hover:border-blue-200">
