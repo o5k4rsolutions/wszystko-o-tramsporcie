@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transakcja zaakceptowana – Wszystko o TRAMsporcie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+                        'heading': ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            letter-spacing: -0.01em;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            letter-spacing: -0.022em;
+        }
+        .apple-hero-bg {
+            background: linear-gradient(180deg, #161617 0%, #0c1b2a 45%, #050b14 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .apple-halo {
+            background: radial-gradient(circle at 50% 35%, rgba(100, 180, 255, 0.5) 0%, rgba(40, 110, 210, 0.25) 40%, transparent 75%);
+            filter: blur(60px);
+        }
+        img {
+            -webkit-user-drag: none;
+            user-drag: none;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-[#161617] text-white antialiased selection:bg-blue-500 selection:text-white">
+
+    <header class="sticky top-0 z-50 bg-[#161617]/85 backdrop-blur-md text-[#f5f5f7] text-xs border-b border-white/10">
+        <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="https://wszystko-o-tramsporcie.vercel.app/strona-glowna.html" class="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
+                <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg" alt="TRAMsport Logo" class="h-12 w-auto pointer-events-none">
+            </a>
+            <nav class="flex items-center gap-4 text-[11px]">
+                <a href="https://wszystko-o-tramsporcie.vercel.app/strona-glowna.html" class="text-blue-400 hover:text-blue-300 transition-colors font-semibold">Strona główna</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="relative overflow-hidden apple-hero-bg text-white py-28 text-center min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center">
+        <div class="absolute inset-0 apple-halo pointer-events-none w-[700px] h-[700px] rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+        
+        <div class="max-w-xl mx-auto px-4 relative z-10 space-y-6">
+            
+            <div class="flex items-center justify-center">
+                <div class="w-16 h-16 rounded-full bg-blue-500/20 border border-blue-400/30 flex items-center justify-center shadow-lg shadow-blue-500/10">
+                    <svg class="w-8 h-8 text-blue-400 animate-pulse" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="space-y-2">
+                <h1 class="font-heading text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
+                    Transakcja zaakceptowana.
+                </h1>
+                <p class="text-sm sm:text-base text-slate-300 font-normal max-w-md mx-auto">
+                    Wkrótce otrzymasz swój zamówiony produkt. Śledź maila, będziemy cię tam informować na bieżąco.
+                </p>
+            </div>
+
+            <div class="pt-2 flex flex-wrap items-center justify-center gap-3">
+                <a href="https://wszystko-o-tramsporcie.vercel.app/strona-glowna.html" class="inline-flex items-center gap-2 bg-white text-[#1d1d1f] hover:bg-slate-100 font-heading font-medium text-xs px-6 py-3 rounded-full shadow transition-all cursor-pointer">
+                    Strona główna
+                </a>
+                <a href="https://discord.com/invite/seks6zaKWs" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-[#5865F2] hover:bg-[#4752C4] text-white font-heading font-medium text-xs px-6 py-3 rounded-full shadow transition-all cursor-pointer">
+                    Discord
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG') { e.preventDefault(); }
+        });
+    </script>
+</body>
+</html>
