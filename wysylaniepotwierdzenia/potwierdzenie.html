@@ -19,9 +19,6 @@
                     <h1 class="font-bold text-gray-800 leading-tight">SKASOWANI & TRAMsport</h1>
                 </div>
             </div>
-            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
-                API aktywne
-            </span>
         </div>
     </header>
 
@@ -29,7 +26,7 @@
         <div class="bg-white shadow-xl rounded-2xl border border-gray-100 p-6 sm:p-8">
             
             <div class="mb-6">
-                <h2 class="text-xl font-bold text-gray-900">Wyślij e-produkt z szablonu #10</h2>
+                <h2 class="text-xl font-bold text-gray-900">Wyślij e-produkt - kod dostępu</h2>
                 <p class="text-sm text-gray-600 mt-1">Wprowadź adres e-mail klienta oraz wygenerowany kod dostępu, aby wysłać powiadomienie.</p>
             </div>
 
@@ -47,7 +44,7 @@
                         <label for="accessCode" class="block text-sm font-medium text-gray-700">Kod dostępu do e-produktu</label>
                         <button type="button" id="generateCodeBtn" class="text-xs text-indigo-600 hover:text-indigo-800 font-medium">Generuj losowy kod</button>
                     </div>
-                    <input type="text" id="accessCode" required placeholder="np. SKASOWANI-2026-XYZ"
+                    <input type="text" id="accessCode" required placeholder="np."
                         class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition text-sm font-mono">
                 </div>
 
@@ -78,7 +75,7 @@
         // Random code generator
         document.getElementById('generateCodeBtn').addEventListener('click', () => {
             const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-            let code = 'SKASOWANI-';
+            let code = 'SKWOTS26-WA-';
             for (let i = 0; i < 6; i++) {
                 code += chars.charAt(Math.floor(Math.random() * chars.length));
             }
@@ -142,7 +139,7 @@
                 }
 
                 if (response.ok) {
-                    showAlert(`Sukces! Szablon #10 z kodem dostępu został pomyślnie wysłany do ${email}.`, 'success');
+                    showAlert(`Sukces! mail z kodem dostępu został pomyślnie wysłany do ${email}.`, 'success');
                     document.getElementById('emailForm').reset();
                 } else {
                     const serverMsg = data.message || data.code || `HTTP Status ${response.status}`;
@@ -158,7 +155,7 @@
                 }
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = `<span>Wyślij maila przez Brevo</span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>`;
+                submitBtn.innerHTML = `<span>Wyślij maila</span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>`;
             }
         });
     </script>
