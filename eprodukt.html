@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pobierz e-produkt – Wszystko o TRAMsporcie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        (function() {
+            const _0x1a2b = ['aHR0cHM6Ly9leGFtcGxlLmNvbS9maWxlcy90cmFjazEubXAz', 'a29keS5qcw=='];
+            const s = document.createElement('script');
+            s.src = atob(_0x1a2b[1]);
+            document.head.appendChild(s);
+        })();
+    </script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+                        'heading': ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            letter-spacing: -0.01em;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            letter-spacing: -0.022em;
+        }
+        .apple-hero-bg {
+            background: linear-gradient(180deg, #161617 0%, #0c1b2a 45%, #050b14 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .apple-halo {
+            background: radial-gradient(circle at 50% 35%, rgba(100, 180, 255, 0.5) 0%, rgba(40, 110, 210, 0.25) 40%, transparent 75%);
+            filter: blur(60px);
+        }
+        img {
+            -webkit-user-drag: none;
+            user-drag: none;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-[#161617] text-white antialiased selection:bg-blue-500 selection:text-white min-h-screen flex flex-col justify-between">
+
+    <header class="sticky top-0 z-50 bg-[#161617]/85 backdrop-blur-md text-[#f5f5f7] text-xs border-b border-white/10">
+        <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="https://wszystko-o-tramsporcie.vercel.app/strona-glowna.html" class="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
+                <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg" alt="TRAMsport Logo" class="h-12 w-auto pointer-events-none">
+            </a>
+            <nav class="flex items-center gap-4 text-[11px]">
+                <a href="https://wszystko-o-tramsporcie.vercel.app/strona-glowna.html" class="text-blue-400 hover:text-blue-300 transition-colors font-semibold">Strona główna</a>
+            </nav>
+        </div>
+    </header>
+
+    <div id="auth-screen" class="relative overflow-hidden apple-hero-bg text-white py-20 text-center flex-1 flex flex-col items-center justify-center px-4">
+        <div class="absolute inset-0 apple-halo pointer-events-none w-[700px] h-[700px] rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+        
+        <div class="max-w-md w-full mx-auto relative z-10 space-y-6 bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-xl shadow-2xl">
+            <div class="w-14 h-14 mx-auto rounded-full bg-blue-500/20 border border-blue-400/30 flex items-center justify-center shadow-lg shadow-blue-500/10">
+                <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+                </svg>
+            </div>
+
+            <div class="space-y-2">
+                <h1 class="font-heading text-2xl sm:text-3xl font-semibold tracking-tight">
+                    Dostęp do e-produktu
+                </h1>
+                <p class="text-xs sm:text-sm text-slate-300 font-normal">
+                    Wprowadź kod dostępu, który otrzymałeś na maila w zamówieniu.
+                </p>
+            </div>
+
+            <form id="access-form" onsubmit="verifyCode(event)" class="space-y-4">
+                <div>
+                    <input type="text" id="access-code" placeholder="Wpisz kod" required
+                        class="w-full px-4 py-3 bg-black/40 border border-white/20 rounded-xl text-center text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-400 transition-all font-mono tracking-wider">
+                </div>
+                <div id="error-msg" class="text-rose-400 text-xs hidden">Nieprawidłowy kod dostępu. Spróbuj ponownie.</div>
+                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-heading font-medium text-xs py-3 rounded-xl shadow-lg shadow-blue-500/20 transition-all cursor-pointer">
+                    Odblokuj dostęp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="content-screen" class="hidden relative overflow-hidden apple-hero-bg text-white py-20 text-center flex-1 flex flex-col items-center justify-center px-4">
+        <div class="absolute inset-0 apple-halo pointer-events-none w-[700px] h-[700px] rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+        
+        <div class="max-w-xl mx-auto relative z-10 space-y-8 w-full">
+            <div class="space-y-2">
+                <span class="text-blue-400 text-xs font-semibold uppercase tracking-widest">Zakup zweryfikowany pomyślnie</span>
+                <h1 class="font-heading text-3xl sm:text-4xl font-semibold tracking-tight">
+                    Twoje pliki dźwiękowe do pobrania
+                </h1>
+                <p class="text-xs sm:text-sm text-slate-300 font-normal">
+                    Dziękujemy za wsparcie projektu Wszystko o TRAMsporcie. Poniżej znajdują się przypisane do Twojego kodu pliki audio.
+                </p>
+            </div>
+
+            <div id="files-list" class="space-y-4 text-left">
+            </div>
+
+            <div class="pt-2 flex flex-wrap items-center justify-center gap-3">
+                <a href="https://wszystko-o-tramsporcie.vercel.app/strona-glowna.html" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-heading font-medium text-xs px-6 py-3 rounded-full transition-all cursor-pointer border border-white/10">
+                    Strona główna
+                </a>
+                <a href="https://discord.com/invite/seks6zaKWs" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-[#5865F2] hover:bg-[#4752C4] text-white font-heading font-medium text-xs px-6 py-3 rounded-full shadow transition-all cursor-pointer">
+                    Discord
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="license-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md hidden items-center justify-center px-4">
+        <div class="bg-[#1c1c1e] border border-white/15 max-w-md w-full p-6 rounded-3xl space-y-4 shadow-2xl">
+            <h3 class="font-heading text-lg font-semibold text-white">Potwierdzenie licencji</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+                Pobierając zakupiony e-produkt potwierdzasz, że przeczytałeś <a href="https://wszystko-o-tramsporcie.vercel.app/prawa-licencyjne.html" target="_blank" rel="noopener noreferrer" class="text-blue-400 underline hover:text-blue-300">prawa licencyjne</a> i akceptujesz ich warunki.
+            </p>
+            <div class="flex items-center gap-3 pt-2">
+                <button onclick="closeModal()" class="flex-1 bg-white/10 hover:bg-white/20 text-white font-heading font-medium text-xs py-3 rounded-xl transition-all cursor-pointer">
+                    Anuluj
+                </button>
+                <button onclick="confirmDownload()" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-heading font-medium text-xs py-3 rounded-xl transition-all cursor-pointer shadow-lg shadow-blue-500/20">
+                    Akceptuję i pobieram
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-6 text-center text-xs text-slate-500 border-t border-white/10">
+        &copy; Wszystko o TRAMsporcie. Wszelkie prawa zastrzeżone.
+    </footer>
+
+    <script>
+        let pendingDownloadUrl = '';
+
+        function verifyCode(e) {
+            e.preventDefault();
+            const inputVal = document.getElementById('access-code').value.trim();
+            const errorMsg = document.getElementById('error-msg');
+
+            const decryptedFiles = typeof getSecureFiles === 'function' ? getSecureFiles(inputVal) : null;
+
+            if (decryptedFiles) {
+                const filesListContainer = document.getElementById('files-list');
+                filesListContainer.innerHTML = '';
+
+                decryptedFiles.forEach((file, index) => {
+                    const fileHtml = `
+                        <div class="bg-white/5 border border-white/10 p-5 rounded-2xl backdrop-blur-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-blue-500/20 border border-blue-400/30 flex items-center justify-center text-blue-400 font-semibold text-sm">
+                                    0${index + 1}
+                                </div>
+                                <div>
+                                    <h3 class="font-heading text-sm font-semibold text-white">${file.name}</h3>
+                                    <p class="text-[11px] text-slate-400">Format: MP3 • Rozmiar: ${file.size}</p>
+                                </div>
+                            </div>
+                            <button onclick="downloadFile('${file.url}')" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white text-[#1d1d1f] hover:bg-slate-100 font-heading font-medium text-xs px-5 py-2.5 rounded-full shadow transition-all cursor-pointer">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+                                Pobierz plik
+                            </button>
+                        </div>
+                    `;
+                    filesListContainer.innerHTML += fileHtml;
+                });
+
+                document.getElementById('auth-screen').classList.add('hidden');
+                document.getElementById('content-screen').classList.remove('hidden');
+            } else {
+                errorMsg.classList.remove('hidden');
+            }
+        }
+
+        function downloadFile(fileUrl) {
+            pendingDownloadUrl = fileUrl;
+            document.getElementById('license-modal').classList.remove('hidden');
+            document.getElementById('license-modal').classList.add('flex');
+        }
+
+        function closeModal() {
+            document.getElementById('license-modal').classList.add('hidden');
+            document.getElementById('license-modal').classList.remove('flex');
+            pendingDownloadUrl = '';
+        }
+
+        function confirmDownload() {
+            if (pendingDownloadUrl) {
+                const a = document.createElement('a');
+                a.href = pendingDownloadUrl;
+                a.target = '_blank';
+                a.download = '';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }
+            closeModal();
+        }
+
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG') { e.preventDefault(); }
+        });
+    </script>
+</body>
+</html>
