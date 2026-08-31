@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weryfikacja Discord – Wszystko o TRAMsporcie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+                        'heading': ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            letter-spacing: -0.01em;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            letter-spacing: -0.022em;
+        }
+        .apple-hero-bg {
+            background: linear-gradient(180deg, #161617 0%, #0c1b2a 45%, #050b14 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .apple-halo {
+            background: radial-gradient(circle at 50% 35%, rgba(100, 180, 255, 0.5) 0%, rgba(40, 110, 210, 0.25) 40%, transparent 75%);
+            filter: blur(60px);
+        }
+        img {
+            -webkit-user-drag: none;
+            user-drag: none;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-[#161617] text-white antialiased selection:bg-blue-500 selection:text-white">
+
+    <header class="sticky top-0 z-50 bg-[#161617]/85 backdrop-blur-md text-[#f5f5f7] text-xs border-b border-white/10">
+        <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="https://wszystko-o-tramsporcie.vercel.app/strona-glowna.html" class="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
+                <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg" alt="TRAMsport Logo" class="h-12 w-auto pointer-events-none">
+            </a>
+            <nav class="flex items-center gap-4 text-[11px]">
+                <a href="https://wszystko-o-tramsporcie.vercel.app/strona-glowna.html" class="text-blue-400 hover:text-blue-300 transition-colors font-semibold">Strona główna</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="relative overflow-hidden apple-hero-bg text-white py-28 text-center min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center">
+        <div class="absolute inset-0 apple-halo pointer-events-none w-[700px] h-[700px] rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+        
+        <div class="max-w-xl mx-auto px-4 relative z-10 space-y-6">
+            
+            <div id="status-icon" class="flex items-center justify-center">
+                <svg class="w-16 h-16 text-[#5865F2] animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.927 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                </svg>
+            </div>
+
+            <div class="space-y-2">
+                <span id="status-badge" class="text-xs uppercase tracking-widest text-blue-400 font-heading font-semibold">Weryfikacja konta</span>
+                <h1 id="status-title" class="font-heading text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
+                    Połącz się z Discordem
+                </h1>
+                <p id="status-desc" class="text-sm sm:text-base text-slate-300 font-normal">
+                    Zweryfikuj swoje konto, aby uzyskać dostęp do serwera.
+                </p>
+            </div>
+
+            <div id="action-buttons" class="pt-2 flex flex-wrap items-center justify-center gap-3">
+                <a id="login-btn" href="http://localhost:3000/login" class="inline-flex items-center gap-2 bg-[#5865F2] hover:bg-[#4752C4] text-white font-heading font-medium text-xs px-6 py-3 rounded-full shadow transition-all cursor-pointer">
+                    Zaloguj przez Discord
+                </a>
+                <a href="https://wszystko-o-tramsporcie.vercel.app/strona-glowna.html" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-heading font-medium text-xs px-6 py-3 rounded-full shadow transition-all cursor-pointer">
+                    Strona główna
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('success') === 'true') {
+            document.getElementById('status-badge').innerText = 'Sukces';
+            document.getElementById('status-title').innerText = 'Pomyślnie zweryfikowano twój profil!';
+            document.getElementById('status-desc').innerText = 'Szczegóły zostały wysłane na twój e-mail przypisany do konta Discord. Możesz wrócić na serwer.';
+            
+            document.getElementById('status-icon').innerHTML = `
+                <svg class="w-16 h-16 text-emerald-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            `;
+            
+            document.getElementById('action-buttons').innerHTML = `
+                <a href="https://wszystko-o-tramsporcie.vercel.app/strona-glowna.html" class="inline-flex items-center gap-2 bg-white text-[#1d1d1f] hover:bg-slate-100 font-heading font-medium text-xs px-6 py-3 rounded-full shadow transition-all cursor-pointer">
+                    Strona główna
+                </a>
+            `;
+        }
+
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG') { e.preventDefault(); }
+        });
+    </script>
+</body>
+</html>
