@@ -7,5 +7,5 @@ window.APP_CONFIG = {
     BREVO_TEMPLATE_ID: 1, 
     BREVO_ADMIN_TEMPLATE_ID: 2, 
     ADMIN_EMAIL: 'wszystko-o-tramsporcie@outlook.com', 
-    DISCORD_WEBHOOK: 'https://discord.com/api/webhooks/1542449410133467199/r_v5YJXv6o7E34NqME8q3Yz3laff-Uj5Ixk_EOvwq8B-RZ8EhtE-inNdBaVayQKeUi7Z'
+    DISCORD_WEBHOOK: 'https://discord.com/api/webhooks/1543938489564012694/NFQ3UNYin3V0Rb9jPvfqh24caPB6KvsRQEtTSdrZR-Auc7PGoTG0jgaeoQZ2BKo0qqyZ'
 };
