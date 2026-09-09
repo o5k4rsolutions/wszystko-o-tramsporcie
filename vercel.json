@@ -1,0 +1,17 @@
+{
+  "functions": {
+    "weryfikacja/api/*.js": {
+      "maxDuration": 30
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/weryfikacja/api/login",
+      "destination": "/weryfikacja/api/login.js"
+    },
+    {
+      "source": "/weryfikacja/api/callback",
+      "destination": "/weryfikacja/api/callback.js"
+    }
+  ]
+}
