@@ -1,5 +1,10 @@
 [
   {
+    "name": "ProBot ✨",
+    "joinedAt": "2026-09-10T13:35:13.387000+00:00",
+    "avatar": "https://cdn.discordapp.com/avatars/282859044593598464/156a0d2872579f1ffcaa5d2127239bfd.png"
+  },
+  {
     "name": "Xenon",
     "joinedAt": "2026-08-31T10:58:14.655000+00:00",
     "avatar": "https://cdn.discordapp.com/avatars/416358583220043796/14862d2207f6630bff818b580d6278c6.png"
@@ -18,10 +23,5 @@
     "name": "osc4r_2",
     "joinedAt": "2026-09-06T18:02:12.016000+00:00",
     "avatar": "https://cdn.discordapp.com/avatars/1453090531373748227/2dbccd19cc50140132c1c325c723174e.png"
-  },
-  {
-    "name": "Dane I Wszystko o TRAMsporcie",
-    "joinedAt": "2026-08-26T20:58:58.651000+00:00",
-    "avatar": "https://cdn.discordapp.com/avatars/1542276728548757624/f3e20b1966fd3d8b9207184319cc8ec2.png"
   }
 ]
