@@ -136,16 +136,15 @@
     </header>
 
     <div>
-        <section class="py-16 bg-white border-b border-slate-200/60 shadow-sm">
-            <div class="max-w-6xl mx-auto px-6 text-center">
-                <h1 class="font-heading text-4xl sm:text-5xl font-bold text-[#1d1d1f] mt-2 mb-3 tracking-tight">Galeria Zdjęć Społeczności</h1>
-                <p class="text-sm text-[#515154] max-w-2xl mx-auto leading-relaxed mb-6">
-                    Kliknij na dowolne zdjęcie, aby otworzyć je w pełnym rozmiarze.
-                </p>
+        <section class="py-16 bg-white border-b border-slate-200/60 shadow-sm relative overflow-hidden">
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
+                <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-blue-600 text-xs font-heading font-semibold tracking-wide uppercase mb-3">Społeczność TRAMsport</span>
+                <h1 class="font-heading text-4xl sm:text-5xl font-extrabold text-[#1d1d1f] mt-1 mb-3 tracking-tight">Galeria Zdjęć</h1>
 
                 <div class="max-w-md mx-auto mb-8 relative">
-                    <input type="text" id="searchInput" placeholder="Szukaj zdjęcia lub autora..." class="w-full bg-[#f5f5f7] border border-slate-300/80 rounded-2xl py-3 pl-12 pr-4 text-xs text-[#1d1d1f] placeholder:text-[#86868b] shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all">
-                    <svg class="w-4 h-4 text-[#86868b] absolute left-4 top-3.5 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    <input type="text" id="searchInput" placeholder="Szukaj zdjęcia lub autora..." class="w-full bg-[#f5f5f7] border border-slate-300/80 rounded-2xl py-3.5 pl-12 pr-4 text-xs text-[#1d1d1f] placeholder:text-[#86868b] shadow-inner focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all">
+                    <svg class="w-4 h-4 text-[#86868b] absolute left-4 top-4 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                 </div>
 
                 <div id="layoutSwitcherWrapper" class="relative inline-flex items-center bg-[#e5e5ea] p-1.5 rounded-2xl shadow-inner">
@@ -174,10 +173,13 @@
                     <p class="text-xs text-[#86868b] mt-1">Spróbuj wpisać inną frazę wyszukiwania.</p>
                 </div>
 
-                <div class="mt-16 text-center">
-                    <p class="text-xs sm:text-sm font-heading text-[#515154]">
-                        Chcesz aby twoje zdjęcie się pojawiło? <a href="https://wszystko-o-tramsporcie.vercel.app/kontakt.html" class="text-blue-600 font-semibold hover:underline">Skontaktuj się z nami!</a>
-                    </p>
+                <div class="mt-16 text-center bg-white/60 border border-slate-200/80 rounded-3xl p-8 max-w-2xl mx-auto shadow-sm">
+                    <h3 class="font-heading text-base font-semibold text-[#1d1d1f] mb-2">Chcesz, aby Twoje zdjęcie się tutaj pojawiło?</h3>
+                    <p class="text-xs sm:text-sm text-[#515154] mb-4">Podziel się swoimi kadrami z tramwajów i pociągów z naszą społecznością na Discordzie lub poprzez formularz kontaktowy.</p>
+                    <a href="https://wszystko-o-tramsporcie.vercel.app/kontakt.html" class="inline-flex items-center gap-2 bg-[#1d1d1f] hover:bg-black text-white text-xs font-semibold py-3 px-6 rounded-2xl transition-all shadow-md">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        Skontaktuj się z nami
+                    </a>
                 </div>
             </div>
         </main>
@@ -197,40 +199,41 @@
         </div>
     </footer>
 
-    <div id="photoModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/75 backdrop-blur-md transition-opacity">
-        <div id="photoModalBox" class="relative max-w-5xl w-full rounded-[24px] overflow-hidden shadow-2xl border border-slate-300/40 bg-white opacity-0 transform transition-all duration-300 flex flex-col max-h-[92vh]">
+    <div id="photoModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/85 backdrop-blur-md transition-opacity">
+        <div id="photoModalBox" class="relative max-w-6xl w-full rounded-[24px] overflow-hidden shadow-2xl border border-white/10 bg-[#161617] opacity-0 transform transition-all duration-300 flex flex-col max-h-[94vh]">
             
-            <div class="py-3 px-6 flex items-center justify-between bg-[#161617] text-white">
+            <div class="py-3 px-6 flex items-center justify-between bg-[#1e1e20] text-white border-b border-white/5">
                 <div class="flex items-center gap-3">
                     <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg" alt="TRAMsport Logo" class="h-7 w-auto pointer-events-none" onerror="this.src='https://placehold.co/100x30/161617/ffffff?text=Logo'">
                     <span class="text-xs font-heading font-medium tracking-wide text-white/90" id="modalPhotoTitle">Podgląd Zdjęcia</span>
                 </div>
                 
-                <div class="flex items-center gap-2">
-                    <div class="flex items-center bg-white/10 rounded-lg p-1 mr-2 text-xs gap-1">
-                        <button onclick="zoomModalImage(0.2)" class="px-2 py-1 hover:bg-white/20 rounded transition-colors text-white font-bold" title="Przybliż">+</button>
-                        <button onclick="resetModalZoom()" class="px-2 py-1 hover:bg-white/20 rounded transition-colors text-white/80" title="Resetuj">1:1</button>
-                        <button onclick="zoomModalImage(-0.2)" class="px-2 py-1 hover:bg-white/20 rounded transition-colors text-white font-bold" title="Oddal">-</button>
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center bg-white/10 rounded-xl p-1 text-xs gap-1 shadow-inner">
+                        <button onclick="zoomModalImage(0.25)" class="px-3 py-1.5 hover:bg-white/20 rounded-lg transition-colors text-white font-bold cursor-pointer" title="Przybliż">+</button>
+                        <button onclick="resetModalZoom()" class="px-3 py-1.5 hover:bg-white/20 rounded-lg transition-colors text-white/80 cursor-pointer font-medium" title="Resetuj">1:1</button>
+                        <button onclick="zoomModalImage(-0.25)" class="px-3 py-1.5 hover:bg-white/20 rounded-lg transition-colors text-white font-bold cursor-pointer" title="Oddal">-</button>
                     </div>
 
-                    <button onclick="closePhotoModal()" class="text-white/70 hover:text-white p-1 rounded-full hover:bg-white/10 transition-colors cursor-pointer" title="Zamknij">
+                    <button onclick="closePhotoModal()" class="text-white/70 hover:text-white p-2 rounded-full hover:bg-white/10 transition-colors cursor-pointer" title="Zamknij">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
                     </button>
                 </div>
             </div>
 
-            <div id="modalViewport" class="p-4 sm:p-8 flex-1 overflow-hidden flex items-center justify-center bg-[#111113] relative cursor-grab active:cursor-grabbing select-none" style="min-height: 55vh;">
-                <img id="modalFullImg" src="" alt="Powiększone zdjęcie" class="max-w-none object-contain rounded-lg shadow-2xl transition-transform duration-75 ease-out origin-center" style="transform: translate(0px, 0px) scale(1);" onerror="this.src='https://placehold.co/800x500/e2e8f0/64748b?text=Błąd+ładowania+obrazu'">
-                <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md text-white/80 text-[10px] px-3 py-1.5 rounded-full pointer-events-none">
-                    Przeciągnij myszką, aby przesunąć obraz. Użyj kółka myszki, aby przybliżyć.
+            <div id="modalViewport" class="p-4 sm:p-8 flex-1 overflow-hidden flex items-center justify-center bg-[#0d0d0e] relative cursor-grab active:cursor-grabbing select-none" style="min-height: 62vh;">
+                <img id="modalFullImg" src="" alt="Powiększone zdjęcie" class="max-w-full max-h-[70vh] object-contain rounded-lg shadow-2xl transition-transform duration-75 ease-out origin-center" style="transform: translate(0px, 0px) scale(1);" onerror="this.src='https://placehold.co/800x500/e2e8f0/64748b?text=Błąd+ładowania+obrazu'">
+                <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/70 backdrop-blur-md text-white/90 text-[11px] px-4 py-2 rounded-full pointer-events-none shadow-lg border border-white/10 flex items-center gap-2">
+                    <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 15l-5 5L5 15m5-5v10m0-10l5 5m-5-5l-5 5"/></svg>
+                    Przeciągnij myszką lub dotykiem, aby przesunąć. Użyj kółka myszki, aby powiększyć.
                 </div>
             </div>
 
-            <div class="py-4 px-6 bg-[#f5f5f7] border-t border-slate-200/85 flex flex-col sm:flex-row justify-between items-center text-[#1d1d1f] gap-2">
-                <span class="text-xs text-[#86868b] font-heading">Zdjęcie zostało zaimportowane z naszego serwera Discord.</span>
-                <div class="text-xs font-heading font-medium text-[#1d1d1f] flex items-center gap-1.5">
-                    <span class="text-[#86868b]">Autor:</span>
-                    <span id="modalAuthor" class="font-semibold bg-slate-200/70 px-2.5 py-0.5 rounded-full"></span>
+            <div class="py-4 px-6 bg-[#1e1e20] border-t border-white/5 flex flex-col sm:flex-row justify-between items-center text-white/90 gap-2">
+                <span class="text-xs text-white/50 font-heading">Zdjęcie zostało zaimportowane z naszego serwera Discord.</span>
+                <div class="text-xs font-heading font-medium flex items-center gap-2">
+                    <span class="text-white/60">Autor:</span>
+                    <span id="modalAuthor" class="font-semibold bg-white/10 px-3 py-1 rounded-full text-blue-400"></span>
                 </div>
             </div>
         </div>
@@ -252,9 +255,7 @@
             
             container.innerHTML = '';
             
-            if (!items || items.length === 0) {
-                return;
-            }
+            if (!items || items.length === 0) return;
 
             items.forEach((item) => {
                 const card = document.createElement('div');
@@ -268,18 +269,18 @@
                 card.onclick = () => openPhotoModal(highResUrl, item.tytul, item.autor);
 
                 card.innerHTML = `
-                    <div class="relative overflow-hidden aspect-[16/10] bg-slate-100">
-                        <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-700 ease-out" style="background-image: url('${imageUrl}');"></div>
-                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300"></div>
-                        <div class="absolute top-3 right-3 bg-black/40 backdrop-blur-md text-white p-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
+                    <div class="relative overflow-hidden aspect-[16/10] bg-[#f0f2f5] flex items-center justify-center p-3">
+                        <img src="${imageUrl}" alt="${item.tytul}" class="w-full h-full object-contain rounded-xl shadow-sm group-hover:scale-105 transition-transform duration-700 ease-out" onerror="this.src='https://placehold.co/800x500/e2e8f0/64748b?text=Obraz'">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 rounded-[24px]"></div>
+                        <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-white p-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
                         </div>
                     </div>
-                    <div class="p-5 flex flex-col justify-between flex-1 bg-white">
+                    <div class="p-6 flex flex-col justify-between flex-1 bg-white">
                         <h3 class="text-[15px] font-heading font-semibold text-[#1d1d1f] tracking-tight">${item.tytul}</h3>
-                        <div class="flex items-center justify-between mt-4 pt-3 border-t border-slate-100 text-xs text-[#86868b]">
+                        <div class="flex items-center justify-between mt-5 pt-3 border-t border-slate-100 text-xs text-[#86868b]">
                             <span>Autor:</span>
-                            <span class="font-heading font-medium text-[#1d1d1f] bg-slate-100 px-2.5 py-1 rounded-full">${item.autor}</span>
+                            <span class="font-heading font-medium text-[#1d1d1f] bg-slate-100 px-3 py-1 rounded-full">${item.autor}</span>
                         </div>
                     </div>
                 `;
@@ -507,7 +508,7 @@
             box.classList.remove('animate-tram-out');
             box.classList.remove('animate-mac-in');
             box.style.borderRadius = '24px';
-            box.style.background = '#ffffff';
+            box.style.background = '#161617';
 
             modal.classList.remove('hidden');
             modal.classList.add('flex');
@@ -530,7 +531,7 @@
                 modal.classList.add('hidden');
                 box.classList.remove('animate-tram-out');
                 box.style.borderRadius = '24px';
-                box.style.background = '#ffffff';
+                box.style.background = '#161617';
             }, 650);
         }
 
