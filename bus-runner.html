@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Runner – Wszystko o TRAMsporcie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+                        'heading': ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            letter-spacing: -0.01em;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            touch-action: manipulation;
+        }
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            letter-spacing: -0.022em;
+        }
+        .apple-hero-bg {
+            background: linear-gradient(180deg, #161617 0%, #0c1b2a 45%, #050b14 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .apple-halo {
+            background: radial-gradient(circle at 50% 35%, rgba(100, 180, 255, 0.4) 0%, rgba(40, 110, 210, 0.2) 40%, transparent 75%);
+            filter: blur(60px);
+        }
+        @keyframes spin-slow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .animate-spin-custom {
+            animation: spin-slow 1.2s linear infinite;
+        }
+        canvas {
+            touch-action: none;
+        }
+        img {
+            -webkit-user-drag: none;
+            user-drag: none;
+        }
+    </style>
+</head>
+<body class="bg-[#161617] text-white antialiased selection:bg-blue-500 selection:text-white h-screen w-screen overflow-hidden flex flex-col">
+
+    <div id="loading-screen" class="fixed inset-0 bg-[#050b14] z-50 flex flex-col items-center justify-center transition-opacity duration-700">
+        <div class="absolute inset-0 apple-halo pointer-events-none w-[500px] h-[500px] rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="relative z-10 flex flex-col items-center">
+            <div class="relative w-28 h-28 flex items-center justify-center mb-6">
+                <div class="absolute inset-0 border-4 border-blue-400 border-t-transparent rounded-full animate-spin-custom"></div>
+                <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/wots-logo-czarne.png" 
+                     alt="WOTS Logo" 
+                     class="w-16 h-16 object-contain filter invert drop-shadow-[0_0_15px_rgba(96,165,250,0.6)]"
+                     onerror="this.src='https://placehold.co/80x80/161617/ffffff?text=WOTS'">
+            </div>
+            <p id="loading-text" class="text-xs text-slate-400 animate-pulse">Ładowanie...</p>
+            <div class="w-40 h-1 bg-slate-800 rounded-full mt-4 overflow-hidden">
+                <div id="loading-bar" class="h-full bg-blue-400 w-0 transition-all duration-300"></div>
+            </div>
+        </div>
+    </div>
+
+    <header class="sticky top-0 z-40 bg-[#161617]/85 backdrop-blur-md text-[#f5f5f7] text-xs border-b border-white/10 shrink-0">
+        <div class="max-w-4xl mx-auto px-4 h-14 flex items-center justify-between">
+            <a href="https://wszystko-o-tramsporcie.vercel.app/strona-glowna.html" class="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
+                <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg" alt="TRAMsport Logo" class="h-10 w-auto pointer-events-none" onerror="this.src='https://placehold.co/120x40/161617/ffffff?text=TRAMsport'">
+            </a>
+            <div class="flex items-center gap-6">
+                <div id="offline-badge" class="hidden px-2 py-0.5 bg-amber-500/20 border border-amber-500/30 text-amber-300 rounded text-[10px] uppercase font-semibold">Tryb offline</div>
+                <div class="text-right">
+                    <span class="text-[10px] uppercase text-slate-400 block tracking-wider">Wynik</span>
+                    <span id="score-display" class="font-heading font-semibold text-sm text-blue-400">00000</span>
+                </div>
+                <div class="text-right">
+                    <span class="text-[10px] uppercase text-slate-400 block tracking-wider">Rekord</span>
+                    <span id="highscore-display" class="font-heading font-semibold text-sm text-emerald-400">00000</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="flex-1 relative apple-hero-bg flex items-center justify-center p-2 sm:p-4">
+        <div class="absolute inset-0 apple-halo pointer-events-none w-[700px] h-[700px] rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+
+        <div id="game-wrapper" class="relative w-full max-w-4xl h-[420px] sm:h-[480px] bg-[#111113] rounded-2xl shadow-2xl overflow-hidden border border-white/10 flex flex-col cursor-pointer z-10">
+            
+            <canvas id="gameCanvas" class="w-full h-full block"></canvas>
+
+            <div id="menu-overlay" class="absolute inset-0 bg-[#0c1b2a]/85 backdrop-blur-md flex flex-col items-center justify-center p-6 text-center z-20">
+                <div class="max-w-md w-full bg-[#161617]/90 border border-white/10 p-8 rounded-2xl shadow-2xl space-y-4">
+                    <div class="inline-flex p-3 rounded-full bg-blue-500/10 text-blue-400 mb-1">
+                    </div>
+                    <h2 id="menu-title" class="font-heading text-2xl font-semibold tracking-tight text-white">BUS RUNNER™</h2>
+                    <p id="menu-desc" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        Naciśnij spację, strzałkę w górę lub dotknij ekranu, aby skakać autobusem nad pylonami, barierkami i wiatami przystankowymi!
+                    </p>
+                    
+                    <div id="final-stats" class="hidden p-3 bg-white/5 rounded-xl border border-white/5 space-y-1">
+                        <p class="text-[10px] uppercase tracking-wider text-slate-400">Wynik kursu</p>
+                        <p id="last-score" class="font-heading text-2xl font-bold text-blue-400">00000</p>
+                    </div>
+
+                    <button id="start-btn" class="w-full py-3 bg-white hover:bg-slate-100 text-[#1d1d1f] font-heading font-medium text-xs rounded-full shadow transition-all cursor-pointer">
+                        Rozpocznij jazdę
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            const swCode = `
+                self.addEventListener('install', (e) => {
+                    e.waitUntil(
+                        caches.open('wots-bus-v1').then((cache) => {
+                            return cache.addAll(['./', './index.html']);
+                        })
+                    );
+                });
+                self.addEventListener('fetch', (e) => {
+                    e.respondWith(
+                        caches.match(e.request).then((response) => {
+                            return response || fetch(e.request).catch(() => caches.match('./index.html'));
+                        })
+                    );
+                });
+            `;
+            const blob = new Blob([swCode], { type: 'text/javascript' });
+            const swUrl = URL.createObjectURL(blob);
+            navigator.serviceWorker.register(swUrl).catch(() => {});
+        }
+
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+        function updateOnlineStatus() {
+            const badge = document.getElementById('offline-badge');
+            if (!navigator.onLine) {
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+        }
+        updateOnlineStatus();
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const loadingBar = document.getElementById('loading-bar');
+            const loadingText = document.getElementById('loading-text');
+            const loadingScreen = document.getElementById('loading-screen');
+
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.floor(Math.random() * 25) + 20;
+                if (progress >= 100) {
+                    progress = 100;
+                    loadingBar.style.width = '100%';
+                    loadingText.textContent = 'Gotowy do drogi!';
+                    setTimeout(() => {
+                        loadingScreen.style.opacity = '0';
+                        setTimeout(() => loadingScreen.remove(), 700);
+                    }, 400);
+                    clearInterval(interval);
+                } else {
+                    loadingBar.style.width = progress + '%';
+                }
+            }, 120);
+        });
+
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d', { alpha: false }); 
+        const wrapper = document.getElementById('game-wrapper');
+        const menuOverlay = document.getElementById('menu-overlay');
+        const startBtn = document.getElementById('start-btn');
+        const menuTitle = document.getElementById('menu-title');
+        const menuDesc = document.getElementById('menu-desc');
+        const finalStats = document.getElementById('final-stats');
+        const lastScoreEl = document.getElementById('last-score');
+        const scoreDisplay = document.getElementById('score-display');
+        const highscoreDisplay = document.getElementById('highscore-display');
+
+        let width, height;
+        function resize() {
+            const rect = wrapper.getBoundingClientRect();
+            width = rect.width;
+            height = rect.height;
+            canvas.width = width * window.devicePixelRatio;
+            canvas.height = height * window.devicePixelRatio;
+            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        let gameState = 'MENU'; 
+        let score = 0;
+        let highscore = localStorage.getItem('wots_apple_bus_highscore') || 0;
+        highscoreDisplay.textContent = String(highscore).padStart(5, '0');
+
+        let gameSpeed = 6;
+        let groundY = 0;
+
+        let bus = {
+            x: 80,
+            y: 0,
+            width: 65,
+            height: 36,
+            vy: 0,
+            gravity: 0.75,
+            jumpForce: -13.5,
+            isJumping: false
+        };
+
+        let obstacles = [];
+        let clouds = [];
+        let roadMarks = [];
+        let particles = [];
+        let crashTimer = 0;
+        let spawnTimer = 0;
+        let lastTime = performance.now();
+
+        function initGame() {
+            score = 0;
+            scoreDisplay.textContent = "00000";
+            gameSpeed = 6;
+            obstacles = [];
+            clouds = [];
+            roadMarks = [];
+            particles = [];
+            spawnTimer = 0;
+
+            groundY = height - 70;
+            bus.y = groundY - bus.height;
+            bus.vy = 0;
+            bus.isJumping = false;
+
+            for (let i = 0; i < 4; i++) {
+                clouds.push({
+                    x: Math.random() * width,
+                    y: 30 + Math.random() * 80,
+                    speed: 0.8 + Math.random() * 1.2,
+                    w: 50 + Math.random() * 40
+                });
+            }
+
+            for (let i = 0; i < 10; i++) {
+                roadMarks.push({
+                    x: i * 90,
+                    y: groundY + 20,
+                    w: 45
+                });
+            }
+        }
+
+        function triggerJump() {
+            if (gameState === 'MENU') {
+                startGame();
+            } else if (gameState === 'PLAYING' && !bus.isJumping) {
+                bus.vy = bus.jumpForce;
+                bus.isJumping = true;
+            } else if (gameState === 'GAMEOVER') {
+                startGame();
+            }
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (e.code === 'Space' || e.code === 'ArrowUp') {
+                e.preventDefault();
+                triggerJump();
+            }
+        });
+
+        wrapper.addEventListener('click', (e) => {
+            if (e.target.closest('#menu-overlay')) return;
+            triggerJump();
+        });
+
+        startBtn.addEventListener('click', () => {
+            startGame();
+        });
+
+        function startGame() {
+            menuOverlay.classList.add('hidden');
+            initGame();
+            gameState = 'PLAYING';
+            lastTime = performance.now();
+        }
+
+        function spawnObstacle() {
+            const types = ['cone', 'shelter', 'barrier'];
+            const type = types[Math.floor(Math.random() * types.length)];
+            
+            let obsWidth = 28;
+            let obsHeight = 34;
+            let yOffset = groundY - obsHeight;
+
+            if (type === 'shelter') {
+                obsWidth = 60;
+                obsHeight = 46;
+                yOffset = groundY - obsHeight;
+            } else if (type === 'barrier') {
+                obsWidth = 42;
+                obsHeight = 36;
+                yOffset = groundY - obsHeight;
+            }
+
+            obstacles.push({
+                x: width + 50,
+                y: yOffset,
+                w: obsWidth,
+                h: obsHeight,
+                type: type
+            });
+        }
+
+        function update(dt) {
+            if (gameState === 'PLAYING') {
+                score += dt * 10;
+                scoreDisplay.textContent = String(Math.floor(score)).padStart(5, '0');
+
+                gameSpeed = 6 + Math.floor(score / 250) * 0.5;
+
+                bus.vy += bus.gravity;
+                bus.y += bus.vy;
+
+                if (bus.y >= groundY - bus.height) {
+                    bus.y = groundY - bus.height;
+                    bus.vy = 0;
+                    bus.isJumping = false;
+                }
+
+                for (let c of clouds) {
+                    c.x -= c.speed * (dt * 60);
+                    if (c.x < -100) {
+                        c.x = width + 50;
+                        c.y = 30 + Math.random() * 80;
+                    }
+                }
+
+                for (let r of roadMarks) {
+                    r.x -= gameSpeed * (dt * 60);
+                    if (r.x < -70) {
+                        r.x = width + 20;
+                    }
+                }
+
+                spawnTimer += dt * 60;
+                if (spawnTimer > Math.max(70, 130 - gameSpeed * 3.5)) {
+                    spawnObstacle();
+                    spawnTimer = 0;
+                }
+
+                for (let i = obstacles.length - 1; i >= 0; i--) {
+                    let obs = obstacles[i];
+                    obs.x -= gameSpeed * (dt * 60);
+
+                    // Precise hitbox collision check
+                    if (
+                        bus.x + 8 < obs.x + obs.w - 6 &&
+                        bus.x + bus.width - 8 > obs.x + 6 &&
+                        bus.y + 6 < obs.y + obs.h &&
+                        bus.y + bus.height - 4 > obs.y
+                    ) {
+                        triggerCrash();
+                    }
+
+                    if (obs.x < -100) {
+                        obstacles.splice(i, 1);
+                    }
+                }
+            } else if (gameState === 'CRASHING') {
+                crashTimer--;
+                for (let p of particles) {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.vy += 0.35;
+                    p.alpha -= 0.02;
+                }
+                if (crashTimer <= 0) {
+                    showGameOver();
+                }
+            }
+        }
+
+        function triggerCrash() {
+            gameState = 'CRASHING';
+            crashTimer = 20; 
+
+            const centerX = bus.x + bus.width / 2;
+            const centerY = bus.y + bus.height / 2;
+            for (let i = 0; i < 40; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const speed = 2 + Math.random() * 8;
+                particles.push({
+                    x: centerX,
+                    y: centerY,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed,
+                    radius: 3 + Math.random() * 5,
+                    color: Math.random() > 0.3 ? '#f59e0b' : (Math.random() > 0.5 ? '#ef4444' : '#ffffff'),
+                    alpha: 1.0
+                });
+            }
+        }
+
+        function showGameOver() {
+            gameState = 'GAMEOVER';
+            menuTitle.textContent = "KONIEC KURSU!";
+            menuDesc.textContent = "Autobus uderzył w przeszkodę na trasie przejazdu.";
+            let finalScoreVal = Math.floor(score);
+            lastScoreEl.textContent = String(finalScoreVal).padStart(5, '0');
+            finalStats.classList.remove('hidden');
+            startBtn.textContent = "Zagraj ponownie";
+            menuOverlay.classList.remove('hidden');
+
+            if (finalScoreVal > highscore) {
+                highscore = finalScoreVal;
+                highscoreDisplay.textContent = String(highscore).padStart(5, '0');
+                localStorage.setItem('wots_apple_bus_highscore', highscore);
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, width, height);
+
+            let skyGrad = ctx.createLinearGradient(0, 0, 0, height);
+            skyGrad.addColorStop(0, '#161617');
+            skyGrad.addColorStop(1, '#0c1b2a');
+            ctx.fillStyle = skyGrad;
+            ctx.fillRect(0, 0, width, height);
+
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+            for (let c of clouds) {
+                ctx.beginPath();
+                ctx.roundRect(c.x, c.y, c.w, 18, 9);
+                ctx.fill();
+            }
+
+            ctx.fillStyle = '#090d16';
+            ctx.fillRect(0, groundY, width, height - groundY);
+
+            ctx.fillStyle = '#60a5fa';
+            ctx.fillRect(0, groundY, width, 3);
+
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+            for (let r of roadMarks) {
+                ctx.fillRect(r.x, r.y, r.w, 4);
+            }
+
+            for (let obs of obstacles) {
+                if (obs.type === 'cone') {
+                    ctx.fillStyle = '#f97316';
+                    ctx.beginPath();
+                    ctx.moveTo(obs.x + obs.w / 2, obs.y);
+                    ctx.lineTo(obs.x + obs.w, obs.y + obs.h);
+                    ctx.lineTo(obs.x, obs.y + obs.h);
+                    ctx.closePath();
+                    ctx.fill();
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillRect(obs.x + obs.w * 0.25, obs.y + obs.h * 0.35, obs.w * 0.5, 5);
+                } else if (obs.type === 'barrier') {
+                    ctx.fillStyle = '#ef4444';
+                    ctx.fillRect(obs.x, obs.y, obs.w, obs.h);
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillRect(obs.x + 4, obs.y + 4, obs.w - 8, obs.h - 8);
+                } else if (obs.type === 'shelter') {
+                    ctx.fillStyle = '#334155';
+                    ctx.fillRect(obs.x, obs.y + 12, obs.w, obs.h - 12);
+                    ctx.fillStyle = '#1e293b';
+                    ctx.fillRect(obs.x, obs.y, obs.w, 12);
+                    ctx.fillStyle = '#38bdf8';
+                    ctx.fillRect(obs.x + 6, obs.y + 16, obs.w - 12, obs.h - 20);
+                }
+            }
+
+            if (gameState !== 'CRASHING') {
+                ctx.save();
+                ctx.translate(bus.x + bus.width / 2, bus.y + bus.height / 2);
+                if (bus.isJumping) {
+                    ctx.rotate(bus.vy * 0.012);
+                }
+
+                ctx.fillStyle = '#60a5fa';
+                ctx.beginPath();
+                ctx.roundRect(-bus.width / 2, -bus.height / 2, bus.width, bus.height, 6);
+                ctx.fill();
+
+                ctx.fillStyle = '#1e293b';
+                ctx.fillRect(-bus.width / 2 + 5, -bus.height / 2 + 3, bus.width - 10, 5);
+
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(-bus.width / 2 + 7, -bus.height / 2 + 10, 10, 10);
+                ctx.fillRect(-bus.width / 2 + 21, -bus.height / 2 + 10, 14, 10);
+                ctx.fillRect(-bus.width / 2 + 39, -bus.height / 2 + 10, 12, 10);
+
+                ctx.fillStyle = '#0f172a';
+                ctx.beginPath();
+                ctx.arc(-bus.width / 3, bus.height / 2, 6, 0, Math.PI * 2);
+                ctx.arc(bus.width / 3, bus.height / 2, 6, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.restore();
+            } else {
+                for (let p of particles) {
+                    ctx.save();
+                    ctx.globalAlpha = Math.max(0, p.alpha);
+                    ctx.fillStyle = p.color;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.restore();
+                }
+            }
+        }
+
+        function loop(timestamp) {
+            const dt = Math.min((timestamp - lastTime) / 1000, 0.1);
+            lastTime = timestamp;
+
+            update(dt);
+            draw();
+            requestAnimationFrame(loop);
+        }
+
+        requestAnimationFrame(loop);
+    </script>
+</body>
+</html>
