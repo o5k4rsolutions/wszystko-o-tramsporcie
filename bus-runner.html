@@ -107,7 +107,7 @@
                     </div>
                     <h2 id="menu-title" class="font-heading text-2xl font-semibold tracking-tight text-white">BUS RUNNER™</h2>
                     <p id="menu-desc" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                        Naciśnij spację, strzałkę w górę lub dotknij ekranu, aby skakać autobusem nad pylonami, barierkami i wiatami przystankowymi!
+                        Naciśnij spację, strzałkę w górę lub dotknij ekranu, aby skakać autobusem nad pylonami i wiatami przystankowymi!
                     </p>
                     
                     <div id="final-stats" class="hidden p-3 bg-white/5 rounded-xl border border-white/5 space-y-1">
@@ -128,7 +128,7 @@
             const swCode = `
                 self.addEventListener('install', (e) => {
                     e.waitUntil(
-                        caches.open('wots-bus-v1').then((cache) => {
+                        caches.open('wots-bus-v3').then((cache) => {
                             return cache.addAll(['./', './index.html']);
                         })
                     );
@@ -193,6 +193,19 @@
         const scoreDisplay = document.getElementById('score-display');
         const highscoreDisplay = document.getElementById('highscore-display');
 
+        const imgBus = new Image();
+        imgBus.src = 'https://wszystko-o-tramsporcie.vercel.app/data/content/Pasted-20260910-134404_preview_rev_1.png';
+
+        const imgShelter = new Image();
+        imgShelter.src = 'https://wszystko-o-tramsporcie.vercel.app/data/content/Gemini_Generated_Image_4jz2jo4jz2jo4jz2_preview_rev_2.png';
+
+        const imgPylonPhoto = new Image();
+        imgPylonPhoto.src = 'https://wszystko-o-tramsporcie.vercel.app/data/content/Gemini_Generated_Image_siwn5ssiwn5ssiwn_preview_rev_2.png';
+
+        const slupekSvgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 450"><rect x="62" y="100" width="26" height="350" rx="8" fill="#64748b"/><circle cx="75" cy="70" r="45" fill="#f59e0b"/><circle cx="75" cy="70" r="22" fill="#ffffff"/><rect x="45" y="150" width="60" height="18" rx="4" fill="#334155"/><rect x="45" y="240" width="60" height="18" rx="4" fill="#334155"/></svg>`;
+        const imgSlupek = new Image();
+        imgSlupek.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(slupekSvgString);
+
         let width, height;
         function resize() {
             const rect = wrapper.getBoundingClientRect();
@@ -216,8 +229,8 @@
         let bus = {
             x: 80,
             y: 0,
-            width: 65,
-            height: 36,
+            width: 120, 
+            height: 32, 
             vy: 0,
             gravity: 0.75,
             jumpForce: -13.5,
@@ -300,26 +313,24 @@
         }
 
         function spawnObstacle() {
-            const types = ['cone', 'shelter', 'barrier'];
+            const types = ['pylon', 'shelter', 'slupek'];
             const type = types[Math.floor(Math.random() * types.length)];
             
-            let obsWidth = 28;
-            let obsHeight = 34;
-            let yOffset = groundY - obsHeight;
-
-            if (type === 'shelter') {
-                obsWidth = 60;
-                obsHeight = 46;
-                yOffset = groundY - obsHeight;
-            } else if (type === 'barrier') {
-                obsWidth = 42;
-                obsHeight = 36;
-                yOffset = groundY - obsHeight;
+            let obsWidth, obsHeight;
+            if (type === 'pylon') {
+                obsHeight = 62;
+                obsWidth = Math.round(obsHeight * (305 / 668));
+            } else if (type === 'shelter') {
+                obsWidth = 72;
+                obsHeight = Math.round(obsWidth * (360 / 695));
+            } else {
+                obsHeight = 58;
+                obsWidth = Math.round(obsHeight * (150 / 450));
             }
 
             obstacles.push({
                 x: width + 50,
-                y: yOffset,
+                y: groundY - obsHeight,
                 w: obsWidth,
                 h: obsHeight,
                 type: type
@@ -367,7 +378,6 @@
                     let obs = obstacles[i];
                     obs.x -= gameSpeed * (dt * 60);
 
-                    // Precise hitbox collision check
                     if (
                         bus.x + 8 < obs.x + obs.w - 6 &&
                         bus.x + bus.width - 8 > obs.x + 6 &&
@@ -461,28 +471,27 @@
             }
 
             for (let obs of obstacles) {
-                if (obs.type === 'cone') {
-                    ctx.fillStyle = '#f97316';
-                    ctx.beginPath();
-                    ctx.moveTo(obs.x + obs.w / 2, obs.y);
-                    ctx.lineTo(obs.x + obs.w, obs.y + obs.h);
-                    ctx.lineTo(obs.x, obs.y + obs.h);
-                    ctx.closePath();
-                    ctx.fill();
-                    ctx.fillStyle = '#ffffff';
-                    ctx.fillRect(obs.x + obs.w * 0.25, obs.y + obs.h * 0.35, obs.w * 0.5, 5);
-                } else if (obs.type === 'barrier') {
-                    ctx.fillStyle = '#ef4444';
-                    ctx.fillRect(obs.x, obs.y, obs.w, obs.h);
-                    ctx.fillStyle = '#ffffff';
-                    ctx.fillRect(obs.x + 4, obs.y + 4, obs.w - 8, obs.h - 8);
+                if (obs.type === 'pylon') {
+                    if (imgPylonPhoto.complete && imgPylonPhoto.naturalWidth !== 0) {
+                        ctx.drawImage(imgPylonPhoto, obs.x, obs.y, obs.w, obs.h);
+                    } else {
+                        ctx.fillStyle = '#f97316';
+                        ctx.fillRect(obs.x, obs.y, obs.w, obs.h);
+                    }
                 } else if (obs.type === 'shelter') {
-                    ctx.fillStyle = '#334155';
-                    ctx.fillRect(obs.x, obs.y + 12, obs.w, obs.h - 12);
-                    ctx.fillStyle = '#1e293b';
-                    ctx.fillRect(obs.x, obs.y, obs.w, 12);
-                    ctx.fillStyle = '#38bdf8';
-                    ctx.fillRect(obs.x + 6, obs.y + 16, obs.w - 12, obs.h - 20);
+                    if (imgShelter.complete && imgShelter.naturalWidth !== 0) {
+                        ctx.drawImage(imgShelter, obs.x, obs.y, obs.w, obs.h);
+                    } else {
+                        ctx.fillStyle = '#334155';
+                        ctx.fillRect(obs.x, obs.y, obs.w, obs.h);
+                    }
+                } else if (obs.type === 'slupek') {
+                    if (imgSlupek.complete && imgSlupek.naturalWidth !== 0) {
+                        ctx.drawImage(imgSlupek, obs.x, obs.y, obs.w, obs.h);
+                    } else {
+                        ctx.fillStyle = '#64748b';
+                        ctx.fillRect(obs.x, obs.y, obs.w, obs.h);
+                    }
                 }
             }
 
@@ -493,24 +502,18 @@
                     ctx.rotate(bus.vy * 0.012);
                 }
 
-                ctx.fillStyle = '#60a5fa';
-                ctx.beginPath();
-                ctx.roundRect(-bus.width / 2, -bus.height / 2, bus.width, bus.height, 6);
-                ctx.fill();
-
-                ctx.fillStyle = '#1e293b';
-                ctx.fillRect(-bus.width / 2 + 5, -bus.height / 2 + 3, bus.width - 10, 5);
-
-                ctx.fillStyle = '#ffffff';
-                ctx.fillRect(-bus.width / 2 + 7, -bus.height / 2 + 10, 10, 10);
-                ctx.fillRect(-bus.width / 2 + 21, -bus.height / 2 + 10, 14, 10);
-                ctx.fillRect(-bus.width / 2 + 39, -bus.height / 2 + 10, 12, 10);
-
-                ctx.fillStyle = '#0f172a';
-                ctx.beginPath();
-                ctx.arc(-bus.width / 3, bus.height / 2, 6, 0, Math.PI * 2);
-                ctx.arc(bus.width / 3, bus.height / 2, 6, 0, Math.PI * 2);
-                ctx.fill();
+                if (imgBus.complete && imgBus.naturalWidth !== 0) {
+                    const busDrawWidth = 120;
+                    const busDrawHeight = Math.round(busDrawWidth * (206 / 765));
+                    bus.width = busDrawWidth;
+                    bus.height = busDrawHeight;
+                    ctx.drawImage(imgBus, -busDrawWidth / 2, -busDrawHeight / 2, busDrawWidth, busDrawHeight);
+                } else {
+                    ctx.fillStyle = '#60a5fa';
+                    ctx.beginPath();
+                    ctx.roundRect(-bus.width / 2, -bus.height / 2, bus.width, bus.height, 6);
+                    ctx.fill();
+                }
 
                 ctx.restore();
             } else {
