@@ -464,7 +464,7 @@
                 document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
                 document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
             } else {
-                document.getElementById('countdown').innerHTML = '<div class="text-xl font-bold text-emerald-400">Wydarzenie trwa! Serwer Discord jest otwarty!</div>';
+                document.getElementById('countdown').innerHTML = '<div class="text-xl font-bold text-emerald-400">Odliczanie zakończone! </br>Zapraszamy na serwer discord!</div>';
             }
         }
         setInterval(updateCountdown, 1000);
