@@ -63,13 +63,27 @@
         #pillSlider {
             transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f3;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c7c7cc;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8e8e93;
+        }
     </style>
 </head>
 <body class="bg-[#f5f5f7] text-[#1d1d1f] antialiased selection:bg-blue-500 selection:text-white min-h-screen flex flex-col justify-between">
 
     <div id="pageLoader" class="fixed inset-0 z-[100] bg-[#161617] flex flex-col items-center justify-center transition-opacity duration-700 ease-out">
         <div class="flex flex-col items-center space-y-6">
-            <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg" alt="TRAMsport Logo" class="h-16 w-auto animate-pulse pointer-events-none">
+            <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg" alt="TRAMsport Logo" class="h-16 w-auto animate-pulse pointer-events-none" onerror="this.src='https://placehold.co/180x60/161617/ffffff?text=TRAMsport'">
             <div class="relative w-20 h-20 flex items-center justify-center">
                 <div class="absolute inset-0 border-4 border-white/10 rounded-full"></div>
                 <div class="absolute inset-0 border-4 border-transparent border-t-blue-500 rounded-full animate-spin"></div>
@@ -83,7 +97,7 @@
     <header class="sticky top-0 z-50 bg-[#161617]/85 backdrop-blur-md text-[#f5f5f7] text-xs border-b border-white/5">
         <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
             <a href="https://wszystko-o-tramsporcie.vercel.app/index.html" class="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
-                <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg" alt="TRAMsport Logo" class="h-12 w-auto pointer-events-none">
+                <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg" alt="TRAMsport Logo" class="h-12 w-auto pointer-events-none" onerror="this.src='https://placehold.co/140x48/161617/ffffff?text=TRAMsport'">
             </a>
             
             <nav class="hidden md:flex items-center gap-6 text-[#f5f5f7]/80 text-[11px] font-normal tracking-wide">
@@ -125,9 +139,14 @@
         <section class="py-16 bg-white border-b border-slate-200/60 shadow-sm">
             <div class="max-w-6xl mx-auto px-6 text-center">
                 <h1 class="font-heading text-4xl sm:text-5xl font-bold text-[#1d1d1f] mt-2 mb-3 tracking-tight">Galeria Zdjęć Społeczności</h1>
-                <p class="text-sm text-[#515154] max-w-2xl mx-auto leading-relaxed mb-8">
+                <p class="text-sm text-[#515154] max-w-2xl mx-auto leading-relaxed mb-6">
                     Kliknij na dowolne zdjęcie, aby otworzyć je w pełnym rozmiarze.
                 </p>
+
+                <div class="max-w-md mx-auto mb-8 relative">
+                    <input type="text" id="searchInput" placeholder="Szukaj zdjęcia lub autora..." class="w-full bg-[#f5f5f7] border border-slate-300/80 rounded-2xl py-3 pl-12 pr-4 text-xs text-[#1d1d1f] placeholder:text-[#86868b] shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all">
+                    <svg class="w-4 h-4 text-[#86868b] absolute left-4 top-3.5 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                </div>
 
                 <div id="layoutSwitcherWrapper" class="relative inline-flex items-center bg-[#e5e5ea] p-1.5 rounded-2xl shadow-inner">
                     <div id="pillSlider" class="absolute top-1.5 bottom-1.5 left-1.5 w-[110px] bg-white rounded-xl shadow-sm z-0"></div>
@@ -139,7 +158,7 @@
                         2 Kolumny
                     </button>
                     <button onclick="setGalleryLayout('masonry', 2)" id="btn-masonry" class="relative z-10 w-[110px] py-2 text-xs font-heading font-semibold transition-colors duration-300 text-[#515154] hover:text-[#1d1d1f]">
-                        Duże Kafle
+                        1 Kolumna
                     </button>
                 </div>
             </div>
@@ -147,27 +166,12 @@
 
         <main class="py-14 flex-grow">
             <div class="max-w-6xl mx-auto px-6">
-                <div id="galleryContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 ease-in-out">
-                    
-                    <div class="bg-white rounded-[24px] overflow-hidden border border-slate-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_24px_48px_rgba(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-500 flex flex-col group card-data cursor-pointer"
-                       style="--img-url: url('data/content/ryba_zdjecie.jpg'); --title: 'Pociągi na stacji Zakopane'; --author: 'Rybulec';"
-                       onclick="openPhotoModal(getComputedStyle(this).getPropertyValue('--img-url').slice(5, -2) + '?w=1200&auto=format&fit=crop&q=80', getComputedStyle(this).getPropertyValue('--title').trim().slice(1, -1), getComputedStyle(this).getPropertyValue('--author').trim().slice(1, -1))">
-                        <div class="relative overflow-hidden aspect-[16/10] bg-slate-100">
-                            <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-700 ease-out" style="background-image: var(--img-url);"></div>
-                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300"></div>
-                            <div class="absolute top-3 right-3 bg-black/40 backdrop-blur-md text-white p-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
-                            </div>
-                        </div>
-                        <div class="p-5 flex flex-col justify-between flex-1 bg-white">
-                            <h3 class="text-[15px] font-heading font-semibold text-[#1d1d1f] tracking-tight after:content-[var(--title)]"></h3>
-                            <div class="flex items-center justify-between mt-4 pt-3 border-t border-slate-100 text-xs text-[#86868b]">
-                                <span>Autor:</span>
-                                <span class="font-heading font-medium text-[#1d1d1f] after:content-[var(--author)]"></span>
-                            </div>
-                        </div>
-                    </div>
+                <div id="galleryContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 ease-in-out"></div>
 
+                <div id="noResults" class="hidden text-center py-20">
+                    <svg class="w-16 h-16 mx-auto text-[#86868b] mb-4 opacity-50" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    <p class="text-base font-heading font-semibold text-[#1d1d1f]">Nie znaleziono pasujących zdjęć</p>
+                    <p class="text-xs text-[#86868b] mt-1">Spróbuj wpisać inną frazę wyszukiwania.</p>
                 </div>
 
                 <div class="mt-16 text-center">
@@ -193,33 +197,46 @@
         </div>
     </footer>
 
-    <div id="photoModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/60 backdrop-blur-md transition-opacity">
-        <div id="photoModalBox" class="relative max-w-4xl w-full rounded-[24px] overflow-hidden shadow-2xl border border-slate-300/40 bg-white opacity-0 transform transition-all duration-300 flex flex-col max-h-[92vh]">
+    <div id="photoModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/75 backdrop-blur-md transition-opacity">
+        <div id="photoModalBox" class="relative max-w-5xl w-full rounded-[24px] overflow-hidden shadow-2xl border border-slate-300/40 bg-white opacity-0 transform transition-all duration-300 flex flex-col max-h-[92vh]">
             
             <div class="py-3 px-6 flex items-center justify-between bg-[#161617] text-white">
                 <div class="flex items-center gap-3">
-                    <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg" alt="TRAMsport Logo" class="h-7 w-auto pointer-events-none">
+                    <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg" alt="TRAMsport Logo" class="h-7 w-auto pointer-events-none" onerror="this.src='https://placehold.co/100x30/161617/ffffff?text=Logo'">
                     <span class="text-xs font-heading font-medium tracking-wide text-white/90" id="modalPhotoTitle">Podgląd Zdjęcia</span>
                 </div>
-                <button onclick="closePhotoModal()" class="text-white/70 hover:text-white p-1 rounded-full hover:bg-white/10 transition-colors cursor-pointer">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-                </button>
+                
+                <div class="flex items-center gap-2">
+                    <div class="flex items-center bg-white/10 rounded-lg p-1 mr-2 text-xs gap-1">
+                        <button onclick="zoomModalImage(0.2)" class="px-2 py-1 hover:bg-white/20 rounded transition-colors text-white font-bold" title="Przybliż">+</button>
+                        <button onclick="resetModalZoom()" class="px-2 py-1 hover:bg-white/20 rounded transition-colors text-white/80" title="Resetuj">1:1</button>
+                        <button onclick="zoomModalImage(-0.2)" class="px-2 py-1 hover:bg-white/20 rounded transition-colors text-white font-bold" title="Oddal">-</button>
+                    </div>
+
+                    <button onclick="closePhotoModal()" class="text-white/70 hover:text-white p-1 rounded-full hover:bg-white/10 transition-colors cursor-pointer" title="Zamknij">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
             </div>
 
-            <div class="p-6 sm:p-10 flex-1 overflow-y-auto flex flex-col items-center justify-center bg-[#fbfbfd]">
-                <img id="modalFullImg" src="" alt="Powiększone zdjęcie" class="max-w-full max-h-[58vh] object-contain rounded-xl shadow-lg border border-slate-200/60 bg-white">
+            <div id="modalViewport" class="p-4 sm:p-8 flex-1 overflow-hidden flex items-center justify-center bg-[#111113] relative cursor-grab active:cursor-grabbing select-none" style="min-height: 55vh;">
+                <img id="modalFullImg" src="" alt="Powiększone zdjęcie" class="max-w-none object-contain rounded-lg shadow-2xl transition-transform duration-75 ease-out origin-center" style="transform: translate(0px, 0px) scale(1);" onerror="this.src='https://placehold.co/800x500/e2e8f0/64748b?text=Błąd+ładowania+obrazu'">
+                <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md text-white/80 text-[10px] px-3 py-1.5 rounded-full pointer-events-none">
+                    Przeciągnij myszką, aby przesunąć obraz. Użyj kółka myszki, aby przybliżyć.
+                </div>
             </div>
 
             <div class="py-4 px-6 bg-[#f5f5f7] border-t border-slate-200/85 flex flex-col sm:flex-row justify-between items-center text-[#1d1d1f] gap-2">
                 <span class="text-xs text-[#86868b] font-heading">Zdjęcie zostało zaimportowane z naszego serwera Discord.</span>
                 <div class="text-xs font-heading font-medium text-[#1d1d1f] flex items-center gap-1.5">
                     <span class="text-[#86868b]">Autor:</span>
-                    <span id="modalAuthor" class="font-semibold"></span>
+                    <span id="modalAuthor" class="font-semibold bg-slate-200/70 px-2.5 py-0.5 rounded-full"></span>
                 </div>
             </div>
         </div>
     </div>
 
+    <script src="zdjecia.js"></script>
     <script>
         document.addEventListener('contextmenu', function(e) {
             if (e.target.tagName === 'IMG') e.preventDefault();
@@ -227,6 +244,53 @@
 
         document.addEventListener('dragstart', function(e) {
             if (e.target.tagName === 'IMG') e.preventDefault();
+        });
+
+        function renderGallery(items) {
+            const container = document.getElementById('galleryContainer');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            if (!items || items.length === 0) {
+                return;
+            }
+
+            items.forEach((item) => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-[24px] overflow-hidden border border-slate-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_24px_48px_rgba(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-500 flex flex-col group card-data cursor-pointer';
+                card.setAttribute('data-title', item.tytul);
+                card.setAttribute('data-author', item.autor);
+                
+                const imageUrl = item.zdjecie;
+                const highResUrl = imageUrl.includes('?') ? imageUrl : imageUrl + '?w=1200&auto=format&fit=crop&q=80';
+                
+                card.onclick = () => openPhotoModal(highResUrl, item.tytul, item.autor);
+
+                card.innerHTML = `
+                    <div class="relative overflow-hidden aspect-[16/10] bg-slate-100">
+                        <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-700 ease-out" style="background-image: url('${imageUrl}');"></div>
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300"></div>
+                        <div class="absolute top-3 right-3 bg-black/40 backdrop-blur-md text-white p-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+                        </div>
+                    </div>
+                    <div class="p-5 flex flex-col justify-between flex-1 bg-white">
+                        <h3 class="text-[15px] font-heading font-semibold text-[#1d1d1f] tracking-tight">${item.tytul}</h3>
+                        <div class="flex items-center justify-between mt-4 pt-3 border-t border-slate-100 text-xs text-[#86868b]">
+                            <span>Autor:</span>
+                            <span class="font-heading font-medium text-[#1d1d1f] bg-slate-100 px-2.5 py-1 rounded-full">${item.autor}</span>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if (typeof zdjeciaBaza !== 'undefined') {
+                renderGallery(zdjeciaBaza);
+            }
         });
 
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -249,7 +313,6 @@
 
         if (mobileMenuBtn && mobileMenu) {
             mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-
             mobileMenu.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     mobileMenu.style.maxHeight = '0px';
@@ -267,24 +330,34 @@
             }
         });
 
-        document.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href && !href.startsWith('#') && !href.startsWith('http') && href !== 'TU_WKLEJ_LINK_DO_KONTAKTU') {
-                    e.preventDefault();
-                    const loader = document.getElementById('pageLoader');
-                    const loaderText = document.getElementById('loaderText');
-                    if (loaderText) loaderText.innerText = 'Trwa powrót do strony głównej...';
-                    if (loader) {
-                        loader.style.display = 'flex';
-                        loader.style.opacity = '1';
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.addEventListener('input', function(e) {
+                const term = e.target.value.toLowerCase().trim();
+                const cards = document.querySelectorAll('.card-data');
+                const noResults = document.getElementById('noResults');
+                let visibleCount = 0;
+
+                cards.forEach(card => {
+                    const title = card.getAttribute('data-title').toLowerCase();
+                    const author = card.getAttribute('data-author').toLowerCase();
+                    if (title.includes(term) || author.includes(term)) {
+                        card.style.display = 'flex';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
                     }
-                    setTimeout(() => {
-                        window.location.href = href;
-                    }, 100);
+                });
+
+                if (noResults) {
+                    if (visibleCount === 0) {
+                        noResults.classList.remove('hidden');
+                    } else {
+                        noResults.classList.add('hidden');
+                    }
                 }
             });
-        });
+        }
 
         function setGalleryLayout(layout, index) {
             const container = document.getElementById('galleryContainer');
@@ -294,7 +367,6 @@
             const btnMasonry = document.getElementById('btn-masonry');
 
             pill.style.transform = `translateX(${index * 110}px)`;
-
             pill.classList.remove('animate-liquid');
             void pill.offsetWidth;
             pill.classList.add('animate-liquid');
@@ -323,10 +395,111 @@
             }, 250);
         }
 
+        let modalScale = 1;
+        let modalTranslateX = 0;
+        let modalTranslateY = 0;
+        let isDraggingModal = false;
+        let startX = 0;
+        let startY = 0;
+
+        const modalImg = document.getElementById('modalFullImg');
+        const modalViewport = document.getElementById('modalViewport');
+
+        function updateModalImageTransform() {
+            if (modalImg) {
+                modalImg.style.transform = `translate(${modalTranslateX}px, ${modalTranslateY}px) scale(${modalScale})`;
+            }
+        }
+
+        function resetModalZoom() {
+            modalScale = 1;
+            modalTranslateX = 0;
+            modalTranslateY = 0;
+            updateModalImageTransform();
+        }
+
+        function zoomModalImage(amount) {
+            modalScale = Math.max(1, Math.min(5, modalScale + amount));
+            if (modalScale === 1) {
+                modalTranslateX = 0;
+                modalTranslateY = 0;
+            }
+            updateModalImageTransform();
+        }
+
+        if (modalViewport) {
+            modalViewport.addEventListener('mousedown', (e) => {
+                if (modalScale > 1) {
+                    isDraggingModal = true;
+                    startX = e.clientX - modalTranslateX;
+                    startY = e.clientY - modalTranslateY;
+                }
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (!isDraggingModal) return;
+                modalTranslateX = e.clientX - startX;
+                modalTranslateY = e.clientY - startY;
+                updateModalImageTransform();
+            });
+
+            window.addEventListener('mouseup', () => {
+                isDraggingModal = false;
+            });
+
+            modalViewport.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const zoomFactor = e.deltaY < 0 ? 0.25 : -0.25;
+                modalScale = Math.max(1, Math.min(5, modalScale + zoomFactor));
+                if (modalScale === 1) {
+                    modalTranslateX = 0;
+                    modalTranslateY = 0;
+                }
+                updateModalImageTransform();
+            }, { passive: false });
+
+            let touchStartDist = 0;
+            modalViewport.addEventListener('touchstart', (e) => {
+                if (e.touches.length === 1 && modalScale > 1) {
+                    isDraggingModal = true;
+                    startX = e.touches[0].clientX - modalTranslateX;
+                    startY = e.touches[0].clientY - modalTranslateY;
+                } else if (e.touches.length === 2) {
+                    touchStartDist = Math.hypot(
+                        e.touches[0].clientX - e.touches[1].clientX,
+                        e.touches[0].clientY - e.touches[1].clientY
+                    );
+                }
+            });
+
+            modalViewport.addEventListener('touchmove', (e) => {
+                if (isDraggingModal && e.touches.length === 1) {
+                    modalTranslateX = e.touches[0].clientX - startX;
+                    modalTranslateY = e.touches[0].clientY - startY;
+                    updateModalImageTransform();
+                } else if (e.touches.length === 2) {
+                    const dist = Math.hypot(
+                        e.touches[0].clientX - e.touches[1].clientX,
+                        e.touches[0].clientY - e.touches[1].clientY
+                    );
+                    const factor = (dist - touchStartDist) * 0.01;
+                    modalScale = Math.max(1, Math.min(5, modalScale + factor));
+                    touchStartDist = dist;
+                    updateModalImageTransform();
+                }
+            });
+
+            modalViewport.addEventListener('touchend', () => {
+                isDraggingModal = false;
+            });
+        }
+
         function openPhotoModal(imgUrl, title, author) {
             document.getElementById('modalPhotoTitle').innerText = title;
             document.getElementById('modalFullImg').src = imgUrl;
             document.getElementById('modalAuthor').innerText = author;
+
+            resetModalZoom();
 
             const modal = document.getElementById('photoModal');
             const box = document.getElementById('photoModalBox');
@@ -348,7 +521,6 @@
             const box = document.getElementById('photoModalBox');
 
             box.classList.remove('animate-mac-in');
-            
             box.style.borderRadius = '12px 36px 12px 12px';
             box.style.background = 'linear-gradient(135deg, #0066cc 0%, #1d1d1f 100%)';
             box.classList.add('animate-tram-out');
