@@ -23,9 +23,8 @@ module.exports = async (req, res) => {
     return res.status(400).send('Błąd: Brak kodu autoryzacji z Discorda.');
   }
 
-  const protocol = req.headers['x-forwarded-proto'] || 'https';
-  const REDIRECT_URI = process.env.REDIRECT_URI || `${protocol}://${req.headers.host}/api/callback`;
-  const FRONTEND_SUCCESS_URL = `${protocol}://${req.headers.host}/?success=true`;
+  const REDIRECT_URI = 'https://wszystko-o-tramsporcie.vercel.app/api/callback';
+  const FRONTEND_SUCCESS_URL = 'https://wszystko-o-tramsporcie.vercel.app/weryfikacja/?success=true';
 
   const client = new Client({ 
       intents: [
@@ -93,6 +92,6 @@ module.exports = async (req, res) => {
   } catch (error) {
       client.destroy();
       console.error('[BŁĄD WERYFIKACJI]:', error.response?.data || error.message);
-      res.status(500).send('Wystąpił wewnętrzny błąd podczas procesu weryfikacji. Upewnij się, że jesteś na serwerze Discord i zezwoliłeś na odczyt e-maila.');
+      res.status(500).send('Wystąpił wewnętrzny błąd podczas procesu weryfikacji. Upewnij się, że jesteś na serwerze Discord.');
   }
 };
