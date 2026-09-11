@@ -9,7 +9,7 @@ const artykulyBaza = [
         autorAvatar: "content/akt/O5K4R.png",
         baner: "content/akt/km_s.png",
         trescPelna: `
-            <p>Protest maszynistów sparaliżował polską koleje. Pociągi zwalniają do 20 km/h</p>
+            <p>Protest maszynistów sparaliżował polską kolej. Pociągi zwalniają do 20 km/h</p>
             
             <p>Ogólnopolski protest maszynistów, zorganizowany przez Związek Zawodowy Maszynistów Kolejowych w Polsce, wywołał poważne utrudnienia i opóźnienia w ruchu pociągów na terenie całego kraju. Akcja protestacyjna jest bezpośrednim pokłosiem tragicznej katastrofy kolejowej w Sokolnikach Suchych, gdzie pociąg pasażerski zderzył się z samochodem ciężarowym, co doprowadziło do wykolejenia składu, śmierci pasażerki oraz obrażeń u innych osób, w tym maszynisty.</p>
 
@@ -29,6 +29,43 @@ const artykulyBaza = [
 
             <p class="mt-4">Związkowcy podkreślają, że akcja jest głosem sprzeciwu wobec rosnącej liczby niebezpiecznych zdarzeń na przejazdach oraz braku skutecznych mechanizmów chroniących życie pracowników i podróżnych. Mimo że pierwotnie protest miał potrwać przez całą dobę, związek zdecydował o jego skróceniu do południa, licząc na przejście od zapowiedzi do realnych zmian legislacyjnych i infrastrukturalnych. Sytuacja na torach stopniowo wraca do normy, jednak stabilizacja rozkładów jazdy może zająć wiele godzin.</p>
         <p class="mt-4">Informacje o aktualnych utrudnieniach i opóźnieniach można znaleźć na <a href="https://portalpasazera.pl/Opoznienia" class="text-blue-600 font-semibold hover:underline">portalu pasażera PKP PLK S.A.</a></p>
+        `
+    },
+    {
+        id: 2,
+        tytul: "Uwaga kierowcy i pasażerowie: Weekendowe zamknięcie południowej jezdni ul. Górczewskiej. Zmiany w kursowaniu autobusów",
+        kategoria: "Utrudnienia",
+        data: "11 września 2026",
+        czasCzytania: "3 min czytania",
+        autor: "O5K4R Solutions",
+        autorAvatar: "content/akt/O5K4R.png",
+        baner: "content/akt/Górczewska_zmiany.png",
+        trescPelna: `
+            <p>W najbliższy weekend mieszkańcy Warszawy, a w szczególności Bemowa, muszą przygotować się na utrudnienia w ruchu drogowym. W związku z zamknięciem południowej jezdni ul. Górczewskiej, od piątku, 11 września od godziny 22:00 do niedzieli, 13 września do godziny 23:55, drastycznie zmienią się trasy kilkunastu linii autobusowych.</p>
+            
+            <p>Prace i związane z nimi utrudnienia wymusiły wprowadzenie tymczasowej organizacji ruchu oraz zmian w kursowaniu komunikacji miejskiej. Zmiany obejmą linie dzienne oraz nocne.</p>
+
+            <div class="my-8 rounded-2xl overflow-hidden shadow-md border border-slate-200">
+                <img src="content/akt/gorczewska.png" alt="Zmiany na górczewskiej" class="w-full object-cover">
+                <p class="p-3 bg-slate-50 text-xs text-center text-[#86868b]">Mapia zmian - Źródło zdjęcia: <b>https://wtp.waw.pl</b></p>
+            </div>
+
+            <h3 class="font-heading text-xl font-bold text-[#1d1d1f] mt-6 mb-3">Jak pojadą autobusy?</h3>
+            <p>Zmiany tras dotkną następujących linii:</p>
+         <ul class="list-disc pl-6 space-y-2">
+                <li><b>105, 122, 189:</b> Zostaną skierowane na trasę zmienioną do ul. Lazurowej, skąd przez zawrotkę na Rondzie Radia Wolna Europa pojadą z powrotem do tymczasowego krańca Os. Górczewska 51.</li>
+                <li><b>177, 743, N42:</b> Zakończą swoje trasy na tymczasowym krańcu Klemensiewicza 02.</li>
+                <li><b>149, 714, 719, 729 (tylko w kierunku krańca Metro Bemowo):</b> Pojedzie objazdem przez Rondo Radia Wolna Europa, ul. Lazurową, Człuchowską i Powstańców Śląskich do przystanku Czumy 02. W kierunku przeciwnym trasa pozostaje bez zmian.</li>
+                <li><b>167 (tylko w kierunku siekierki-Sanktuarium):</b> Skierowane zostanie ulicami Radiową, Powstańców Śląskich i Górczewską.</li>
+                <li><b>190:</b> Będzie kursować wyłącznie na trasie podstawowej Ch Marki – Znana (zawieszone zostają kursy wydłużone do os. Górczewska).</li>
+            </ul>
+
+            <h3 class="font-heading text-xl font-bold text-[#1d1d1f] mt-6 mb-3">Zmiany przystankowe i rozkładowe</h3>
+         <ul class="list-disc pl-6 space-y-2">
+                <li><b>Zawieszone przystanki:</b> Nie będzie możliwe korzystanie z przystanków Os. Górczewska 03 oraz 53.</li>
+                <li><b>Przystanek zastępczy:</b> Uruchomiony zostaje przystanek Os. Górczewska 51, zlokalizowany na ul. Lazurowej (tu za przystankiem Os. Górczewska 01), który posłuży jako krańcowy dla linii 105, 122 i 189.</li>
+            </ul>
+            <p class="mt-4">Pasażerowie powinni zwrócić uwagę na zaktualizowane rozkłady jazdy obowiązujące w dniach 12–13 września oraz w nocy z 11/12 i 12/13 września. Organizator transportu przeprasza za wszelkie niedogodności i zachęca do wcześniejszego sprawdzania tras w aplikacjach mobilnych oraz na stronie <a href="https://www.wtp.waw.pl" class="text-blue-600 font-semibold hover:underline">WTP</a>.</p>
         `
     }
 ];
