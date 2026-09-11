@@ -28,6 +28,7 @@ const artykulyBaza = [
             <p>Ministerstwo Infrastruktury uznało formę protestu za zbyt radykalną, wskazując na ogromne uderzenie w pasażerów. Jednocześnie szef resortu, Dariusz Klimczak, zadeklarował pilne podjęcie rozmów ze środowiskiem kolejarskim oraz rozpoczęcie prac nad ustawą regulującą czas pracy maszynistów.</p>
 
             <p class="mt-4">Związkowcy podkreślają, że akcja jest głosem sprzeciwu wobec rosnącej liczby niebezpiecznych zdarzeń na przejazdach oraz braku skutecznych mechanizmów chroniących życie pracowników i podróżnych. Mimo że pierwotnie protest miał potrwać przez całą dobę, związek zdecydował o jego skróceniu do południa, licząc na przejście od zapowiedzi do realnych zmian legislacyjnych i infrastrukturalnych. Sytuacja na torach stopniowo wraca do normy, jednak stabilizacja rozkładów jazdy może zająć wiele godzin.</p>
+        <p class="mt-4">Informacje o aktualnych utrudnieniach i opóźnieniach można znaleźć na <a href="portalu pasażera PKP PLK S.A." class="text-blue-600 font-semibold hover:underline">https://portalpasazera.pl/Opoznienia</a></p>
         `
     }
 ];
