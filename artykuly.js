@@ -155,7 +155,7 @@ Nowa inwestycja ma na celu usprawnienie ruchu pasażerskiego w tym rejonie oraz 
 
             <h3 class="font-heading text-xl font-bold text-[#1d1d1f] mt-6 mb-3">Udogodnienia i zmiany przystankowe</h3>
             <p>W związku z objazdem pasażerowie muszą liczyć się z korektami w obsłudze przystanków. Warto zwrócić uwagę na kluczową zmianę: autobusy linii 97A oraz 97B na trasie objazdowej zatrzymają się na przystanku <b>Bandurskiego – Atlas Arena (nr 1772)</b>.</p>
-             <p class="mt-4">Więcej szczegółów na temat bieżących utrudnień oraz pełne rozkłady jazdy można sprawdzić bezpośrednio na stronie internetowej <a href="https://www.mpk.lodz.pl" class="text-blue-600 font-semibold hover:underline">MPK-Łódź</a>oraz pod całodobowym numerem telefonu informacyjnego ZDiT / MPK. Pasażerowie planujący podróż w tym rejonie powinni wziąć pod uwagę ewentualne, niewielkie korekty w czasie przejazdu.</p>
+             <p class="mt-4">Więcej szczegółów na temat bieżących utrudnień oraz pełne rozkłady jazdy można sprawdzić bezpośrednio na stronie internetowej <a href="https://www.mpk.lodz.pl" class="text-blue-600 font-semibold hover:underline">MPK-Łódź</a> oraz pod całodobowym numerem telefonu informacyjnego ZDiT / MPK. Pasażerowie planujący podróż w tym rejonie powinni wziąć pod uwagę ewentualne, niewielkie korekty w czasie przejazdu.</p>
             `
     }
 ];
