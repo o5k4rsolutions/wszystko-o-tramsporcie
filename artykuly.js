@@ -39,7 +39,7 @@ const artykulyBaza = [
         czasCzytania: "3 min czytania",
         autor: "O5K4R Solutions",
         autorAvatar: "content/akt/O5K4R.png",
-        baner: "content/akt/Górczewska_zmiany.png",
+        baner: "content/akt/Gorczewska_zmiany.png",
         trescPelna: `
             <p>W najbliższy weekend mieszkańcy Warszawy, a w szczególności Bemowa, muszą przygotować się na utrudnienia w ruchu drogowym. W związku z zamknięciem południowej jezdni ul. Górczewskiej, od piątku, 11 września od godziny 22:00 do niedzieli, 13 września do godziny 23:55, drastycznie zmienią się trasy kilkunastu linii autobusowych.</p>
             
