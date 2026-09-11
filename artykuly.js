@@ -5,8 +5,8 @@ const artykulyBaza = [
         kategoria: "Inwestycje",
         data: "10 września 2026",
         czasCzytania: "4 min czytania",
-        autor: "Jan Kowalski",
-        autorAvatar: "https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg",
+        autor: "WarszawskiFanKolei",
+        autorAvatar: "https://wszystko-o-tramsporcie.vercel.app/content/akt/ab4e10a9f8b2a596fa145d23624fe2e7.png",
         baner: "https://placehold.co/1200x675/0066cc/ffffff?text=Nowe+Tramwaje+Niskopodłogowe",
         krotkiOpis: "Miasto podpisało kontrakt na dostawę kolejnej partii w pełni niskopodłogowych tramwajów, które zapewnią najwyższy komfort podróżowania pasażerom oraz usprawnią ruch na kluczowych arteriach.",
         trescPelna: `
