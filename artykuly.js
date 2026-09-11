@@ -98,7 +98,7 @@ Nowa inwestycja ma na celu usprawnienie ruchu pasażerskiego w tym rejonie oraz 
     {
         id: 4,
         tytul: "OSTROŁĘKA: Kolej wraca na trasę z Ostrołęki do Warszawy. Znamy szczegóły i harmonogram modernizacji!",
-        kategoria: "Aktualności",
+        kategoria: "Utrudnienia",
         data: "11 września 2026",
         czasCzytania: "2 min czytania",
         autor: "O5K4R Solutions",
@@ -131,7 +131,7 @@ Nowa inwestycja ma na celu usprawnienie ruchu pasażerskiego w tym rejonie oraz 
     {
         id: 5,
         tytul: "ŁÓDŹ: Zmiany w trasach łódzkich autobusów. MPK wprowadza objazdy dla linii 97A i 97B",
-        kategoria: "Aktualności",
+        kategoria: "Utrudnienia",
         data: "11 września 2026",
         czasCzytania: "2 min czytania",
         autor: "O5K4R Solutions",
@@ -156,6 +156,29 @@ Nowa inwestycja ma na celu usprawnienie ruchu pasażerskiego w tym rejonie oraz 
             <h3 class="font-heading text-xl font-bold text-[#1d1d1f] mt-6 mb-3">Udogodnienia i zmiany przystankowe</h3>
             <p>W związku z objazdem pasażerowie muszą liczyć się z korektami w obsłudze przystanków. Warto zwrócić uwagę na kluczową zmianę: autobusy linii 97A oraz 97B na trasie objazdowej zatrzymają się na przystanku <b>Bandurskiego – Atlas Arena (nr 1772)</b>.</p>
              <p class="mt-4">Więcej szczegółów na temat bieżących utrudnień oraz pełne rozkłady jazdy można sprawdzić bezpośrednio na stronie internetowej <a href="https://www.mpk.lodz.pl" class="text-blue-600 font-semibold hover:underline">MPK-Łódź</a> oraz pod całodobowym numerem telefonu informacyjnego ZDiT / MPK. Pasażerowie planujący podróż w tym rejonie powinni wziąć pod uwagę ewentualne, niewielkie korekty w czasie przejazdu.</p>
+            `
+    },
+        {
+        id: 6,
+        tytul: "KRAKÓW: Zmiany w komunikacji miejskiej w Krakowie: Trasa linii 143 skrócona z powodu prac na ul. Zarzyckiego",
+        kategoria: "Utrudnienia",
+        data: "11 września 2026",
+        czasCzytania: "1 min czytania",
+        autor: "O5K4R Solutions",
+        autorAvatar: "content/akt/O5K4R.png",
+        baner: "content/akt/143-krako.png",
+        trescPelna: `
+            <p>Zarząd Transportu Publicznego w Krakowie (ZTP) poinformował o nadchodzących utrudnieniach w funkcjonowaniu Komunikacji Miejskiej w Krakowie (KMK). W związku z realizacją kolejnego etapu robót drogowych na ul. Zarzyckiego, od poniedziałku, 14 września 2026 roku, pasażerów korzystających z linii autobusowej nr 143 czekają zmiany w trasie przejazdu.</p>
+            
+            <h3 class="font-heading text-xl font-bold text-[#1d1d1f] mt-6 mb-3">Najważniejsze zmiany dla pasażerów:</h3>
+            <ul class="list-disc pl-6 space-y-2">
+                <li><b>Trasa czasowo zmieniona (skrócona):</b> Autobusy linii 143 będą kursować na skróconej trasie: Podgórze SKA – Jasieńskiego.</li>
+                <li><b>Wyłączony przystanek:</b> Przystanek Kokotów SKA 02 pozostanie bez obsługi.</li>
+                <li><b>Wyłączony przystanek:</b> Przystanek Kokotów SKA 02 pozostanie bez obsługi.</li>
+                <li><b>Nowe rozkłady jazdy:</b> Wprowadzone zostaną zmodyfikowane rozkłady jazdy dla tej linii.</li>
+            </ul>
+
+           <p class="mt-4">Osoby podróżujące w tym rejonie powinny zapoznać się z nowym rozkładem jazdy przed wyruszeniem w drogę oraz uwzględnić czasowe zmiany w organizacji ruchu. Organizator transportu przeprasza za wszelkie niedogodności związane z prowadzonymi pracami budowlanymi.</p>
             `
     }
 ];
