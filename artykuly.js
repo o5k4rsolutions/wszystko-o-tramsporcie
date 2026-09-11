@@ -174,11 +174,35 @@ Nowa inwestycja ma na celu usprawnienie ruchu pasażerskiego w tym rejonie oraz 
             <ul class="list-disc pl-6 space-y-2">
                 <li><b>Trasa czasowo zmieniona (skrócona):</b> Autobusy linii 143 będą kursować na skróconej trasie: Podgórze SKA – Jasieńskiego.</li>
                 <li><b>Wyłączony przystanek:</b> Przystanek Kokotów SKA 02 pozostanie bez obsługi.</li>
-                <li><b>Wyłączony przystanek:</b> Przystanek Kokotów SKA 02 pozostanie bez obsługi.</li>
                 <li><b>Nowe rozkłady jazdy:</b> Wprowadzone zostaną zmodyfikowane rozkłady jazdy dla tej linii.</li>
             </ul>
 
            <p class="mt-4">Osoby podróżujące w tym rejonie powinny zapoznać się z nowym rozkładem jazdy przed wyruszeniem w drogę oraz uwzględnić czasowe zmiany w organizacji ruchu. Organizator transportu przeprasza za wszelkie niedogodności związane z prowadzonymi pracami budowlanymi.</p>
+            `
+    },
+            {
+        id: 7,
+        tytul: "WARSZAWA: Utrudnienia w kursowaniu autobusów linii 518 w Warszawie",
+        kategoria: "Utrudnienia",
+        data: "11 września 2026",
+        czasCzytania: "1 min czytania",
+        autor: "O5K4R Solutions",
+        autorAvatar: "content/akt/O5K4R.png",
+        baner: "content/akt/518-utrudnienia.png",
+        trescPelna: `
+            <p>W czwartek, 11 września 2026 roku, pasażerowie korzystający z usług Warszawskiego Transportu Publicznego muszą liczyć się z nagłymi utrudnieniami. Powodem problemów w kursowaniu komunikacji miejskiej jest zgromadzenie publiczne, które odbywa się przed gmachem przy ul. Bielańskiej 12.</p>
+
+<p>Sytuacja ta zmusiła służby ruchu do wprowadzenia zmian w trasie popularnej linii autobusowej <b>518</b>. Zmiany dotyczą kursów w obu kierunkach:</p>
+
+            <ul class="list-disc pl-6 space-y-2">
+                <li><b>W kierunku krańca Bielańska:</b> Autobusy od skrzyżowania Pl. Bankowy / Al. Solidarności / Andersa zostały skierowane na trasę objazdową prowadzącą prosto ulicą Andersa do przystanku <i>METRO RATUSZ ARSENAŁ 02</i>.</li>
+                <li><b>W kierunku Nowodworów:</b> Trasa objazdowa wiedzie od przystanku <i>METRO RATUSZ ARSENAŁ 02</i> ulicami: Andersa – Nowolipki – Zamenhofa – Anielewicza – Andersa – Pl. Bankowy – Senatorska – Miodowa, skąd autobusy wracają na swoją stałą trasę.</li>
+            </ul>
+
+<h3 class="font-heading text-xl font-bold text-[#1d1d1f] mt-6 mb-3">Zasady zatrzymywania się na objazdach:</h3>
+<p>ZTM informuje, że na wyznaczonych trasach objazdowych obowiązują przystanki: pierwsze napotkane jako stałe, natomiast pozostałe funkcjonują jako warunkowe <b>(na żądanie)</b>.</p>
+
+           <p class="mt-4">Organizator transportu przeprasza pasażerów za wszelkie niedogodności i zaleca wcześniejsze sprawdzanie aktualnych połączeń oraz planowanie podróży z zapasem czasu.</p>
             `
     }
 ];
