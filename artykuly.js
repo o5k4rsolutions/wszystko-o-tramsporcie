@@ -116,7 +116,7 @@ Nowa inwestycja ma na celu usprawnienie ruchu pasażerskiego w tym rejonie oraz 
 
  <div class="my-8 rounded-2xl overflow-hidden shadow-md border border-slate-200">
                 <img src="content/akt/foto.jpg" alt="Stacja Ostrołęka" class="w-full object-cover">
-                <p class="p-3 bg-slate-50 text-xs text-center text-[#86868b]">Wizualizacja stacji Ostrołęka w wojewódźtwie Mazowieckim</b></p>
+                <p class="p-3 bg-slate-50 text-xs text-center text-[#86868b]">Wizualizacja stacji Ostrołęka w województwie Mazowieckim</b></p>
             </div>
 
             <h3 class="font-heading text-xl font-bold text-[#1d1d1f] mt-6 mb-3">Rewolucja w czasie przejazdu – Warszawa w zasięgu 80 minut</h3>
@@ -127,5 +127,35 @@ Nowa inwestycja ma na celu usprawnienie ruchu pasażerskiego w tym rejonie oraz 
             <p>Modernizacja linii kolejowej niesie za sobą szerszą ofertę przewozową. Oprócz tradycyjnych połączeń regionalnych, na trasie pojawić się mają także składy dalekobieżne (m.in. planowane relacje obsługiwane przez PKP Intercity w ujęciu Warszawa–Ostrołęka–Łomża). Dla samej Ostrołęki oznacza to wzmocnienie jej roli jako istotnego węzła kolejowego w tej części województwa mazowieckiego.</p>
             <p>Choć na ostateczny efekt i moment, w którym pociągi znowu zabiorą pasażerów w kierunku Warszawy, trzeba będzie poczekać do połowy 2027 roku, tempo prowadzonych prac budowlanych daje solidne podstawy do optymizmu. Mieszkańcy regionu z niecierpliwością odliczają miesiące do chwili, gdy kolej na dobre powróci na tę strategiczną trasę.</p>
         `
+    },
+    {
+        id: 5,
+        tytul: "ŁÓDŹ: Zmiany w trasach łódzkich autobusów. MPK wprowadza objazdy dla linii 97A i 97B",
+        kategoria: "Aktualności",
+        data: "11 września 2026",
+        czasCzytania: "2 min czytania",
+        autor: "O5K4R Solutions",
+        autorAvatar: "content/akt/O5K4R.png",
+        baner: "content/akt/csm_mpk-lodz-linia-67-do-orientarium__1__422bf3aade.jpg.webp",
+        trescPelna: `
+            <p>Miejskie Przedsiębiorstwo Komunikacyjne w Łodzi opublikowało komunikat dotyczący tymczasowej zmiany trasy autobusów obsługujących linie 97A oraz 97B. Korekta trasy wiąże się z koniecznością ominięcia wyznaczonego fragmentu drogi i dotyczy konkretnego sposobu przejazdu w rejonie alei Bandurskiego oraz ulicy Maratońskiej.</p>
+            
+            <h3 class="font-heading text-xl font-bold text-[#1d1d1f] mt-6 mb-3">Jak pojadą autobusy?</h3>
+            <p>Zgodnie z przekazanymi informacjami, autobusy linii 97A i 97B (poruszające się w określonym kierunku) dojadą do skrzyżowania al. Bandurskiego z ul. Maratońską bez zmian, jednak dalsza część ich trasy będzie wyglądać inaczej niż na co dzień:</p>
+            <ul class="list-disc pl-6 space-y-2">
+                <li>Pojazdy pojadą aleją Bandurskiego, gdzie zawrócą na rondzie Maleszewskiej.</li>
+                <li>Następnie skierują się w południowy wjazd do ulicy Maratońskiej.</li>
+                <li>Stamtąd wrócą na swoją stałą trasę ulicą Maratońską.</li>
+            </ul>
+
+ <div class="my-8 rounded-2xl overflow-hidden shadow-md border border-slate-200">
+                <img src="content/akt/f3af13c3-00a4-441b-9036-3e3616a4b2f0.webp" alt="Autobus Solaris ŁÓDŹ" class="w-full object-cover">
+                <p class="p-3 bg-slate-50 text-xs text-center text-[#86868b]">Autobus solaris - MPK Łódź</b></p>
+            </div>
+
+            <h3 class="font-heading text-xl font-bold text-[#1d1d1f] mt-6 mb-3">Udogodnienia i zmiany przystankowe</h3>
+            <p>W związku z objazdem pasażerowie muszą liczyć się z korektami w obsłudze przystanków. Warto zwrócić uwagę na kluczową zmianę: autobusy linii 97A oraz 97B na trasie objazdowej zatrzymają się na przystanku <b>Bandurskiego – Atlas Arena (nr 1772)</b>.</p>
+             <p class="mt-4">Więcej szczegółów na temat bieżących utrudnień oraz pełne rozkłady jazdy można sprawdzić bezpośrednio na stronie internetowej <a href="https://www.mpk.lodz.pl" class="text-blue-600 font-semibold hover:underline">MPK-Łódź</a>oraz pod całodobowym numerem telefonu informacyjnego ZDiT / MPK. Pasażerowie planujący podróż w tym rejonie powinni wziąć pod uwagę ewentualne, niewielkie korekty w czasie przejazdu.</p>
+            `
     }
 ];
