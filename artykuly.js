@@ -8,7 +8,6 @@ const artykulyBaza = [
         autor: "WarszawskiFanKolei",
         autorAvatar: "https://wszystko-o-tramsporcie.vercel.app/content/akt/ab4e10a9f8b2a596fa145d23624fe2e7.png",
         baner: "https://placehold.co/1200x675/0066cc/ffffff?text=Nowe+Tramwaje+Niskopodłogowe",
-        krotkiOpis: "Miasto podpisało kontrakt na dostawę kolejnej partii w pełni niskopodłogowych tramwajów, które zapewnią najwyższy komfort podróżowania pasażerom oraz usprawnią ruch na kluczowych arteriach.",
         trescPelna: `
             <p>Rozwój zrównoważonego transportu publicznego w aglomeracjach miejskich wchodzi w kolejny fascynujący etap. Władze miejskie oficjalnie sfinalizowały umowę z czołowym europejskim producentem taboru szynowego na dostarczenie nowoczesnych, w pełni niskopodłogowych pojazdów szynowych.</p>
             
@@ -40,7 +39,6 @@ const artykulyBaza = [
         autor: "Anna Nowak",
         autorAvatar: "https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg",
         baner: "https://placehold.co/1200x675/333333/ffffff?text=Modernizacja+Torowisk",
-        krotkiOpis: "Rusza kolejny etap kompleksowej modernizacji węzłów rozjazdowych oraz zielonych torowisk. Sprawdź, które linie zmienią swoje trasy w najbliższych tygodniach.",
         trescPelna: `
             <p>Prace modernizacyjne w miejskiej infrastrukturze torowej wkraczają w kluczową fazę. Głównym celem prowadzonych robót jest zwiększenie przepustowości oraz drastyczne skrócenie czasu przejazdu na głównych odcinkach łączących sypialnie miejskie z centrami biznesowymi.</p>
             
@@ -64,7 +62,6 @@ const artykulyBaza = [
         autor: "Piotr Zieliński",
         autorAvatar: "https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg",
         baner: "https://placehold.co/1200x675/004080/ffffff?text=Zabytkowe+Tramwaje",
-        krotkiOpis: "Już w najbliższy weekend ulicami miasta przejedzie parada unikalnych wagonów z początku XX wieku. To nie lada gratka dla miłośników historii i techniki komunikacyjnej.",
         trescPelna: `
             <p>Miłośnicy historycznej komunikacji miejskiej mają powód do świętowania. W najbliższą niedzielę odbędzie się wielka parada zabytkowych tramwajów, w której wezmą udział starannie odrestaurowane pojazdy z różnych epok.</p>
 
