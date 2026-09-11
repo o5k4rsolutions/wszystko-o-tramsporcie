@@ -36,7 +36,7 @@ const artykulyBaza = [
         tytul: "Uwaga kierowcy i pasażerowie: Weekendowe zamknięcie południowej jezdni ul. Górczewskiej. Zmiany w kursowaniu autobusów",
         kategoria: "Utrudnienia",
         data: "11 września 2026",
-        czasCzytania: "3 min czytania",
+        czasCzytania: "5 min czytania",
         autor: "O5K4R Solutions",
         autorAvatar: "content/akt/O5K4R.png",
         baner: "content/akt/Gorczewska_zmiany.png",
