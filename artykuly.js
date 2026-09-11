@@ -15,7 +15,7 @@ const artykulyBaza = [
 
             <div class="my-8 rounded-2xl overflow-hidden shadow-md border border-slate-200">
                 <img src="content/akt/thumbnails.webp" alt="Katastrofa kolejowa - Sokolniki Suche" class="w-full object-cover">
-                <p class="p-3 bg-slate-50 text-xs text-center text-[#86868b]">Źródło zdjęcia: <b>https://polskieradio24.pl</b></p>
+                <p class="p-3 bg-slate-50 text-xs text-center text-[#86868b]">Źródło zdjęcia: <b>https://www.polskieradio24.pl</b></p>
             </div>
 
             <h3 class="font-heading text-xl font-bold text-[#1d1d1f] mt-6 mb-3">Przebieg protestu:</h3>
@@ -47,7 +47,7 @@ const artykulyBaza = [
 
             <div class="my-8 rounded-2xl overflow-hidden shadow-md border border-slate-200">
                 <img src="content/akt/gorczewska.png" alt="Zmiany na górczewskiej" class="w-full object-cover">
-                <p class="p-3 bg-slate-50 text-xs text-center text-[#86868b]">Mapia zmian - Źródło zdjęcia: <b>https://wtp.waw.pl</b></p>
+                <p class="p-3 bg-slate-50 text-xs text-center text-[#86868b]">Mapia zmian - Źródło zdjęcia: <b>https://www.wtp.waw.pl</b></p>
             </div>
 
             <h3 class="font-heading text-xl font-bold text-[#1d1d1f] mt-6 mb-3">Jak pojadą autobusy?</h3>
@@ -93,6 +93,39 @@ const artykulyBaza = [
             </ul>
             <p class="mt-4">Jednocześnie organizator transportu zwrócił uwagę na korektę roli dotychczasowego przystanku. Miejsce oznaczone dotychczas jako <b>Os. Dębina 02</b> od momentu wprowadzenia zmian stanie się w pełni przystankiem przelotowym.
 Nowa inwestycja ma na celu usprawnienie ruchu pasażerskiego w tym rejonie oraz lepsze dopasowanie układu komunikacyjnego do potrzeb osób podróżujących z i w kierunku południowych obrzeży Poznania oraz Lubonia.</p>
+        `
+    },
+    {
+        id: 4,
+        tytul: "OSTROŁĘKA: Kolej wraca na trasę z Ostrołęki do Warszawy. Znamy szczegóły i harmonogram modernizacji!",
+        kategoria: "Aktualności",
+        data: "11 września 2026",
+        czasCzytania: "2 min czytania",
+        autor: "O5K4R Solutions",
+        autorAvatar: "content/akt/O5K4R.png",
+        baner: "content/akt/20240319090536PLK20230602Po22latachwracajapociagizOstrolekidoChorzelWidoknanowyperonitornastacjiOstrolekaoraznowetabliceinformacyjneznazwastacjiikierunkiemjazdyfot.jpg_687-443.jpg",
+        trescPelna: `
+            <p>Połączenia kolejowe między Ostrołęką a Warszawą od lat są jednym z najważniejszych tematów dyskusji wśród mieszkańców północnego Mazowsza. Trwająca modernizacja infrastruktury torowej ma jednak przynieść długo wyczekiwany przełom. Zgodnie z najnowszymi informacjami, prace zmierzają do finału, a pasażerowie w niedalekiej przyszłości znów będą mogli wygodnie podróżować pociągiem do stolicy.</p>
+            
+            <h3 class="font-heading text-xl font-bold text-[#1d1d1f] mt-6 mb-3">Harmonogram prac: Kiedy powrót pociągów?</h3>
+            <p>Kluczowe dla całej inwestycji są terminy zakończenia prac budowlanych oraz wdrożenia nowego rozkładu jazdy:</p>
+            <ul class="list-disc pl-6 space-y-2">
+                <li><b>Koniec prac torowych:</b> Zakończenie zasadniczych prac modernizacyjnych na linii zaplanowano na grudzień 2026 roku.</li>
+                <li><b>Start połączeń:</b> Nowe składy – w tym planowane pociągi dalekobieżne oraz regionalne – mają wyruszyć na trasę łączącą Warszawę, Ostrołękę i Łomżę w czerwcu 2027 roku.</li>
+            </ul>
+
+ <div class="my-8 rounded-2xl overflow-hidden shadow-md border border-slate-200">
+                <img src="content/akt/foto.jpg" alt="Stacja Ostrołęka" class="w-full object-cover">
+                <p class="p-3 bg-slate-50 text-xs text-center text-[#86868b]">Wizualizacja stacji Ostrołęka w wojewódźtwie Mazowieckim</b></p>
+            </div>
+
+            <h3 class="font-heading text-xl font-bold text-[#1d1d1f] mt-6 mb-3">Rewolucja w czasie przejazdu – Warszawa w zasięgu 80 minut</h3>
+            <p>Głównym celem trwających prac jest nie tylko przywrócenie ruchu, ale przede wszystkim drastyczne skrócenie czasu podróży. Z zapowiedzi ekspertów i polityków zaangażowanych w projekt wynika, że po zakończeniu inwestycji przejazd pociągiem z Ostrołęki do Warszawy ma zająć około 80 minut.</p>
+            <p>Tak znaczne skrócenie czasu jazdy całkowicie zmieni mobilność mieszkańców regionu. Otworzy to perspektywy łatwiejszego dojazdu do warszawskiego rynku pracy, stołecznych uczelni oraz portów lotniczych, co dla wielu osób stanowi kluczowy argument przemawiający za rozwojem transportu szynowego.</p>
+
+        <h3 class="font-heading text-xl font-bold text-[#1d1d1f] mt-6 mb-3">Co zmieni się na torach?</h3>
+            <p>Modernizacja linii kolejowej niesie za sobą szerszą ofertę przewozową. Oprócz tradycyjnych połączeń regionalnych, na trasie pojawić się mają także składy dalekobieżne (m.in. planowane relacje obsługiwane przez PKP Intercity w ujęciu Warszawa–Ostrołęka–Łomża). Dla samej Ostrołęki oznacza to wzmocnienie jej roli jako istotnego węzła kolejowego w tej części województwa mazowieckiego.</p>
+            <p>Choć na ostateczny efekt i moment, w którym pociągi znowu zabiorą pasażerów w kierunku Warszawy, trzeba będzie poczekać do połowy 2027 roku, tempo prowadzonych prac budowlanych daje solidne podstawy do optymizmu. Mieszkańcy regionu z niecierpliwością odliczają miesiące do chwili, gdy kolej na dobre powróci na tę strategiczną trasę.</p>
         `
     }
 ];
