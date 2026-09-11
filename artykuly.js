@@ -204,5 +204,43 @@ Nowa inwestycja ma na celu usprawnienie ruchu pasażerskiego w tym rejonie oraz 
 
            <p class="mt-4">Organizator transportu przeprasza pasażerów za wszelkie niedogodności i zaleca wcześniejsze sprawdzanie aktualnych połączeń oraz planowanie podróży z zapasem czasu.</p>
             `
+    },
+     {
+        id: 8,
+        tytul: "Warszawa stanie się stolicą światowego transportu! Już wkrótce Dni Transportu Publicznego 2026 i Mistrzostwa Motorniczych",
+        kategoria: "Aktualności",
+        data: "11 września 2026",
+        czasCzytania: "7 min czytania",
+        autor: "O5K4R Solutions",
+        autorAvatar: "content/akt/O5K4R.png",
+        baner: "content/akt/dtp-baner.png",
+        trescPelna: `
+            <p>W sobotę, 19 września 2026 roku, serce Warszawy zamieni się w wielkie miasteczko mobilności. Pod Pałacem Kultury i Nauki, na nowo otwartym Placu Centralnym, odbędą się tegoroczne Dni Transportu Publicznego (DTP), połączone z prestiżowymi, międzynarodowymi mistrzostwami motorniczych. Na mieszkańców i miłośników komunikacji miejskiej czeka mnóstwo atrakcji.</p>
+
+<h3 class="font-heading text-xl font-bold text-[#1d1d1f] mt-6 mb-3">Światowa elita motorniczych na Marszałkowskiej</h3>
+<p>Głównym punktem programowym tegorocznych DTP będą zmagania w ramach zawodów motorniczych (World Tramdriver Championship / TRAM-EM). Do Warszawy zjeżdzają się reprezentacje motorniczych nie tylko z Polski, ale także z całej Europy i dalekich zakątków świata (m.in. z Australii). Gospodarzy reprezentować będzie stołeczna drużyna, a obok niej wystąpi m.in. zespół MZK Gorzów Wielkopolski – zwycięzca krajowych mistrzostw.</p>
+
+<div class="my-8 rounded-2xl overflow-hidden shadow-md border border-slate-200">
+                <img src="content/akt/tram-em.jpg" alt="Autobus Solaris ŁÓDŹ" class="w-full object-cover">
+                <p class="p-3 bg-slate-50 text-xs text-center text-[#86868b]">Logo TRAM-EM Warsaw 2026</b></p>
+            </div>
+
+<p>Rywalizacja rozegra się bezpośrednio na ulicy Marszałkowskiej. Oficjalne otwarcie imprezy zaplanowano na godzinę 10:00, pierwsza część zawodów ruszy o 11:00, a po przerwie (13:00–14:00) motorniczowie wrócą na trasę w godzinach 14:00–16:30. Wydarzenie zakończy się o 17:00 dekoracją zwycięzców i symbolicznym przekazaniem organizacji kolejnej edycji Luksemburgowi.</p>
+
+<div class="my-8 rounded-2xl overflow-hidden shadow-md border border-slate-200">
+                <img src="content/akt/dtp-zawody-01.jpg" alt="Autobus Solaris ŁÓDŹ" class="w-full object-cover">
+                <p class="p-3 bg-slate-50 text-xs text-center text-[#86868b]">Zdjęcie poglądowe zawodów DTP</b></p>
+            </div>
+
+<h3 class="font-heading text-xl font-bold text-[#1d1d1f] mt-6 mb-3">Piknik rodzinny i strefy operatorów WTP</h3>
+<p>Przez cały dzień (w godz. 10:00–17:00) Plac Centralny wypełni się stoiskami przygotowanymi przez m.st. Warszawę, Zarząd Transportu Miejskiego (ZTM) oraz stołecznych operatorów: Tramwaje Warszawskie, Metro Warszawskie, Miejskie Zakłady Autobusowe (MZA) oraz Szybką Kolej Miejską (SKM).</p>
+<p>Na odwiedzających – zarówno najmłodszych, jak i starszych pasażerów – czeka bogaty program atrakcji:</p>
+           <ul class="list-disc pl-6 space-y-2">
+                <li><b>Dla dzieci i rodzin:</b> pluszowe miasteczko drogowe, gigantyczne dmuchańce (Giga Farma i Mega Tor Przeszkód), mobilny plac zabaw w autobusie, klocki LEGO, XXL i strefy kreatywne (malowanie buziek, tatuaże airbrush). Nie zabraknie też kolejki szynowej, minidrezyny ręcznej czy spotkań z robotem humanoidalnym stworzonym specjalnie na tę okazję.</li>
+                <li><b>Dla pasjonatów techniki i historii:</b> wystawy taboru historycznego i współczesnego. Wśród zabytkowych autobusów pojawią się legendy dróg: Chausson, „ogórki” (Jelcz 043 i Škoda 706), San H100A oraz kultowy Ikarus 260 i 280, a także tramwaje na ul. Marszałkowskiej. Zobaczyć będzie można również nowoczesne pojazdy techniczne, w tym elektryczny wózek „Minionek” czy najnowszy wóz Nadzoru Ruchu ZTM.</li>
+                <li><b>Strefy relaksu i edukacji:</b> strefy chilloutu z leżakami i pufami, warsztaty pierwszej pomocy, gry i zabawy z nosorożcem Rogatkiem (w ramach kampanii „Kolejowe ABC”) oraz punkty rekrutacyjne miejskich przewoźników.</li>
+            </ul>
+         <p class="mt-4">Dni Transportu Publicznego to doskonała okazja, by zajrzeć „od kuchni” do świata warszawskiej komunikacji, kibicować najzdolniejszym motorniczym z całego globu i spędzić aktywnie sobotę w centrum miasta. Wstęp na wszystkie wydarzenia jest bezpłatny. Szczegółowy harmonogram można znaleźć na oficjalnej stronie <a href="https://www.wtp.waw.pl/dtp2026/" class="text-blue-600 font-semibold hover:underline">Warszawskiego Transportu Publicznego</a></p>
+            `
     }
 ];
