@@ -242,5 +242,45 @@ Nowa inwestycja ma na celu usprawnienie ruchu pasażerskiego w tym rejonie oraz 
             </ul>
          <p class="mt-4">Dni Transportu Publicznego to doskonała okazja, by zajrzeć „od kuchni” do świata warszawskiej komunikacji, kibicować najzdolniejszym motorniczym z całego globu i spędzić aktywnie sobotę w centrum miasta. Wstęp na wszystkie wydarzenia jest bezpłatny. Szczegółowy harmonogram można znaleźć na oficjalnej stronie <a href="https://www.wtp.waw.pl/dtp2026/" class="text-blue-600 font-semibold hover:underline">Warszawskiego Transportu Publicznego</a></p>
             `
+    },
+         {
+        id: 9,
+        tytul: "Koniec z wykluczeniem komunikacyjnym? Rząd chce minimum 4 połączeń dziennie na wsi",
+        kategoria: "Aktualności",
+        data: "12 września 2026",
+        czasCzytania: "15 min czytania",
+        autor: "O5K4R Solutions",
+        autorAvatar: "content/akt/O5K4R.png",
+        baner: "content/akt/Gemini_Generated_Image_2c1v4l2c1v4l2c1v.jpg",
+        trescPelna: `
+            <p>Mieszkasz na wsi i dotarcie do lekarza, urzędu czy większego sklepu graniczy z cudem? Rząd chce ukrócić problem braku autobusów. Nowa ustawa o publicznym transporcie zbiorowym zakłada wprowadzenie ogólnopolskich standardów – każda gmina będzie musiała zapewnić mieszkańcom minimalną liczbę kursów dziennie.</p>
+ <p>Problem tzw. wykluczenia komunikacyjnego dotyka w Polsce milionów osób. Setki wsi i małych miejscowości zostały całkowicie odcięte od świata po tym, jak przez lata likwidowano połączenia PKS-owe i prywatne linie autobusowe. Osoby starsze, niemające własnego samochodu lub prawa jazdy, stały się więźniami własnych domów, nie mogąc dojechać do lekarza specjalisty, załatwić sprawy w urzędzie czy zrobić większych zakupów.</p>
+<p>Sytuacja ta ma się jednak diametralnie zmienić za sprawą kompleksowej reformy transportu publicznego.</p>
+
+<h3 class="font-heading text-xl font-bold text-[#1d1d1f] mt-6 mb-3">Czym jest standard „4+2”? Ile połączeń zagwarantuje ustawa?</h3>
+<p>Kluczowym elementem nowych przepisów jest wprowadzenie po raz pierwszy w Polsce minimalnego standardu dostępności komunikacyjnej. Zgodnie z założeniami projektu, samorządy będą miały obowiązek zagwarantować odpowiednią częstotliwość kursów:</p>
+<ul class="list-disc pl-6 space-y-2">
+                <li><b>Minimum 4 pary połączeń dziennie</b> w dni robocze (od poniedziałku do piątku),</li>
+                <li><b>Minimum 2 pary połączeń dziennie</b> w dni wolne od pracy (weekendy i święta).</li>
+            </ul>
+
+<div class="my-8 rounded-2xl overflow-hidden shadow-md border border-slate-200">
+                <img src="content/akt/Gemini_Generated_Image_ku92elku92elku92.jpg" alt="Nowoczesny autobus na zamówienie. Wygenerowano przez Ai" class="w-full object-cover">
+                <p class="p-3 bg-slate-50 text-xs text-center text-[#86868b]">Nowoczesny autobus na zamówienie. <b>Wygenerowano przez Ai</b></b></p>
+            </div>
+<p>Taki standard ma obowiązywać na trasach łączących siedziby gmin z siedzibami powiatów oraz stolicami województw. Oznacza to, że gmina nie będzie mogła już bezkarnie zignorować potrzeb mieszkańców mniejszych miejscowości – uruchomienie regularnych kursów stanie się jej prawnym obowiązkiem.</p>
+
+<h3 class="font-heading text-xl font-bold text-[#1d1d1f] mt-6 mb-3">Transport na żądanie i „busy na telefon”</h3>
+<p>Twórcy ustawy zdają sobie sprawę, że w najmniejszych przysiółkach czy wsiach puszczanie dużego, tradycyjnego autobusu raz za razem jest ekonomicznie nieuzasadnione i generowałoby ogromne straty. Dlatego przepisy wprowadzają rozwiązanie znane z zachodniej Europy – <b>transport na żądanie.</b></p>
+<p>W praktyce ma to wyglądać tak, że na terenach wiejskich, gdzie zapotrzebowanie jest mniejsze, uruchomione zostaną mniejsze pojazdy (np. busy mieszczące do 9 osób). Mieszkaniec będzie mógł zamówić taki transport telefonicznie lub za pomocą aplikacji – zgłaszasz potrzebę przejazdu, a bus przyjeżdża o wyznaczonej godzinie, aby dowieźć Cię do węzła przesiadkowego lub ośrodka zdrowia.</p>
+
+<h3 class="font-heading text-xl font-bold text-[#1d1d1f] mt-6 mb-3">Jeden bilet i cyfrowe rozkłady jazdy</h3>
+<p>Reforma ma uporządkować także chaos informacyjny. Wszystkie rozkłady jazdy mają być udostępniane w formie cyfrowej i łatwo dostępne w Internecie. Osoby starsze będą mogły liczyć na pomoc młodszych członków rodziny w wyszukiwaniu połączeń.</p>
+<p>Co więcej, ustawa przewiduje integrację transportu autobusowego z kolejowym. Docelowo pasażer ma mieć możliwość zakupu jednego wspólnego biletu na całą podróż, nawet jeśli po drodze czeka go przesiadka z lokalnego busa na pociąg regionalny.</p>
+
+<h3 class="font-heading text-xl font-bold text-[#1d1d1f] mt-6 mb-3">Kto za to odpowiada i kiedy zmiany wejdą w życie?</h3>
+<p>Za koordynację siatki połączeń w regionie odpowiadać będą marszałkowie województw, którzy staną się głównymi integratorami transportu. Przejmą oni nadzór nad spójnością sieci i lepszym rozdysponowaniem środków z Funduszu rozwoju przewozów autobusowych.</p>
+<p>Projekt rządowy spotkał się jednak z dyskusją i uwagami ze strony samorządów oraz przewoźników, którzy zwracają uwagę na wyzwania finansowe i logistyczne związane m.in. z cyfryzacją rozkładów czy wymogami taborowymi. Niezależnie od prowadzonych debat, kierunek zmian ma na celu jedno: przywrócenie mobilności tym, którzy do tej pory byli skazani wyłącznie na własne nogi lub pomoc sąsiadów.</p>
+ `
     }
 ];
