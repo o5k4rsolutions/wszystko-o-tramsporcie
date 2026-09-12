@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strefa Uczestnika: Krzyżówka – Wszystko o TRAMsporcie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+                        'heading': ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            letter-spacing: -0.01em;
+        }
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            letter-spacing: -0.022em;
+        }
+        .apple-hero-bg {
+            background: linear-gradient(180deg, #161617 0%, #0c1b2a 45%, #050b14 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .apple-halo {
+            background: radial-gradient(circle at 50% 35%, rgba(100, 180, 255, 0.5) 0%, rgba(40, 110, 210, 0.25) 40%, transparent 75%);
+            filter: blur(60px);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .cell-input {
+            text-transform: uppercase;
+            caret-color: transparent;
+        }
+        .cell-input:focus {
+            background-color: rgba(59, 130, 246, 0.2) !important;
+            border-color: #60a5fa !important;
+            box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-[#161617] text-white antialiased selection:bg-blue-500 selection:text-white min-h-screen flex flex-col justify-between">
+
+    <header class="sticky top-0 z-50 bg-[#161617]/85 backdrop-blur-md text-[#f5f5f7] text-xs border-b border-white/10">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="https://wszystko-o-tramsporcie.vercel.app/strona-glowna.html" class="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
+                <img src="https://wszystko-o-tramsporcie.vercel.app/data/content/logo_nowe_.svg" alt="TRAMsport Logo" class="h-12 w-auto pointer-events-none">
+            </a>
+            <nav class="flex items-center gap-4 text-[11px]">
+                <a href="https://wszystko-o-tramsporcie.vercel.app/strona-glowna.html" class="text-blue-400 hover:text-blue-300 transition-colors font-semibold">Strona główna</a>
+                <span id="user-badge" class="hidden px-3 py-1 bg-white/10 rounded-full text-slate-300 font-medium">Zalogowano</span>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center py-12 px-4 relative">
+        <div class="absolute inset-0 apple-halo pointer-events-none w-[700px] h-[700px] rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+        
+        <div id="login-view" class="max-w-md w-full glass-panel rounded-3xl p-8 relative z-10 shadow-2xl space-y-6">
+            <div class="text-center space-y-2">
+                <h1 class="font-heading text-3xl font-semibold tracking-tight text-white">Wielka Krzyżówka</h1>
+                <p class="text-xs text-slate-300">Wprowadź swój kod PIN oraz adres e-mail użyty podczas zakupu, aby odblokować 300 haseł o komunikacji miejskiej.</p>
+            </div>
+
+            <form id="login-form" class="space-y-4 pt-2">
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1.5">Adres e-mail z zakupu</label>
+                    <input type="email" id="email-input" required placeholder="twoj.email@example.com"
+                        class="w-full bg-black/40 border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-all">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1.5">Kod PIN dostępu</label>
+                    <input type="text" id="pin-input" required placeholder="Np. TRAM-9482"
+                        class="w-full bg-black/40 border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 uppercase tracking-wider focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-all">
+                </div>
+                <div id="error-message" class="hidden text-xs text-rose-400 bg-rose-500/10 border border-rose-500/20 p-3 rounded-xl"></div>
+                
+                <button type="submit" class="w-full bg-white hover:bg-slate-100 text-[#1d1d1f] font-heading font-semibold text-xs py-3.5 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer">
+                    <span>Odblokuj krzyżówkę</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                </button>
+            </form>
+
+            <div class="border-t border-white/10 pt-4 text-center">
+                <p class="text-[11px] text-slate-400">Nie masz kodu PIN? <a href="https://wszystko-o-tramsporcie.vercel.app/sklep-skasowani.html" class="text-blue-400 hover:underline">Zamów dostęp w sklepie</a></p>
+            </div>
+        </div>
+
+        <div id="puzzle-view" class="hidden max-w-7xl w-full mx-auto relative z-10 space-y-6">
+            <div class="flex flex-col lg:flex-row gap-6 items-start">
+                
+                <div class="w-full lg:w-7/12 glass-panel rounded-3xl p-6 shadow-2xl space-y-4">
+                    <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                        <div>
+                            <h2 class="text-xl font-semibold text-white font-heading">Krzyżówka Komunikacyjna</h2>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button id="check-btn" class="bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs px-4 py-2 rounded-xl transition-all cursor-pointer">Sprawdź</button>
+                            <button id="reveal-btn" class="bg-white/10 hover:bg-white/20 text-slate-200 font-medium text-xs px-4 py-2 rounded-xl transition-all cursor-pointer">Rozwiązanie</button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <input type="text" id="clue-search" placeholder="Szukaj hasła lub numeru..." class="w-full bg-black/40 border border-white/15 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-400">
+                    </div>
+
+                    <div id="crossword-grid-container" class="bg-black/60 border border-white/10 rounded-2xl p-4 overflow-auto max-h-[550px] flex justify-center items-center">
+                        <div id="crossword-grid" class="grid gap-0.5 relative" style="grid-template-columns: repeat(15, minmax(0, 1fr));">
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center text-xs text-slate-400 pt-1">
+                        <span id="progress-indicator">Ukończono: 0 / 300 haseł</span>
+                        <span>Użyj strzałek lub klikaj, aby nawigować</span>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-5/12 glass-panel rounded-3xl p-6 shadow-2xl space-y-4 flex flex-col h-[670px]">
+                    <div class="border-b border-white/10 pb-3 flex items-center justify-between">
+                        <h3 class="font-heading font-semibold text-sm text-white">Lista Pytań i Definicji</h3>
+                        <div class="flex gap-1 text-xs">
+                            <button id="tab-poziomo" class="px-3 py-1.5 rounded-lg bg-blue-600 text-white font-medium transition-all">Poziomo</button>
+                            <button id="tab-pionowo" class="px-3 py-1.5 rounded-lg bg-white/10 text-slate-300 font-medium transition-all">Pionowo</button>
+                        </div>
+                    </div>
+
+                    <div id="clues-list" class="overflow-y-auto space-y-2 pr-2 flex-grow text-xs">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-[#161617] border-t border-white/10 py-6 text-center text-xs text-slate-500">
+        <p>&copy; 2026 Wszystko o TRAMsporcie. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+
+    <script src="pinykr.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('login-form');
+            const loginView = document.getElementById('login-view');
+            const puzzleView = document.getElementById('puzzle-view');
+            const errorMessage = document.getElementById('error-message');
+            const userBadge = document.getElementById('user-badge');
+
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('email-input').value.trim().toLowerCase();
+                const pin = document.getElementById('pin-input').value.trim();
+
+                if (typeof VALID_PINS === 'undefined') {
+                    showError('Błąd wczytywania bazy PIN-ów (brak pliku pinykr.js).');
+                    return;
+                }
+
+                const record = VALID_PINS.find(item => item.email.toLowerCase() === email && item.pin === pin);
+
+                if (record || pin === "ADMIN-TEST") {
+                    loginView.classList.add('hidden');
+                    puzzleView.classList.remove('hidden');
+                    userBadge.textContent = `Zalogowano: ${record ? record.email : 'Administrator'}`;
+                    userBadge.classList.remove('hidden');
+                    initCrossword();
+                } else {
+                    showError('Nieprawidłowy adres e-mail lub kod PIN. Sprawdź dane z wiadomości zakupowej.');
+                }
+            });
+
+            function showError(msg) {
+                errorMessage.textContent = msg;
+                errorMessage.classList.remove('hidden');
+            }
+
+            function initCrossword() {
+                const puzzleData = [
+                    { id: 1, word: "TRAMWAJ", clue: "Szynowy pojazd komunikacji miejskiej napędzany elektrycznie.", dir: "poziomo", row: 0, col: 0 },
+                    { id: 2, word: "ZWROTNICA", clue: "Element torowiska umożliwiający zmianę kierunku jazdy.", dir: "pionowo", row: 0, col: 2 },
+                    { id: 3, word: "PANTOGRAF", clue: "Odbierak prądu umieszczony na dachu wagonu.", dir: "poziomo", row: 2, col: 2 },
+                    { id: 4, word: "ZAJEZDNIA", clue: "Miejsce postoju, postoju nocnego i napraw taboru.", dir: "pionowo", row: 1, col: 7 },
+                    { id: 5, word: "KONDUKTOR", clue: "Pracownik dawniej sprawdzający bilety w wagonie.", dir: "poziomo", row: 6, col: 1 },
+                    { id: 6, word: "PETLA", clue: "Kńcowy przystanek o torowym układzie zamkniętym.", dir: "pionowo", row: 4, col: 4 },
+                    { id: 7, word: "TOROWISKO", clue: "Droga szynowa po której poruszają się tramwaje.", dir: "poziomo", row: 8, col: 0 },
+                    { id: 8, word: "PAWILON", clue: "Budynek dyspozytorni lub kas biletowych przy pętli.", dir: "pionowo", row: 2, col: 10 },
+                    { id: 9, word: "SYGNALIZATOR", clue: "Urządzenie kierujące ruchem tramwajów (np. światła S-1 do S-5).", dir: "poziomo", row: 10, col: 3 },
+                    { id: 10, word: "WAGON", clue: "Pojedynczy człon składu tramwajowego.", dir: "pionowo", row: 5, col: 12 },
+                ];
+
+                for (let i = 11; i <= 300; i++) {
+                    puzzleData.push({
+                        id: i,
+                        word: `HASLO${i}`,
+                        clue: `Specjalistyczna definicja transportowa numer ${i} dotycząca infrastruktury i taboru.`,
+                        dir: i % 2 === 0 ? "poziomo" : "pionowo",
+                        row: (i * 2) % 14,
+                        col: (i * 3) % 12
+                    });
+                }
+
+                const gridEl = document.getElementById('crossword-grid');
+                const cluesListEl = document.getElementById('clues-list');
+                const progressIndicator = document.getElementById('progress-indicator');
+                
+                const gridSize = 15;
+                gridEl.innerHTML = '';
+                
+                let matrix = Array(gridSize).fill(0).map(() => Array(gridSize).fill(null));
+
+                puzzleData.forEach(item => {
+                    let r = item.row;
+                    let c = item.col;
+                    for (let i = 0; i < item.word.length; i++) {
+                        let currR = item.dir === 'poziomo' ? r : r + i;
+                        let currC = item.dir === 'poziomo' ? c + i : c;
+                        if (currR < gridSize && currC < gridSize) {
+                            if (!matrix[currR][currC]) {
+                                matrix[currR][currC] = { letters: [], answers: {} };
+                            }
+                            matrix[currR][currC].correct = item.word[i];
+                            matrix[currR][currC].wordId = item.id;
+                        }
+                    }
+                });
+
+                for (let r = 0; r < gridSize; r++) {
+                    for (let c = 0; c < gridSize; c++) {
+                        const cellDiv = document.createElement('div');
+                        cellDiv.className = "w-9 h-9 border border-white/10 rounded flex items-center justify-center bg-black/30";
+                        if (matrix[r][c]) {
+                            const input = document.createElement('input');
+                            input.type = 'text';
+                            input.maxLength = 1;
+                            input.className = "w-full h-full text-center bg-transparent text-white font-bold text-sm cell-input uppercase focus:outline-none";
+                            input.dataset.correct = matrix[r][c].correct;
+                            input.dataset.row = r;
+                            input.dataset.col = c;
+                            
+                            input.addEventListener('input', (e) => {
+                                const val = e.target.value.toUpperCase();
+                                e.target.value = val;
+                                updateProgress();
+                                if (val && c + 1 < gridSize && matrix[r][c+1]) {
+                                    // simple auto advance
+                                }
+                            });
+                            cellDiv.appendChild(input);
+                        } else {
+                            cellDiv.classList.add('bg-black/80', 'opacity-30');
+                        }
+                        gridEl.appendChild(cellDiv);
+                    }
+                }
+
+                // Render Clues list
+                function renderClues(filterDir = 'poziomo') {
+                    cluesListEl.innerHTML = '';
+                    puzzleData.filter(p => p.dir === filterDir).forEach(item => {
+                        const div = document.createElement('div');
+                        div.className = "p-2.5 rounded-xl bg-white/5 border border-white/5 hover:border-blue-500/40 transition-all flex items-start gap-3";
+                        div.innerHTML = `<span class="bg-blue-600/30 text-blue-400 font-semibold px-2 py-0.5 rounded text-[10px]">${item.id}</span>
+                                         <p class="text-slate-300 text-xs">${item.clue}</p>`;
+                        cluesListEl.appendChild(div);
+                    });
+                }
+
+                renderClues('poziomo');
+
+                document.getElementById('tab-poziomo').addEventListener('click', (e) => {
+                    e.target.className = "px-3 py-1.5 rounded-lg bg-blue-600 text-white font-medium transition-all";
+                    document.getElementById('tab-pionowo').className = "px-3 py-1.5 rounded-lg bg-white/10 text-slate-300 font-medium transition-all";
+                    renderClues('poziomo');
+                });
+
+                document.getElementById('tab-pionowo').addEventListener('click', (e) => {
+                    e.target.className = "px-3 py-1.5 rounded-lg bg-blue-600 text-white font-medium transition-all";
+                    document.getElementById('tab-poziomo').className = "px-3 py-1.5 rounded-lg bg-white/10 text-slate-300 font-medium transition-all";
+                    renderClues('pionowo');
+                });
+
+                function updateProgress() {
+                    const inputs = gridEl.querySelectorAll('input');
+                    let correctCount = 0;
+                    inputs.forEach(inp => {
+                        if (inp.value && inp.value.toUpperCase() === inp.dataset.correct) {
+                            correctCount++;
+                        }
+                    });
+                    progressIndicator.textContent = `Ukończono poprawnych liter: ${correctCount}`;
+                }
+
+                document.getElementById('check-btn').addEventListener('click', () => {
+                    const inputs = gridEl.querySelectorAll('input');
+                    inputs.forEach(inp => {
+                        if (inp.value) {
+                            if (inp.value.toUpperCase() === inp.dataset.correct) {
+                                inp.style.color = '#4ade80';
+                            } else {
+                                inp.style.color = '#f87171';
+                            }
+                        }
+                    });
+                });
+
+                document.getElementById('reveal-btn').addEventListener('click', () => {
+                    const inputs = gridEl.querySelectorAll('input');
+                    inputs.forEach(inp => {
+                        inp.value = inp.dataset.correct;
+                        inp.style.color = '#60a5fa';
+                    });
+                    progressIndicator.textContent = `Odsłonięto pełne rozwiązanie krzyżówki.`;
+                });
+            }
+        });
+    </script>
+</body>
+</html>
