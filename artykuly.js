@@ -263,15 +263,14 @@ Nowa inwestycja ma na celu usprawnienie ruchu pasażerskiego w tym rejonie oraz 
                 <li><b>Minimum 4 pary połączeń dziennie</b> w dni robocze (od poniedziałku do piątku),</li>
                 <li><b>Minimum 2 pary połączeń dziennie</b> w dni wolne od pracy (weekendy i święta).</li>
             </ul>
-
-<div class="my-8 rounded-2xl overflow-hidden shadow-md border border-slate-200">
-                <img src="content/akt/Gemini_Generated_Image_ku92elku92elku92.jpg" alt="Nowoczesny autobus na zamówienie. Wygenerowano przez Ai" class="w-full object-cover">
-                <p class="p-3 bg-slate-50 text-xs text-center text-[#86868b]">Nowoczesny autobus na zamówienie. <b>Wygenerowano przez Ai</b></b></p>
-            </div>
 <p>Taki standard ma obowiązywać na trasach łączących siedziby gmin z siedzibami powiatów oraz stolicami województw. Oznacza to, że gmina nie będzie mogła już bezkarnie zignorować potrzeb mieszkańców mniejszych miejscowości – uruchomienie regularnych kursów stanie się jej prawnym obowiązkiem.</p>
 
 <h3 class="font-heading text-xl font-bold text-[#1d1d1f] mt-6 mb-3">Transport na żądanie i „busy na telefon”</h3>
 <p>Twórcy ustawy zdają sobie sprawę, że w najmniejszych przysiółkach czy wsiach puszczanie dużego, tradycyjnego autobusu raz za razem jest ekonomicznie nieuzasadnione i generowałoby ogromne straty. Dlatego przepisy wprowadzają rozwiązanie znane z zachodniej Europy – <b>transport na żądanie.</b></p>
+<div class="my-8 rounded-2xl overflow-hidden shadow-md border border-slate-200">
+                <img src="content/akt/Gemini_Generated_Image_ku92elku92elku92.jpg" alt="Nowoczesny autobus na zamówienie. Wygenerowano przez Ai" class="w-full object-cover">
+                <p class="p-3 bg-slate-50 text-xs text-center text-[#86868b]">Nowoczesny autobus na zamówienie. <b>Wygenerowano przez Ai</b></b></p>
+            </div>
 <p>W praktyce ma to wyglądać tak, że na terenach wiejskich, gdzie zapotrzebowanie jest mniejsze, uruchomione zostaną mniejsze pojazdy (np. busy mieszczące do 9 osób). Mieszkaniec będzie mógł zamówić taki transport telefonicznie lub za pomocą aplikacji – zgłaszasz potrzebę przejazdu, a bus przyjeżdża o wyznaczonej godzinie, aby dowieźć Cię do węzła przesiadkowego lub ośrodka zdrowia.</p>
 
 <h3 class="font-heading text-xl font-bold text-[#1d1d1f] mt-6 mb-3">Jeden bilet i cyfrowe rozkłady jazdy</h3>
