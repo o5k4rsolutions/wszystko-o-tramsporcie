@@ -284,15 +284,15 @@ Nowa inwestycja ma na celu usprawnienie ruchu pasażerskiego w tym rejonie oraz 
     },
       {
         id: 10,
-        tytul: "Tworzymy nowy projekt...",
+        tytul: "Czas na nowy rozdział! Poznaj szczegóły już wkrótce.",
         kategoria: "Aktualności",
         data: "20 września 2026",
-        czasCzytania: "2 min czytania",
+        czasCzytania: "1 min czytania",
         autor: "O5K4R Solutions",
         autorAvatar: "content/akt/O5K4R.png",
-        baner: "https://lifeinwarsaw.vercel.app/liw-content/image-3-2.png",
+        baner: "",
         trescPelna: `
-            <h3 class="font-heading text-xl font-bold text-[#1d1d1f] mt-6 mb-3">Wkró†ce ujawnimy Wam nasze działania wobec nowego projektu!</h3>
+            <h3 class="font-heading text-xl font-bold text-[#1d1d1f] mt-6 mb-3">Już wkrótce uchylimy rąbka tajemnicy i opowiemy Wam o tym, nad czym tak intensywnie pracujemy przez ostatnie tygodnie. Nowy projekt wkracza w decydującą fazę i nie możemy się doczekać, aż podzielimy się z Wami wszystkimi szczegółami!</h3>
             <p>Oczekujcie!</p>
 `
     }
