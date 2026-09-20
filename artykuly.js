@@ -290,7 +290,7 @@ Nowa inwestycja ma na celu usprawnienie ruchu pasażerskiego w tym rejonie oraz 
         czasCzytania: "1 min czytania",
         autor: "O5K4R Solutions",
         autorAvatar: "content/akt/O5K4R.png",
-        baner: "",
+        baner: "data/content/Gemini_Generated_Image_qy3753qy3753qy37.jpg",
         trescPelna: `
             <h3 class="font-heading text-xl font-bold text-[#1d1d1f] mt-6 mb-3">Już wkrótce uchylimy rąbka tajemnicy i opowiemy Wam o tym, nad czym tak intensywnie pracujemy przez ostatnie tygodnie. Nowy projekt wkracza w decydującą fazę i nie możemy się doczekać, aż podzielimy się z Wami wszystkimi szczegółami!</h3>
             <p>Oczekujcie!</p>
