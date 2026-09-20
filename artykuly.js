@@ -281,5 +281,19 @@ Nowa inwestycja ma na celu usprawnienie ruchu pasażerskiego w tym rejonie oraz 
 <p>Za koordynację siatki połączeń w regionie odpowiadać będą marszałkowie województw, którzy staną się głównymi integratorami transportu. Przejmą oni nadzór nad spójnością sieci i lepszym rozdysponowaniem środków z Funduszu rozwoju przewozów autobusowych.</p>
 <p>Projekt rządowy spotkał się jednak z dyskusją i uwagami ze strony samorządów oraz przewoźników, którzy zwracają uwagę na wyzwania finansowe i logistyczne związane m.in. z cyfryzacją rozkładów czy wymogami taborowymi. Niezależnie od prowadzonych debat, kierunek zmian ma na celu jedno: przywrócenie mobilności tym, którzy do tej pory byli skazani wyłącznie na własne nogi lub pomoc sąsiadów.</p>
  `
+    },
+      {
+        id: 10,
+        tytul: "Tworzymy nowy projekt...",
+        kategoria: "Aktualności",
+        data: "20 września 2026",
+        czasCzytania: "2 min czytania",
+        autor: "O5K4R Solutions",
+        autorAvatar: "content/akt/O5K4R.png",
+        baner: "https://lifeinwarsaw.vercel.app/liw-content/image-3-2.png",
+        trescPelna: `
+            <h3 class="font-heading text-xl font-bold text-[#1d1d1f] mt-6 mb-3">Wkró†ce ujawnimy Wam nasze działania wobec nowego projektu!</h3>
+            <p>Oczekujcie!</p>
+`
     }
 ];
